@@ -5,6 +5,8 @@ import Home from './components/Home';
 import AdminPanel from './components/AdminPanel';
 import Header from './components/Header';
 import Modal from './components/Modal';
+import Cases from './components/Cases';
+import Players from './components/Players';
 import LoadingScreen from './components/LoadingScreen';
 import StatsPage from './components/StatsPage';
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/stats" element={<StatsPage />} />
+        <Route path="/player/:player" element={<Players/>} />
+        <Route path="/case/:id" element={<Cases/>} />
       </Routes>
       {loadingPlayerFile ? (
         <LoadingScreen />
