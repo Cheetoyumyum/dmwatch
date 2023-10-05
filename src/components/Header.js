@@ -9,7 +9,6 @@ function Header({ onOpenReportModal, onOpenSignInModal, modalType, setModalType 
 
   useEffect(() => {
     // This effect runs whenever isAuthenticated changes.
-    // You can add code here to update the UI based on the authentication status.
   }, [isAuthenticated]);
 
   const handleLogOut = () => {

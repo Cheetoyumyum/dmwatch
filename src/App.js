@@ -34,7 +34,6 @@ function App() {
             onClose={() => setReportModalType('')}
             title="Report a Scammer"
             onSubmit={() => {
-              // Handle report submission logic here
               setReportModalType('');
             }}
             modalType={reportModalType}
@@ -44,7 +43,6 @@ function App() {
             onClose={() => setSignInModalType('')}
             title="Sign In"
             onSubmit={() => {
-              // Handle sign-in logic here
               setSignInModalType('');
             }}
             modalType={signInModalType}

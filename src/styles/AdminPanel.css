@@ -1,30 +1,40 @@
-/* AdminPanel.css */
 .admin-panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .admin-tile {
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin: 10px;
-    max-width: 300px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .admin-tile:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .icon {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: 0;
+}
+
+.search-bar-container {
+  margin-bottom: 10px;
+  margin-top: 5vh; 
+}
+
+.admin-tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.admin-tile {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  max-width: 300px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.admin-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #333;
+}
