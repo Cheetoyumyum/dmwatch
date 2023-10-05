@@ -26,8 +26,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/stats" element={<StatsPage />} />
-        <Route path="/player/:player" element={<Players/>} />
-        <Route path="/case/:id" element={<Cases/>} />
+        <Route path="/player/:player" element={<Players />} />
+        <Route path="/cases/:id" element={<Cases />}/>
       </Routes>
       {loadingPlayerFile ? (
         <LoadingScreen />

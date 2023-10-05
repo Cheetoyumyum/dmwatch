@@ -12,7 +12,6 @@ function Home() {
     <div className="Home">
       <Metrics />
       <SearchBar onLoadPlayerFile={() => {}} />
-      <Cases />
       <Ticker />
     </div>
   );

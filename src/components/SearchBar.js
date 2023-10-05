@@ -51,7 +51,7 @@ function SearchBar({ onLoadPlayerFile }) {
       navigate(`/player/${result.player}`);
     } else if (result.caseId) {
       console.log(`Navigating to /case/${result.caseId}`);
-      navigate(`/case/${result.caseId}`);
+      navigate(`/cases/${result.caseId}`);
     }
   };
 
@@ -74,21 +74,19 @@ function SearchBar({ onLoadPlayerFile }) {
       )}
       <ul className="search-results">
         {searchResults.map((result, index) => (
-          <li key={index} className="search-result-item">
-            {result.player ? (
-              <Link to={`/player/${result.player}`} onClick={() => handlePlayerClick(result)}>
+          <li key={index} className="search-result-item" onClick={() => handlePlayerClick(result)}>
+            <Link to={result.player ? `/player/${result.player}` : `/case/${result.caseId}`}>
+              {result.player ? (
                 <span>Player: {result.player}</span>
-              </Link>
-            ) : (
-              <div>
-                <Link to={`/case/${result.caseId}`} onClick={() => handlePlayerClick(result)}>
+              ) : (
+                <div>
                   <span>Case: {result.caseId}</span>
-                </Link>
-                {fakeData.find((data) => data.caseId === result.caseId)?.player && (
-                  <small style={{ color: 'gray' }}> {fakeData.find((data) => data.caseId === result.caseId)?.player}</small>
-                )}
-              </div>
-            )}
+                  {fakeData.find((data) => data.caseId === result.caseId)?.player && (
+                    <small style={{ color: 'gray' }}> {fakeData.find((data) => data.caseId === result.caseId)?.player}</small>
+                  )}
+                </div>
+              )}
+            </Link>
           </li>
         ))}
       </ul>

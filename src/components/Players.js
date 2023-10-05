@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import '../styles/Players.css';
 
 function Players() {
   const { player } = useParams();
   const [playerData, setPlayerData] = useState({});
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
