@@ -1,0 +1,100 @@
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.center-content {
+  flex: 1;
+  text-align: center;
+  margin-left: 80px;
+}
+
+.logo-image {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-family: "Barlow Condensed", sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.navbar li {
+  margin: 0;
+}
+
+a:visited {
+  color: #fff;
+}
+
+a:hover {
+  color: rgb(165, 18, 18);
+}
+
+
+.navbar a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+#submit {
+  color: white;
+}
+
+#submit:hover {
+  text-shadow: 0 0 5px rgb(112, 14, 14);
+}
+
+#resolve {
+  color: white;
+}
+
+#resolve:hover {
+  text-shadow: 0 0 5px rgb(0, 165, 0);
+}
+
+.sign-in {
+  background-color: transparent;
+  border: 2px solid rgb(85, 85, 85);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  text-decoration: none;
+  font-size: 16px;
+}
