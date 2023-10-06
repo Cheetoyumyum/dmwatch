@@ -1,65 +1,74 @@
 .metrics-container {
-    text-align: center;
-    padding: 20px;
-    margin: 0 10%;
+  text-align: center;
+  padding: 20px;
+  margin: 0 10%;
+}
+
+.metrics-text {
+  margin-bottom: 20px;
+}
+
+.metrics-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.metric {
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.metric-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.metric-number {
+  font-size: 28px;
+  font-weight: bold;
+  animation: countUp 2s ease-in-out;
+}
+
+.metric-label {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .metrics-text {
-    margin-bottom: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+@keyframes countUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Styles for mobile screens */
+  .metrics-container {
+    margin: 0 5%;
+  }
   .metrics-items {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .metric {
-    flex: 1;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 1s ease-in-out;
-  }
-  
-  .metric-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .metric-number {
-    font-size: 28px;
-    font-weight: bold;
-    animation: countUp 2s ease-in-out;
-  }
-  
-  
-  .metric-label {
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes countUp {
-    from {
-      transform: translateY(10px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
+}

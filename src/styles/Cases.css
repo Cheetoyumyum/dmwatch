@@ -5,7 +5,7 @@
     text-align: left;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 1s ease-in-out;
-    max-width: 600px;
+    max-width: 80%;
     margin: 0 auto;
     margin-top: 50px;
   }
@@ -41,7 +41,7 @@
   .back-link:hover {
     background-color: #1c1d1d;
   }
-
+  
   .error-message {
     position: absolute;
     top: 50%;
@@ -51,7 +51,7 @@
   }
   
   .error-title {
-    font-size: 100px;
+    font-size: 5em;
     font-family: Futura;
     background-color: #666666;
     -webkit-background-clip: text;
@@ -62,7 +62,7 @@
   }
   
   .error-code {
-    font-size: 100px;
+    font-size: 5em;
     font-family: Futura;
     background-color: #666666;
     -webkit-background-clip: text;
@@ -70,4 +70,41 @@
     background-clip: text;
     color: transparent;
     text-shadow: rgba(245, 245, 245, 0.5) 1px 1px 1px;
+  }
+  
+  @media (max-width: 768px) {
+    .cases-container {
+      max-width: 90%;
+      margin-top: 20px;
+      padding: 10px;
+    }
+  
+    .cases-container h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  
+    .case-details h2 {
+      font-size: 18px;
+      margin-top: 15px;
+    }
+  
+    .case-details p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+  
+    .back-link {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  
+    .error-message{
+        width: 100%;
+    }
+    
+    .error-title,
+    .error-code {
+      font-size: 2em;
+    }
   }

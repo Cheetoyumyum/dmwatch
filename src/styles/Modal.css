@@ -119,4 +119,53 @@
   .close-button:focus {
     outline: none;
   }
-  
+
+@media (max-width: 768px) {
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .modal-content {
+    max-width: 100%;
+    padding: 10px;
+    padding-right: 20px;
+    color: #fff;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .cancel-button,
+  .submit-button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .modal {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .modal-input,
+  .modal-textarea {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .modal-button {
+    margin-top: 10px;
+  }
+
+  .close-button {
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+  }
+}
