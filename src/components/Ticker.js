@@ -50,7 +50,7 @@ function Ticker() {
 
   const handleEntryClick = (id) => {
     setSelectedEntry(id);
-    navigate(`/cases?id=${id}`);
+    navigate(`/cases/${id}`);
   };
 
   return (

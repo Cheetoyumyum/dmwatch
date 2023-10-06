@@ -9,6 +9,9 @@ import Cases from './components/Cases';
 import Players from './components/Players';
 import LoadingScreen from './components/LoadingScreen';
 import StatsPage from './components/StatsPage';
+import ManageTickets from './components/AdminTickets/ManageTickets';
+import ResolvedTickets from './components/AdminTickets/ResolvedTickets';
+import DeniedTickets from './components/AdminTickets/DeniedTickets';
 
 function App() {
   const [loadingPlayerFile, setLoadingPlayerFile] = useState(false);
@@ -28,6 +31,9 @@ function App() {
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/player/:player" element={<Players />} />
         <Route path="/cases/:id" element={<Cases />}/>
+        <Route path="/admin/manage-tickets" element={<ManageTickets />} />
+        <Route path="/admin/resolved-tickets" element={<ResolvedTickets />} />
+        <Route path="/admin/denied-tickets" element={<DeniedTickets />} />
       </Routes>
       {loadingPlayerFile ? (
         <LoadingScreen />

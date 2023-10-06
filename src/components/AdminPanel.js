@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTicketAlt, FaCheckSquare, FaTimesCircle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Route, Routes } from 'react-router-dom';
 import '../styles/AdminPanel.css';
 import SearchBar from './SearchBar';
 
@@ -16,6 +16,8 @@ function AdminPanel() {
 
     navigate(`/admin/${tileToRouteMap[tileName]}`);
   };
+
+  
 
   return (
     <div className="admin-panel">

@@ -30,6 +30,43 @@ body {
   min-height: 100vh;
 }
 
+.search-bar-container {
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+  width: 100%;
+  max-width: 430px;
+}
+
+.evidence-meter {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.evidence-meter.weak .evidence-bar-fill {
+  width: 20%;
+  background-color: red;
+}
+
+.evidence-meter.moderate .evidence-bar-fill {
+  width: 60%;
+  background-color: orange;
+}
+
+.evidence-meter.strong .evidence-bar-fill {
+  width: 90%;
+  background-color: green;
+}
+
+.evidence-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,39 +1,128 @@
-.players-container {
-    margin: 20px 10%;
-    padding: 20px;
-    background-color: #f0f0f0;
+.player-card {
+  margin: 20px 10%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-in-out;
+  max-width: 80%;
+}
+
+.player-card h1 {
+  text-align: center;
+}
+
+.caseTitle {
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.case-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin: 0px auto;
+  overflow-x: hidden;
+  max-width: 80%;
+  border-radius: 8px;
+  padding-bottom: 20px;
+}
+
+.case-card {
+  flex: 0 0 auto;
+  width: 300px;
+  margin: 10px 15px 10px 5px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.case-card h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.case-card small {
+  color: gray;
+  font-size: 10px;
+}
+
+.case-card p {
+  font-size: 16px;
+  color: #333;
+}
+
+.case-card .evidence-meter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.case-card .evidence-bar {
+  flex-grow: 1;
+  height: 10px;
+  margin-right: 5px;
+  background-color: #ddd;
+  border-radius: 5px;
+  position: relative;
+}
+
+.case-card .evidence-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.case-card h3 {
+  display: flex;
+  align-items: center;
+}
+
+.case-title {
+  flex-grow: 1;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.back-link {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .player-card {
+    margin-top: 20px;
+    margin: 15px;
+    padding: 20x;
+    width: 100%;
+  }
+
+  .player-container {
+    padding: 20x;
+  }
+
+  .case-cards-container {
+    flex-direction: column;
+  }
+
+  .case-cards {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
     border-radius: 8px;
-    text-align: left;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 1s ease-in-out;
+    margin: 15px;
+    overflow: visible;
+    padding-bottom: 20px;
   }
-  
-  .players-container h1 {
-    text-align: center;
-  }
-  
-  .player-cases {
+
+  .case-card {
+    width: 100%;
     margin-top: 10px;
   }
-  
-  .case-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .case-item:hover {
-    background-color: #ddd;
-  }
-  
-  .case-item strong {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .case-item p {
-    font-size: 16px;
-    color: #333;
-  }
-  
+}

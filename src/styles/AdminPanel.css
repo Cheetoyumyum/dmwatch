@@ -7,13 +7,6 @@
   box-sizing: border-box;
 }
 
-.search-bar-container {
-  margin-bottom: 10px;
-  margin-top: 5vh;
-  width: 100%;
-  max-width: 430px;
-}
-
 .admin-tiles-container {
   display: flex;
   flex-wrap: wrap;

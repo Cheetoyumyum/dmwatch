@@ -3,6 +3,7 @@
   width: 100%;
   max-width: 430px;
   margin: 20px auto;
+  margin-bottom: 5vh;
 }
 
 .search-results a {

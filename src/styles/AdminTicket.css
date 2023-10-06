@@ -1,0 +1,119 @@
+.ticket-section {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.ticket-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+textarea{
+  width:100px;
+  height: 90px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+table tbody tr {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+table tbody td {
+  padding: 10px;
+}
+
+table tbody select,
+table tbody input,
+table tbody textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+table tbody select {
+  background-color: #fff;
+  color: #333;
+}
+
+table tbody tr[data-status="Open"] {
+  background-color: #fff3cd;
+}
+
+table tbody tr[data-status="Resolved"] {
+  background-color: #d4edda;
+}
+
+table tbody tr[data-status="New"] {
+  background-color: #d1ecf1;
+}
+
+table tbody tr[data-status="Denied"] {
+  background-color: #f8d7da;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  h2{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  table tbody tr {
+    margin-top: 10px;
+    width: 600px;
+    margin-bottom: 10px;
+    display: block;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  table tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex: 1;
+  }
+}

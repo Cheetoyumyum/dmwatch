@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/Cases.css';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import '../styles/Cases.css?v=1';
 import LoadingScreen from './LoadingScreen';
 
 function Cases() {
@@ -9,6 +9,7 @@ function Cases() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,6 +23,7 @@ function Cases() {
           scammerName: 'Scammer123',
           victimName: 'Victim456',
           evidence: 'https://www.streamable.com/link-to-evidence',
+          evidenceStrength: 'strong',
         },
         '2': {
           id: '2',
@@ -32,6 +34,7 @@ function Cases() {
           scammerName: 'Scammer456',
           victimName: 'Victim321',
           evidence: 'https://www.streamable.com/another-link',
+          evidenceStrength: 'moderate',
         },
         '3': {
           id: '3',
@@ -42,6 +45,7 @@ function Cases() {
           scammerName: 'Scammer789',
           victimName: 'Victim654',
           evidence: 'https://www.streamable.com/yet-another-link',
+          evidenceStrength: 'weak',
         },
         // Add more cases here
       };
@@ -77,15 +81,23 @@ function Cases() {
     );
   }  
 
-  const handleBackToPlayer = () => {
-    navigate(`/player/${caseData.scammerName}`);
+  const handleBack = () => {
+    const previousURL = location.state ? location.state.from : '/';
+    navigate(previousURL);
+  };
+
+  const handleGoToPlayer = () => {
+    const playerURL = `/player/${caseData.scammerName}`;
+    navigate(playerURL);
   };
 
   return (
     <div className="cases-container">
       <h1>{caseData.title}</h1>
+      <div className={`evidence-meter ${caseData.evidenceStrength}`}>
+        <div className="evidence-bar-fill"></div>
+      </div>
       <div className="case-details">
-        <h2>Case Information:</h2>
         <p>
           <strong>ID:</strong> {caseData.id}<br />
           <strong>Title:</strong> {caseData.title}<br />
@@ -97,8 +109,11 @@ function Cases() {
           <strong>Evidence:</strong> <a href={caseData.evidence} target="_blank" rel="noopener noreferrer">{caseData.evidence}</a>
         </p>
       </div>
-      <button onClick={handleBackToPlayer} className="back-link">
-        Back to Player
+      <button onClick={handleBack} className="back-link">
+        Back
+      </button>
+      <button onClick={handleGoToPlayer} className="back-link">
+        Go to Player
       </button>
     </div>
   );
