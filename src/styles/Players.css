@@ -26,6 +26,7 @@
   margin: 0px auto;
   overflow-x: hidden;
   max-width: 80%;
+  overflow: visible;
   border-radius: 8px;
   padding-bottom: 20px;
 }
@@ -33,6 +34,7 @@
 .case-card {
   flex: 0 0 auto;
   width: 300px;
+  cursor: pointer;
   margin: 10px 15px 10px 5px;
   padding: 20px;
   background-color: #f0f0f0;

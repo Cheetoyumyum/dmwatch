@@ -16,11 +16,26 @@
   margin-bottom: 20px;
 }
 
+.case-cards{
+  width: 100%;
+}
+
+
 .case-details h2 {
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
 }
+
+.case-card {
+  transition: transform 0.3s;
+}
+
+.case-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 
 button{
   margin-right: 10px;
