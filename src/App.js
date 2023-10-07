@@ -32,7 +32,7 @@ function App() {
         <Route path="stats" element={<StatsPage />} />
         <Route path="player/:player" element={<Players />} />
         <Route path="cases/:id" element={<Cases />}/>
-        <Route path="staff/manage-tickets" element={<ManageTickets />} />
+        <Route path="admin/manage-tickets" element={<ManageTickets />} />
         <Route path="admin/resolved-tickets" element={<ResolvedTickets />} />
         <Route path="admin/denied-tickets" element={<DeniedTickets />} />
         <Route path="admin/manage-players" element={<ManagePlayers />} />

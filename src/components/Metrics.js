@@ -3,16 +3,9 @@ import { FaTasks, FaCheck, FaCoins, FaFileAlt } from 'react-icons/fa';
 import '../styles/Metrics.css';
 import { getAllTickets } from '../server/ticketService';
 
-function convertToMillionsOrBillions(number) {
-  if (number >= 1e12) {
-    return (number / 1e12).toFixed(2) + 'T';
-  } else if (number >= 1e9) {
-    return (number / 1e9).toFixed(2) + 'B';
-  } else if (number >= 1e6) {
-    return (number / 1e6).toFixed(2) + 'M';
-  } else {
-    return number.toLocaleString() + ' M';
-  }
+function formatNumber(number) {
+  //code here to handle conversion once we are ready
+  return number.toLocaleString() + ' M';
 }
 
 function Metrics() {
@@ -28,7 +21,7 @@ function Metrics() {
         const activeReportsCount = tickets.filter((ticket) => ticket.status !== 'Resolved').length;
         const resolvedReportsCount = tickets.filter((ticket) => ticket.status === 'Resolved').length;
         const totalRecovered = tickets.reduce((total, ticket) => total + parseFloat(ticket.debtRepaid), 0);
-        
+
         setActiveReports(activeReportsCount);
         setResolvedReports(resolvedReportsCount);
         setTotalGPRecovered(totalRecovered);
@@ -70,7 +63,7 @@ function Metrics() {
           <div className="metric-icon">
             <FaCoins />
           </div>
-          <div className="metric-number">{convertToMillionsOrBillions(totalGPRecovered)}</div>
+          <div className="metric-number">{formatNumber(totalGPRecovered)}</div>
           <div className="metric-label">Total GP Recovered</div>
         </div>
 

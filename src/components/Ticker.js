@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchLatestCases, fetchLatestResolvedCases } from '../server/ticketService'; 
 import '../styles/Ticker.css';
+import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons'; // Import the function
 
 function Ticker() {
   const [latestCasesData, setLatestCasesData] = useState([]);
@@ -42,9 +43,22 @@ function Ticker() {
               onClick={() => handleEntryClick(entry.id)}
             >
               <div className="ticker-name">{entry.scammerName}</div>
-              <div className="ticker-offence">Offence: {entry.scamType}</div>
-              <div className="ticker-amount">Amount: {entry.amount}</div>
-              <div className="ticker-items">Items: {entry.items}</div>
+              <div className="ticker-offence">
+                <strong>Offence:</strong> {entry.scamType}
+              </div>
+              <div className="ticker-amount">
+                <strong>Amount:</strong> {entry.amount}
+              </div>
+              <div className="ticker-items">
+                <strong>Items:</strong> {replaceItemNamesWithIcons(entry.items)
+                  .filter((item) => item)
+                  .map((item, index, array) => (
+                    <span key={index}>
+                      {item}
+                      {index < array.length - 1 && ' '}
+                    </span>
+                  ))}
+              </div>
             </a>
           ))}
         </div>
@@ -59,9 +73,22 @@ function Ticker() {
               onClick={() => handleEntryClick(entry.id)}
             >
               <div className="ticker-name">{entry.scammerName}</div>
-              <div className="ticker-offence">Offence: {entry.scamType}</div>
-              <div className="ticker-amount">Amount: {entry.amount}</div>
-              <div className="ticker-items">Items: {entry.items}</div>
+              <div className="ticker-offence">
+                <strong>Offence:</strong> {entry.scamType}
+              </div>
+              <div className="ticker-amount">
+                <strong>Amount:</strong> {entry.amount}
+              </div>
+              <div className="ticker-items">
+                <strong>Items:</strong> {replaceItemNamesWithIcons(entry.items)
+                  .filter((item) => item)
+                  .map((item, index, array) => (
+                    <span key={index}>
+                      {item}
+                      {index < array.length - 1 && ' '}
+                    </span>
+                  ))}
+              </div>
             </a>
           ))}
         </div>
