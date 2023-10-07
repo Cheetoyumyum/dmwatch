@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  background-color: #f7f7f7;
+  background-color: transparent;
   padding: 10px 20px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -47,7 +47,7 @@
   display: flex;
   justify-content: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  background-color: #f7f7f7;
+  background-color: transparent;
   padding: 10px 20px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -55,6 +55,27 @@
 }
 
 .denied-tickets h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.manage-players h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.manage-players h2 {
   font-size: 24px;
   margin-bottom: 10px;
   color: #333;
@@ -202,4 +223,105 @@ button.active {
 
 .ticket-card[data-status="Denied"] {
   border-color: #ffc107;
+}
+
+.ticket-card:hover {
+  border-color: #222222;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.ticket-card[data-status="Scammer"]::before {
+  content: "Scammer";
+  display: inline-block;
+  background-color: #cfcc23; 
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.ticket-card[data-status="Victim"]::before {
+  content: "Victim";
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.ticket-card[data-status="Serial Scammer"]::before {
+  content: "Serial Scammer";
+  display: inline-block;
+  background-color: #da0d0d;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.ticket-card[data-status="Staff"]::before {
+  content: "Staff";
+  display: inline-block;
+  background-color: #0db3cc;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.ticket-card[data-status="Authentic"]::before {
+  content: "Authentic";
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.ticket-card[data-status="Streamer"]::before {
+  content: "Streamer";
+  display: inline-block;
+  background-color: #8a00fc;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .resolved-tickets,
+  .denied-tickets,
+  .manage-tickets {
+    padding: 10px; /* Reduce padding */
+    max-width: 100%; /* Allow full width */
+  }
+
+  .resolved-tickets h2,
+  .denied-tickets h2,
+  .manage-tickets h2 {
+    font-size: 20px; /* Reduce font size */
+  }
+
+  .card-container {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 10px; /* Reduce gap between cards */
+  }
+
+  .TicketSearch {
+    width: 100%; /* Full width input */
+  }
+
+  .ticket-card {
+    flex: 1; /* Take full width */
+    min-width: unset; /* Remove min-width */
+    max-width: unset; /* Remove max-width */
+  }
 }

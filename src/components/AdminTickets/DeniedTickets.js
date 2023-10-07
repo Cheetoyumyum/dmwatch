@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminTicket.css?v=1';
+import { getAllTickets, updateTicketById } from '../../server/ticketService'; // Update the path to import ticket service
 
 function DeniedTickets() {
   const [deniedTickets, setDeniedTickets] = useState([]);
@@ -8,114 +9,48 @@ function DeniedTickets() {
   const [tag, setTag] = useState('');
 
   useEffect(() => {
-    // Simulated data for Denied tickets
-    const deniedTicketsData = [
-      {
-        id: '1',
-        description:
-          'The scammer, PlayerXYZ, attempted to scam by impersonating an administrator and requesting the victim\'s login information. The victim, GamerABC, wisely refused to share their details, avoiding the scam.',
-        amount: '0',
-        items: 'None',
-        scammerName: 'ScammerXYZ',
-        victimName: 'VictimABC',
-        evidence: 'https://www.streamable.com/denied-link',
-        evidenceStrength: 'moderate',
-        status: 'Denied',
-        scamType: 'Disqualified',
-      },
-      {
-        id: '2',
-        description:
-          'The scammer, PlayerLMN, lured the victim, GamerDEF, into a dangerous area and attacked, resulting in the loss of valuable items. The victim reported the incident to administrators.',
-        amount: '600m',
-        items: 'Abyssal whip, Dragon defender',
-        scammerName: 'ScammerLMN',
-        victimName: 'VictimDEF',
-        evidence: 'https://www.streamable.com/another-denied-link',
-        evidenceStrength: 'strong',
-        status: 'Denied',
-        scamType: 'Teleported out',
-      },
-      {
-        id: '3',
-        description:
-          'PlayerABC reported a suspicious trade with PlayerXYZ. PlayerXYZ offered a valuable item but canceled the trade at the last moment, resulting in PlayerABC losing trust in trading with others.',
-        amount: '150m',
-        items: 'Twisted bow',
-        scammerName: 'PlayerXYZ',
-        victimName: 'PlayerABC',
-        evidence: 'https://www.streamable.com/suspicious-trade-link',
-        evidenceStrength: 'moderate',
-        status: 'Denied',
-        scamType: 'Trade scam',
-      },
-      {
-        id: '4',
-        description:
-          'PlayerDEF encountered a player named Player123 who claimed to be giving away free items. PlayerDEF followed Player123 into a remote area and was attacked, losing their items.',
-        amount: '300m',
-        items: 'Dragon platebody, Dragon boots',
-        scammerName: 'Player123',
-        victimName: 'PlayerDEF',
-        evidence: 'https://www.streamable.com/lured-into-danger-link',
-        evidenceStrength: 'strong',
-        status: 'Denied',
-        scamType: 'Lured into danger',
-      },
-      {
-        id: '5',
-        description:
-          'PlayerGHI traded their valuable item to PlayerJKL in exchange for promised in-game currency. However, PlayerJKL did not follow through with the trade, resulting in a loss for PlayerGHI.',
-        amount: '200m',
-        items: 'Twisted buckler',
-        scammerName: 'PlayerJKL',
-        victimName: 'PlayerGHI',
-        evidence: 'https://www.streamable.com/false-trade-link',
-        evidenceStrength: 'moderate',
-        status: 'Denied',
-        scamType: 'False trade',
-      },
-      {
-        id: '6',
-        description:
-          'PlayerMNO received a message from PlayerXYZ claiming to be a game moderator. PlayerXYZ asked for PlayerMNO\'s account password for verification purposes. PlayerMNO reported the incident.',
-        amount: '0',
-        items: 'None',
-        scammerName: 'PlayerXYZ',
-        victimName: 'PlayerMNO',
-        evidence: 'https://www.streamable.com/moderator-scam-link',
-        evidenceStrength: 'strong',
-        status: 'Denied',
-        scamType: 'Impersonation',
-      },
-      {
-        id: '7',
-        description:
-          'PlayerPQR was offered a rare item by PlayerXYZ at an unbelievably low price. PlayerPQR made the trade but received a different item from what was promised by PlayerXYZ.',
-        amount: '50m',
-        items: 'Elysian spirit shield',
-        scammerName: 'PlayerXYZ',
-        victimName: 'PlayerPQR',
-        evidence: 'https://www.streamable.com/item-swap-scam-link',
-        evidenceStrength: 'strong',
-        status: 'Denied',
-        scamType: 'Item swap',
-      },
-    ];
+    // Fetch all tickets from the service
+    getAllTickets()
+      .then((tickets) => {
+        // Filter and order denied tickets
+        const filteredDeniedTickets = tickets
+          .filter((ticket) => ticket.status === 'Denied')
+          .sort((a, b) => b.id - a.id);
 
-    const reversedDeniedTicketsData = [...deniedTicketsData].reverse();
-
-    setDeniedTickets(reversedDeniedTicketsData);
-    setFilteredTickets(reversedDeniedTicketsData);
+        setDeniedTickets(filteredDeniedTickets);
+        setFilteredTickets(filteredDeniedTickets);
+      })
+      .catch((error) => {
+        console.error('Error fetching tickets:', error);
+      });
   }, []);
 
   const handleChange = (ticketId, field, value) => {
-    const updatedTickets = [...deniedTickets];
-    const index = updatedTickets.findIndex((ticket) => ticket.id === ticketId);
-    if (index !== -1) {
-      updatedTickets[index][field] = value;
-      setDeniedTickets(updatedTickets);
-      setFilteredTickets(updatedTickets);
+    const updatedTickets = deniedTickets.map((ticket) => {
+      if (ticket.id === ticketId) {
+        return { ...ticket, [field]: value };
+      }
+      return ticket;
+    });
+
+    setDeniedTickets(updatedTickets);
+  };
+
+  const handleSave = (ticketId) => {
+    const ticketToUpdate = deniedTickets.find((ticket) => ticket.id === ticketId);
+
+    if (ticketToUpdate) {
+      updateTicketById(ticketId, ticketToUpdate)
+        .then((updatedTicket) => {
+          if (updatedTicket) {
+            console.log(`Ticket ${ticketId} saved successfully.`);
+          } else {
+            console.error(`Ticket ${ticketId} not found.`);
+          }
+        })
+        .catch((error) => {
+          console.error(`Error saving ticket ${ticketId}: ${error.message}`);
+        });
     }
   };
 
@@ -142,7 +77,7 @@ function DeniedTickets() {
 
   const toggleTag = (selectedTag) => {
     setTag(tag === selectedTag ? '' : selectedTag);
-  };  
+  };
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -170,7 +105,6 @@ function DeniedTickets() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      <p>Filters</p>
       <button
         onClick={() => toggleTag('id:')}
         className={tag === 'id:' ? 'active' : ''}
@@ -271,6 +205,12 @@ function DeniedTickets() {
                   <option value="Prayed">Prayed</option>
                 </select>
               </div>
+              <button
+                onClick={() => handleSave(ticket.id)}
+                className="save-button"
+              >
+                Save
+                </button>
             </div>
           </div>
         ))}

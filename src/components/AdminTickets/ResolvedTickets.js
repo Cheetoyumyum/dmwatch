@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminTicket.css?v=1';
+import { getAllTickets, updateTicketById } from '../../server/ticketService'; // Update the path to import ticket service
 
 function ResolvedTickets() {
   const [resolvedTickets, setResolvedTickets] = useState([]);
@@ -8,114 +9,48 @@ function ResolvedTickets() {
   const [tag, setTag] = useState('');
 
   useEffect(() => {
-    // Simulated data for resolved tickets
-    const resolvedTicketsData = [
-      {
-        id: '1',
-        description:
-          'The scammer, PlayerXYZ, attempted to scam by impersonating an administrator and requesting the victim\'s login information. The victim, GamerABC, wisely refused to share their details, avoiding the scam.',
-        amount: '0',
-        items: 'None',
-        scammerName: 'ScammerXYZ',
-        victimName: 'VictimABC',
-        evidence: 'https://www.streamable.com/denied-link',
-        evidenceStrength: 'moderate',
-        status: 'Resolved',
-        scamType: 'Disqualified',
-      },
-      {
-        id: '2',
-        description:
-          'The scammer, PlayerLMN, lured the victim, GamerDEF, into a dangerous area and attacked, resulting in the loss of valuable items. The victim reported the incident to administrators.',
-        amount: '600m',
-        items: 'Abyssal whip, Dragon defender',
-        scammerName: 'ScammerLMN',
-        victimName: 'VictimDEF',
-        evidence: 'https://www.streamable.com/another-denied-link',
-        evidenceStrength: 'strong',
-        status: 'Resolved',
-        scamType: 'Teleported out',
-      },
-      {
-        id: '3',
-        description:
-          'PlayerABC reported a suspicious trade with PlayerXYZ. PlayerXYZ offered a valuable item but canceled the trade at the last moment, resulting in PlayerABC losing trust in trading with others.',
-        amount: '150m',
-        items: 'Twisted bow',
-        scammerName: 'PlayerXYZ',
-        victimName: 'PlayerABC',
-        evidence: 'https://www.streamable.com/suspicious-trade-link',
-        evidenceStrength: 'moderate',
-        status: 'Resolved',
-        scamType: 'Trade scam',
-      },
-      {
-        id: '4',
-        description:
-          'PlayerDEF encountered a player named Player123 who claimed to be giving away free items. PlayerDEF followed Player123 into a remote area and was attacked, losing their items.',
-        amount: '300m',
-        items: 'Dragon platebody, Dragon boots',
-        scammerName: 'Player123',
-        victimName: 'PlayerDEF',
-        evidence: 'https://www.streamable.com/lured-into-danger-link',
-        evidenceStrength: 'strong',
-        status: 'Resolved',
-        scamType: 'Lured into danger',
-      },
-      {
-        id: '5',
-        description:
-          'PlayerGHI traded their valuable item to PlayerJKL in exchange for promised in-game currency. However, PlayerJKL did not follow through with the trade, resulting in a loss for PlayerGHI.',
-        amount: '200m',
-        items: 'Twisted buckler',
-        scammerName: 'PlayerJKL',
-        victimName: 'PlayerGHI',
-        evidence: 'https://www.streamable.com/false-trade-link',
-        evidenceStrength: 'moderate',
-        status: 'Resolved',
-        scamType: 'False trade',
-      },
-      {
-        id: '6',
-        description:
-          'PlayerMNO received a message from PlayerXYZ claiming to be a game moderator. PlayerXYZ asked for PlayerMNO\'s account password for verification purposes. PlayerMNO reported the incident.',
-        amount: '0',
-        items: 'None',
-        scammerName: 'PlayerXYZ',
-        victimName: 'PlayerMNO',
-        evidence: 'https://www.streamable.com/moderator-scam-link',
-        evidenceStrength: 'strong',
-        status: 'Resolved',
-        scamType: 'Impersonation',
-      },
-      {
-        id: '7',
-        description:
-          'PlayerPQR was offered a rare item by PlayerXYZ at an unbelievably low price. PlayerPQR made the trade but received a different item from what was promised by PlayerXYZ.',
-        amount: '50m',
-        items: 'Elysian spirit shield',
-        scammerName: 'PlayerXYZ',
-        victimName: 'PlayerPQR',
-        evidence: 'https://www.streamable.com/item-swap-scam-link',
-        evidenceStrength: 'strong',
-        status: 'Resolved',
-        scamType: 'Item swap',
-      },
-    ];
+    // Fetch all tickets from the service
+    getAllTickets()
+      .then((tickets) => {
+        // Filter and order resolved tickets
+        const filteredResolvedTickets = tickets
+          .filter((ticket) => ticket.status === 'Resolved')
+          .sort((a, b) => b.id - a.id);
 
-    const reversedResolvedTicketsData = [...resolvedTicketsData].reverse();
-
-    setResolvedTickets(reversedResolvedTicketsData);
-    setFilteredTickets(reversedResolvedTicketsData);
+        setResolvedTickets(filteredResolvedTickets);
+        setFilteredTickets(filteredResolvedTickets);
+      })
+      .catch((error) => {
+        console.error('Error fetching tickets:', error);
+      });
   }, []);
 
   const handleChange = (ticketId, field, value) => {
-    const updatedTickets = [...resolvedTickets];
-    const index = updatedTickets.findIndex((ticket) => ticket.id === ticketId);
-    if (index !== -1) {
-      updatedTickets[index][field] = value;
-      setResolvedTickets(updatedTickets);
-      setFilteredTickets(updatedTickets);
+    const updatedTickets = resolvedTickets.map((ticket) => {
+      if (ticket.id === ticketId) {
+        return { ...ticket, [field]: value };
+      }
+      return ticket;
+    });
+
+    setResolvedTickets(updatedTickets);
+  };
+
+  const handleSave = (ticketId) => {
+    const ticketToUpdate = resolvedTickets.find((ticket) => ticket.id === ticketId);
+
+    if (ticketToUpdate) {
+      updateTicketById(ticketId, ticketToUpdate)
+        .then((updatedTicket) => {
+          if (updatedTicket) {
+            console.log(`Ticket ${ticketId} saved successfully.`);
+          } else {
+            console.error(`Ticket ${ticketId} not found.`);
+          }
+        })
+        .catch((error) => {
+          console.error(`Error saving ticket ${ticketId}: ${error.message}`);
+        });
     }
   };
 
@@ -142,7 +77,7 @@ function ResolvedTickets() {
 
   const toggleTag = (selectedTag) => {
     setTag(tag === selectedTag ? '' : selectedTag);
-  };  
+  };
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -152,7 +87,7 @@ function ResolvedTickets() {
         return '#d4edda';
       case 'New':
         return '#d1ecf1';
-      case 'Denied':
+      case 'Resolved':
         return '#f8d7da';
       default:
         return '';
@@ -174,13 +109,13 @@ function ResolvedTickets() {
         onClick={() => toggleTag('id:')}
         className={tag === 'id:' ? 'active' : ''}
       >
-        id:
+        id
       </button>
       <button
         onClick={() => toggleTag('rsn:')}
         className={tag === 'rsn:' ? 'active' : ''}
       >
-        rsn:
+        rsn
       </button>
       </div>
       <div className="card-container">
@@ -195,7 +130,7 @@ function ResolvedTickets() {
                 <option value="Open">Open</option>
                 <option value="Resolved">Resolved</option>
                 <option value="New">New</option>
-                <option value="Denied">Denied</option>
+                <option value="Resolved">Resolved</option>
               </select>
             </div>
             <div className="card-body">
@@ -270,6 +205,12 @@ function ResolvedTickets() {
                   <option value="Prayed">Prayed</option>
                 </select>
               </div>
+              <button
+                onClick={() => handleSave(ticket.id)}
+                className="save-button"
+              >
+                Save
+                </button>
             </div>
           </div>
         ))}

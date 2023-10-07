@@ -10,8 +10,26 @@ function ManageTickets() {
 
   useEffect(() => {
     getAllTickets().then((tickets) => {
-      setManageTickets(tickets);
-      setFilteredTickets(tickets);
+
+      const sortedTickets = tickets.sort((a, b) => {
+        const statusOrder = {
+          New: 0,
+          Open: 1,
+          Resolved: 2,
+          Denied: 3,
+        };
+
+        if (statusOrder[a.status] < statusOrder[b.status]) {
+          return -1;
+        } else if (statusOrder[a.status] > statusOrder[b.status]) {
+          return 1;
+        } else {
+          return b.id.localeCompare(a.id);
+        }
+      });
+
+      setManageTickets(sortedTickets);
+      setFilteredTickets(sortedTickets);
     });
   }, []);
 

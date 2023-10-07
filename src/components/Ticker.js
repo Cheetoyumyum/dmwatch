@@ -1,52 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchLatestCases, fetchLatestResolvedCases } from '../server/ticketService'; 
 import '../styles/Ticker.css';
 
 function Ticker() {
-  const latestCasesData = [
-    {
-      id: 1,
-      name: 'GBGShooter',
-      offence: 'Offence (ex: Teleported out, did not finish fight)',
-      amount: 'Amount (500m + DH Set)',
-    },
-    {
-      id: 2,
-      name: 'BIKERS',
-      offence: 'Offence (ex: Teleported out, did not finish fight)',
-      amount: 'Amount (500m + DH Set)',
-    },
-    {
-      id: 3,
-      name: 'FRED',
-      offence: 'Offence (ex: Teleported out, did not finish fight)',
-      amount: 'Amount (500m + DH Set)',
-    },
-  ];
-
-  const latestResolvedCasesData = [
-    {
-      id: 4,
-      name: 'Devorek',
-      offence: 'Offence (ex: Teleported out, did not finish fight)',
-      amount: 'Amount (500m + DH Set)',
-    },
-    {
-      id: 5,
-      name: 'Bos',
-      offence: 'Offence (ex: Teleported out, did not finish fight)',
-      amount: 'Amount (500m + DH Set)',
-    },
-    {
-      id: 6,
-      name: 'Smoke',
-      offence: 'Offence (ex: Teleported out, did not finish fight)',
-      amount: 'Amount (500m + DH Set)',
-    },
-  ];
-
+  const [latestCasesData, setLatestCasesData] = useState([]);
+  const [latestResolvedCasesData, setLatestResolvedCasesData] = useState([]);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const latestCases = await fetchLatestCases();
+        const latestResolvedCases = await fetchLatestResolvedCases();
+
+        setLatestCasesData(latestCases);
+        setLatestResolvedCasesData(latestResolvedCases);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const handleEntryClick = (id) => {
     setSelectedEntry(id);
@@ -64,9 +41,10 @@ function Ticker() {
               key={entry.id}
               onClick={() => handleEntryClick(entry.id)}
             >
-              <div className="ticker-name">{entry.name}</div>
-              <div className="ticker-offence">{entry.offence}</div>
-              <div className="ticker-amount">{entry.amount}</div>
+              <div className="ticker-name">{entry.scammerName}</div>
+              <div className="ticker-offence">Offence: {entry.scamType}</div>
+              <div className="ticker-amount">Amount: {entry.amount}</div>
+              <div className="ticker-items">Items: {entry.items}</div>
             </a>
           ))}
         </div>
@@ -80,9 +58,10 @@ function Ticker() {
               key={entry.id}
               onClick={() => handleEntryClick(entry.id)}
             >
-              <div className="ticker-name">{entry.name}</div>
-              <div className="ticker-offence">{entry.offence}</div>
-              <div className="ticker-amount">{entry.amount}</div>
+              <div className="ticker-name">{entry.scammerName}</div>
+              <div className="ticker-offence">Offence: {entry.scamType}</div>
+              <div className="ticker-amount">Amount: {entry.amount}</div>
+              <div className="ticker-items">Items: {entry.items}</div>
             </a>
           ))}
         </div>

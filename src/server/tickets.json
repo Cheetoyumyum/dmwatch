@@ -2,14 +2,15 @@
     {
       "id": "1",
       "description": "The scammer, PlayerXYZ, attempted to scam by impersonating an administrator and requesting the victim's login information. The victim, GamerABC, wisely refused to share their details, avoiding the scam.",
-      "amount": "0",
+      "amount": "0m",
       "items": "None",
       "scammerName": "ScammerXYZ",
       "victimName": "VictimABC",
       "evidence": "https://www.streamable.com/denied-link",
       "evidenceStrength": "moderate",
       "status": "Denied",
-      "scamType": "Disqualified"
+      "scamType": "Disqualified",
+      "previousNames": "Previous1, Previous2"
     },
     {
       "id": "2",
@@ -21,7 +22,8 @@
       "evidence": "https://www.streamable.com/another-denied-link",
       "evidenceStrength": "strong",
       "status": "Open",
-      "scamType": "Teleported out"
+      "scamType": "Teleported out",
+      "previousNames": "Previous3, Previous4"
     },
     {
       "id": "3",
@@ -33,7 +35,8 @@
       "evidence": "https://www.streamable.com/suspicious-trade-link",
       "evidenceStrength": "moderate",
       "status": "New",
-      "scamType": "Trade scam"
+      "scamType": "Trade scam",
+      "previousNames": "Previous5, Previous6"
     },
     {
       "id": "4",
@@ -45,7 +48,8 @@
       "evidence": "https://www.streamable.com/lured-into-danger-link",
       "evidenceStrength": "strong",
       "status": "Denied",
-      "scamType": "Lured into danger"
+      "scamType": "Lured into danger",
+      "previousNames": "Previous7, Previous8"
     },
     {
       "id": "5",
@@ -57,19 +61,21 @@
       "evidence": "https://www.streamable.com/false-trade-link",
       "evidenceStrength": "moderate",
       "status": "Resolved",
-      "scamType": "False trade"
+      "scamType": "False trade",
+      "previousNames": "Previous9, Previous10"
     },
     {
       "id": "6",
       "description": "PlayerMNO received a message from PlayerXYZ claiming to be a game moderator. PlayerXYZ asked for PlayerMNO's account password for verification purposes. PlayerMNO reported the incident.",
-      "amount": "0",
+      "amount": "0m",
       "items": "None",
       "scammerName": "PlayerXYZ",
       "victimName": "PlayerMNO",
       "evidence": "https://www.streamable.com/moderator-scam-link",
       "evidenceStrength": "strong",
       "status": "New",
-      "scamType": "Impersonation"
+      "scamType": "Impersonation",
+      "previousNames": "Previous11, Previous12"
     },
     {
       "id": "7",
@@ -81,7 +87,8 @@
       "evidence": "https://www.streamable.com/item-swap-scam-link",
       "evidenceStrength": "strong",
       "status": "Open",
-      "scamType": "Item swap"
+      "scamType": "Item swap",
+      "previousNames": "Previous13, Previous14"
     },
     {
       "id": "8",
@@ -93,7 +100,8 @@
       "evidence": "https://www.example.com/evidence-8",
       "evidenceStrength": "moderate",
       "status": "New",
-      "scamType": "Trade scam"
+      "scamType": "Trade scam",
+      "previousNames": "Previous15, Previous16"
     },
     {
       "id": "9",
@@ -105,6 +113,19 @@
       "evidence": "https://www.example.com/evidence-9",
       "evidenceStrength": "strong",
       "status": "Denied",
-      "scamType": "Lured into danger"
+      "scamType": "Lured into danger",
+      "previousNames": "Previous17, Previous18"
+    },
+    {
+      "id": "10",
+      "description": "PlayerXYZ attempted to scam by impersonating an administrator and requesting the victim's login information. The victim, GamerABC, wisely refused to share their details, avoiding the scam.",
+      "amount": "75m",
+      "items": "None",
+      "scammerName": "ScammerXYZ",
+      "victimName": "VictimABC",
+      "evidence": "https://www.streamable.com/denied-link",
+      "evidenceStrength": "strong",
+      "status": "Scammer",
+      "scamType": "Impersonation"
     }
-]
+]  

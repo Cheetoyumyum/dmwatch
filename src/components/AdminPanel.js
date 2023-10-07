@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaTicketAlt, FaCheckSquare, FaTimesCircle } from 'react-icons/fa';
-import { useNavigate, Route, Routes } from 'react-router-dom';
+import { FaTicketAlt, FaCheckSquare, FaTimesCircle, FaUsers } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AdminPanel.css';
 import SearchBar from './SearchBar';
 
@@ -12,12 +12,11 @@ function AdminPanel() {
       'Manage Tickets': 'manage-tickets',
       'Resolved Tickets': 'resolved-tickets',
       'Denied Tickets': 'denied-tickets',
+      'Manage Players': 'manage-players',
     };
 
     navigate(`/admin/${tileToRouteMap[tileName]}`);
   };
-
-  
 
   return (
     <div className="admin-panel">
@@ -37,6 +36,11 @@ function AdminPanel() {
           <FaTimesCircle className="icon" />
           <h3>Denied Tickets</h3>
           <p>This tile represents tickets that have been denied or rejected. Administrators can review the reasons for denial and any associated information.</p>
+        </div>
+        <div className="admin-tile" onClick={() => handleTileClick('Manage Players')}>
+          <FaUsers className="icon" />
+          <h3>Manage Players</h3>
+          <p>This tile represents the section for managing player accounts, permissions, and activities.</p>
         </div>
       </div>
     </div>

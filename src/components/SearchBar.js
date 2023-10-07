@@ -1,59 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/SearchBar.css';
+import { getAllTickets, getPlayerByName } from '../server/ticketService';
 
 function SearchBar({ onLoadPlayerFile }) {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [selectedPlayer, setSelectedPlayer] = useState('');
-
-  const fakeData = [
-    {
-      caseId: '123',
-      player: 'Player123',
-    },
-    {
-      caseId: '456',
-      player: '1154',
-    },
-    {
-      caseId: '789',
-      player: 'Gamer789',
-    },
-    {
-      caseId: '1154',
-      player: 'GBGShooter',
-    },
-  ];
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const tickets = await getAllTickets();
+        setSearchResults(tickets);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setSearchTerm(searchTerm);
 
-    const filteredResults = fakeData.filter((data) =>
-      data.player.toLowerCase() === searchTerm || data.caseId === searchTerm
+    const filteredResults = searchResults.filter((ticket) =>
+      ticket.scammerName.toLowerCase().includes(searchTerm) || ticket.id.includes(searchTerm)
     );
-
-    if (!isNaN(searchTerm)) {
-      filteredResults.push({ caseId: searchTerm });
-    }
 
     setSearchResults(filteredResults);
   };
 
-  const handlePlayerClick = (result) => {
-    if (result.player) {
-      console.log(`Navigating to /player/${result.player}`);
-      navigate(`/player/${result.player}`);
-    } else if (result.caseId) {
-      console.log(`Navigating to /case/${result.caseId}`);
-      navigate(`/cases/${result.caseId}`);
+  const handlePlayerClick = async (result) => {
+    if (result.scammerName) {
+      try {
+        const playerInfo = await getPlayerByName(result.scammerName);
+        if (playerInfo) {
+          navigate(`/player/${result.scammerName}`);
+        }
+      } catch (error) {
+        console.error('Error fetching player data:', error);
+      }
+    } else if (result.id) {
+      navigate(`/cases/${result.id}`);
     }
   };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      if (!isNaN(searchTerm)) {
+        navigate(`/cases/${searchTerm}`);
+      } else {
+        navigate(`/player/${searchTerm}`);
+      }
+    }
+  };
+  
 
   return (
     <div className="search-bar-container">
@@ -63,6 +68,7 @@ function SearchBar({ onLoadPlayerFile }) {
           placeholder="Search by player name or case details"
           value={searchTerm}
           onChange={handleSearch}
+          onKeyPress={handleKeyPress}
         />
       ) : (
         <input
@@ -70,20 +76,18 @@ function SearchBar({ onLoadPlayerFile }) {
           placeholder="Search by case details"
           value={searchTerm}
           onChange={handleSearch}
+          onKeyPress={handleKeyPress}
         />
       )}
       <ul className="search-results">
-        {searchResults.map((result, index) => (
-          <li key={index} className="search-result-item" onClick={() => handlePlayerClick(result)}>
-            <Link to={result.player ? `/player/${result.player}` : `/case/${result.caseId}`}>
-              {result.player ? (
-                <span>Player: {result.player}</span>
+        {searchResults.map((result) => (
+          <li key={result.id} className="search-result-item" onClick={() => handlePlayerClick(result)}>
+            <Link to={result.scammerName ? `/player/${result.scammerName}` : `/cases/${result.id}`}>
+              {result.scammerName ? (
+                <span>Player: {result.scammerName}</span>
               ) : (
                 <div>
-                  <span>Case: {result.caseId}</span>
-                  {fakeData.find((data) => data.caseId === result.caseId)?.player && (
-                    <small style={{ color: 'gray' }}> {fakeData.find((data) => data.caseId === result.caseId)?.player}</small>
-                  )}
+                  <span>Case: {result.id || result.scammerName}</span>
                 </div>
               )}
             </Link>
