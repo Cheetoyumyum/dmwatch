@@ -98,25 +98,25 @@ function ResolvedTickets() {
     <div className="resolved-tickets">
       <h2>Resolved Tickets</h2>
       <div className='SearchContainer'>
-      <input
+        <input
           className='TicketSearch'
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      <button
-        onClick={() => toggleTag('id:')}
-        className={tag === 'id:' ? 'active' : ''}
-      >
-        id
-      </button>
-      <button
-        onClick={() => toggleTag('rsn:')}
-        className={tag === 'rsn:' ? 'active' : ''}
-      >
-        rsn
-      </button>
+        <button
+          onClick={() => toggleTag('id:')}
+          className={tag === 'id:' ? 'active' : ''}
+        >
+          id
+        </button>
+        <button
+          onClick={() => toggleTag('rsn:')}
+          className={tag === 'rsn:' ? 'active' : ''}
+        >
+          rsn
+        </button>
       </div>
       <div className="card-container">
         {filteredTickets.map((ticket) => (
@@ -205,12 +205,20 @@ function ResolvedTickets() {
                   <option value="Prayed">Prayed</option>
                 </select>
               </div>
+              <div className="field">
+                <label>Debt Repaid (GP)</label>
+                <input
+                  type="text"
+                  value={ticket.debtRepaidGB}
+                  onChange={(e) => handleChange(ticket.id, 'debtRepaidGB', e.target.value)}
+                />
+              </div>
               <button
                 onClick={() => handleSave(ticket.id)}
                 className="save-button"
               >
                 Save
-                </button>
+              </button>
             </div>
           </div>
         ))}
@@ -218,5 +226,6 @@ function ResolvedTickets() {
     </div>
   );
 }
+
 
 export default ResolvedTickets;

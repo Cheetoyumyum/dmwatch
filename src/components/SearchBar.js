@@ -49,16 +49,16 @@ function SearchBar({ onLoadPlayerFile }) {
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      if (!isNaN(searchTerm)) {
-        navigate(`/cases/${searchTerm}`);
-      } else {
-        navigate(`/player/${searchTerm}`);
-      }
+const handleKeyPress = (e) => {
+  if (e.key === 'Enter') {
+    if (!isNaN(searchTerm)) {
+      navigate(`/cases/${searchTerm}`);
+    } else {
+      navigate(`/player/${searchTerm}`);
     }
-  };
-  
+  }
+};
+
 
   return (
     <div className="search-bar-container">

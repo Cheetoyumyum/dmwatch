@@ -1,35 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { FaTasks, FaCheck, FaCoins, FaFileAlt } from 'react-icons/fa';
 import '../styles/Metrics.css';
+import { getAllTickets } from '../server/ticketService';
+
+function convertToMillionsOrBillions(number) {
+  if (number >= 1e12) {
+    return (number / 1e12).toFixed(2) + 'T';
+  } else if (number >= 1e9) {
+    return (number / 1e9).toFixed(2) + 'B';
+  } else if (number >= 1e6) {
+    return (number / 1e6).toFixed(2) + 'M';
+  } else {
+    return number.toLocaleString() + ' M';
+  }
+}
 
 function Metrics() {
-  // Function to generate a random number within a specified range
-  const generateRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-
-  const [activeReports, setActiveReports] = useState(generateRandomNumber(6000, 80000));
-  const [resolvedReports, setResolvedReports] = useState(generateRandomNumber(800, 8079));
-  const [totalGPRecovered, setTotalGPRecovered] = useState(generateRandomNumber(10000000, 120968249));
-  const [totalSubmissions, setTotalSubmissions] = useState(generateRandomNumber(400, 5079));
+  const [activeReports, setActiveReports] = useState(0);
+  const [resolvedReports, setResolvedReports] = useState(0);
+  const [totalGPRecovered, setTotalGPRecovered] = useState(0);
+  const [totalSubmissions, setTotalSubmissions] = useState(0);
 
   useEffect(() => {
-    // Function to update a metric with a random increment between 1 and 20
-    const updateMetric = (setter, min, max) => {
-      const randomIncrement = generateRandomNumber(1, 20);
-      setter((prevValue) => {
-        return prevValue + randomIncrement;
-      });
-    };
+    async function fetchMetricsData() {
+      try {
+        const tickets = await getAllTickets();
+        const activeReportsCount = tickets.filter((ticket) => ticket.status !== 'Resolved').length;
+        const resolvedReportsCount = tickets.filter((ticket) => ticket.status === 'Resolved').length;
+        const totalRecovered = tickets.reduce((total, ticket) => total + parseFloat(ticket.debtRepaid), 0);
+        
+        setActiveReports(activeReportsCount);
+        setResolvedReports(resolvedReportsCount);
+        setTotalGPRecovered(totalRecovered);
+        setTotalSubmissions(tickets.length);
+      } catch (error) {
+        console.error('Error fetching metrics data:', error);
+      }
+    }
 
-    // Update the metrics randomly between 1-20 every second
-    const interval = setInterval(() => {
-      updateMetric(setActiveReports, 1, 20);
-      updateMetric(setResolvedReports, 1, 20);
-      updateMetric(setTotalSubmissions, 1, 20);
-    }, 1000);
-
-    return () => clearInterval(interval); // Cleanup the interval when the component unmounts
+    fetchMetricsData();
   }, []);
 
   return (
@@ -41,7 +50,6 @@ function Metrics() {
         </p>
       </div>
       <div className="metrics-items">
-
         <div className="metric active-reports">
           <div className="metric-icon">
             <FaTasks />
@@ -62,7 +70,7 @@ function Metrics() {
           <div className="metric-icon">
             <FaCoins />
           </div>
-          <div className="metric-number">{totalGPRecovered.toLocaleString()} M</div>
+          <div className="metric-number">{convertToMillionsOrBillions(totalGPRecovered)}</div>
           <div className="metric-label">Total GP Recovered</div>
         </div>
 

@@ -7,10 +7,11 @@ function ManageTickets() {
   const [filteredTickets, setFilteredTickets] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [tag, setTag] = useState('');
+  const [debtRepaid, setDebtRepaid] = useState('');
+  const [filterStatus, setFilterStatus] = useState(''); // Added state for filter status
 
   useEffect(() => {
     getAllTickets().then((tickets) => {
-
       const sortedTickets = tickets.sort((a, b) => {
         const statusOrder = {
           New: 0,
@@ -48,7 +49,12 @@ function ManageTickets() {
     const ticketToUpdate = manageTickets.find((ticket) => ticket.id === ticketId);
 
     if (ticketToUpdate) {
-      updateTicketById(ticketId, ticketToUpdate)
+      const updatedTicket = {
+        ...ticketToUpdate,
+        debtRepaid: debtRepaid,
+      };
+
+      updateTicketById(ticketId, updatedTicket)
         .then((updatedTicket) => {
           if (updatedTicket) {
             console.log(`Ticket ${ticketId} saved successfully.`);
@@ -82,6 +88,15 @@ function ManageTickets() {
       setFilteredTickets(filtered);
     }
   }, [searchTerm, manageTickets, tag]);
+
+  useEffect(() => {
+    if (filterStatus === '') {
+      setFilteredTickets(manageTickets);
+    } else {
+      const filtered = manageTickets.filter((ticket) => ticket.status === filterStatus);
+      setFilteredTickets(filtered);
+    }
+  }, [filterStatus, manageTickets]);
 
   const toggleTag = (selectedTag) => {
     setTag(tag === selectedTag ? '' : selectedTag);
@@ -119,6 +134,24 @@ function ManageTickets() {
         <button onClick={() => toggleTag('rsn:')} className={tag === 'rsn:' ? 'active' : ''}>
           rsn
         </button>
+        <div className="FilterStatus">
+          <span>Filter by Status: </span>
+          <button onClick={() => setFilterStatus('')} className={filterStatus === '' ? 'active' : ''}>
+            All
+          </button>
+          <button onClick={() => setFilterStatus('New')} className={filterStatus === 'New' ? 'active' : ''}>
+            New
+          </button>
+          <button onClick={() => setFilterStatus('Open')} className={filterStatus === 'Open' ? 'active' : ''}>
+            Open
+          </button>
+          <button onClick={() => setFilterStatus('Resolved')} className={filterStatus === 'Resolved' ? 'active' : ''}>
+            Resolved
+          </button>
+          <button onClick={() => setFilterStatus('Denied')} className={filterStatus === 'Denied' ? 'active' : ''}>
+            Denied
+          </button>
+        </div>
       </div>
       <div className="card-container">
         {filteredTickets.map((ticket) => (
@@ -206,6 +239,14 @@ function ManageTickets() {
                   <option value="Ate during fight">Ate during fight</option>
                   <option value="Prayed">Prayed</option>
                 </select>
+              </div>
+              <div className="field">
+                <label>Debt Repaid (GP)</label>
+                <input
+                  type="text"
+                  value={debtRepaid}
+                  onChange={(e) => setDebtRepaid(e.target.value)}
+                />
               </div>
               <button
                 onClick={() => handleSave(ticket.id)}
