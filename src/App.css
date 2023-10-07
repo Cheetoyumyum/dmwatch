@@ -48,6 +48,11 @@ body {
   flex-shrink: 0;
 }
 
+.item-icon {
+  width: 32px;
+  height: 32px;
+}
+
 .evidence-meter.weak .evidence-bar-fill {
   width: 20%;
   background-color: red;

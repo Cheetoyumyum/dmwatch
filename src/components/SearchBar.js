@@ -10,28 +10,19 @@ function SearchBar({ onLoadPlayerFile }) {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const tickets = await getAllTickets();
-        setSearchResults(tickets);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setSearchTerm(searchTerm);
 
-    const filteredResults = searchResults.filter((ticket) =>
-      ticket.scammerName.toLowerCase().includes(searchTerm) || ticket.id.includes(searchTerm)
-    );
-
-    setSearchResults(filteredResults);
+    try {
+      const tickets = await getAllTickets();
+      const filteredResults = tickets.filter((ticket) =>
+        ticket.scammerName.toLowerCase().includes(searchTerm) || ticket.id.includes(searchTerm)
+      );
+      setSearchResults(filteredResults);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   const handlePlayerClick = async (result) => {
@@ -48,8 +39,8 @@ function SearchBar({ onLoadPlayerFile }) {
       navigate(`/cases/${result.id}`);
     }
   };
-
-const handleKeyPress = (e) => {
+  
+  const handleKeyPress = (e) => {
   if (e.key === 'Enter') {
     if (!isNaN(searchTerm)) {
       navigate(`/cases/${searchTerm}`);
@@ -57,8 +48,8 @@ const handleKeyPress = (e) => {
       navigate(`/player/${searchTerm}`);
     }
   }
-};
-
+  };
+  
 
   return (
     <div className="search-bar-container">
@@ -79,21 +70,27 @@ const handleKeyPress = (e) => {
           onKeyPress={handleKeyPress}
         />
       )}
-      <ul className="search-results">
-        {searchResults.map((result) => (
-          <li key={result.id} className="search-result-item" onClick={() => handlePlayerClick(result)}>
-            <Link to={result.scammerName ? `/player/${result.scammerName}` : `/cases/${result.id}`}>
-              {result.scammerName ? (
-                <span>Player: {result.scammerName}</span>
-              ) : (
-                <div>
-                  <span>Case: {result.id || result.scammerName}</span>
-                </div>
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {searchResults.length > 0 && (
+        <ul className="search-results">
+          {searchResults.map((result) => (
+            <li
+              key={result.id}
+              className="search-result-item"
+              onClick={() => handlePlayerClick(result)}
+            >
+              <Link to={result.scammerName ? `/player/${result.scammerName}` : `/cases/${result.id}`}>
+                {result.scammerName ? (
+                  <span>Player: {result.scammerName}</span>
+                ) : (
+                  <div>
+                    <span>Case: {result.id || result.scammerName}</span>
+                  </div>
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

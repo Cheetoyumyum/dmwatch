@@ -4,6 +4,7 @@ import { getAllTickets } from '../server/ticketService';
 import Error404 from './Error404';
 import '../styles/Cases.css?v=1';
 import LoadingScreen from './LoadingScreen';
+import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons';
 
 function Cases() {
   const { id } = useParams();
@@ -65,7 +66,15 @@ function Cases() {
           <strong>ID:</strong> {caseData.id}<br />
           <strong>Description:</strong> {caseData.description}<br />
           <strong>Amount:</strong> {caseData.amount}<br />
-          <strong>Items:</strong> {caseData.items}<br />
+          <strong>Items:</strong> {replaceItemNamesWithIcons(caseData.items)
+            .filter((item) => item)
+            .map((item, index, array) => (
+              <span key={index}>
+                {item}
+                {index < array.length - 1 && ' '}
+              </span>
+            ))}
+          <br />
           <strong>Scammer Name:</strong> {caseData.scammerName}<br />
           <strong>Victim Name:</strong> {caseData.victimName}<br />
           <strong>Evidence:</strong> <a href={caseData.evidence} target="_blank" rel="noopener noreferrer">{caseData.evidence}</a><br />
