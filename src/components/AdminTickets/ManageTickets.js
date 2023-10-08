@@ -8,7 +8,7 @@ function ManageTickets() {
   const [searchTerm, setSearchTerm] = useState('');
   const [tag, setTag] = useState('');
   const [debtRepaid, setDebtRepaid] = useState('');
-  const [filterStatus, setFilterStatus] = useState(''); // Added state for filter status
+  const [filterStatus, setFilterStatus] = useState('');
 
   useEffect(() => {
     getAllTickets().then((tickets) => {

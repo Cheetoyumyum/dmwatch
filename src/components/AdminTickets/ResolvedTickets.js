@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminTicket.css?v=1';
-import { getAllTickets, updateTicketById } from '../../server/ticketService'; // Update the path to import ticket service
+import { getAllTickets, updateTicketById } from '../../server/ticketService';
 
 function ResolvedTickets() {
   const [resolvedTickets, setResolvedTickets] = useState([]);
@@ -9,10 +9,8 @@ function ResolvedTickets() {
   const [tag, setTag] = useState('');
 
   useEffect(() => {
-    // Fetch all tickets from the service
     getAllTickets()
       .then((tickets) => {
-        // Filter and order resolved tickets
         const filteredResolvedTickets = tickets
           .filter((ticket) => ticket.status === 'Resolved')
           .sort((a, b) => b.id - a.id);

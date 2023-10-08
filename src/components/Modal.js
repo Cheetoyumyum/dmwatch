@@ -30,8 +30,6 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
     e.preventDefault();
     console.log("Handle sign-in submit");
     fakeSignIn();
-    // Call fakeSignIn to simulate a successful sign-in
-    // Perform the sign-in action here.
   };
   
 

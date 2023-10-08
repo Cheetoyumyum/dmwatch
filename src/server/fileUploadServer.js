@@ -1,19 +1,3 @@
-/*******************************************************
-*   File: videoUploadServer.js
-*   Author: Cheetoyumyum
-*   Created on: October 5, 2023
-*   Description: Node.js server for handling video uploads
-*   Version: 1.0.0
-*
-*   This file contains the server code for handling video
-*   uploads to an S3 bucket. It allows users to upload
-*   video files, which are stored in the S3 bucket and can
-*   be embedded on the website. This is only a shell as it
-*   is incomplete and will be needing updates as we work on
-*   other parts of this project. (uploading video to tickets)
-*
-*******************************************************/
-
 const express = require('express');
 const aws = require('aws-sdk');
 const multer = require('multer');

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchLatestCases, fetchLatestResolvedCases } from '../server/ticketService'; 
 import '../styles/Ticker.css';
-import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons'; // Import the function
+import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons';
 
 function Ticker() {
   const [latestCasesData, setLatestCasesData] = useState([]);
