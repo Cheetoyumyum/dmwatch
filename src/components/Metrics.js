@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FaTasks, FaCheck, FaFileAlt } from 'react-icons/fa';
 import '../styles/Metrics.css';
 import { getAllTickets } from '../server/ticketService';
 import {ReactComponent as CheckmarkSVG} from '../assets/checkmark.svg';

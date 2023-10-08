@@ -9,12 +9,7 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
   const [description, setDescription] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signIn, setSignIn] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const toggleSignIn = () => {
-    setSignIn(!signIn);
-  };
 
   const handleReportSubmit = (e) => {
     e.preventDefault();
