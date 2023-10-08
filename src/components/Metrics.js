@@ -6,7 +6,6 @@ import {ReactComponent as CheckmarkSVG} from '../assets/checkmark.svg';
 import {ReactComponent as GoldSVG} from '../assets/gold.svg';
 import {ReactComponent as TotalSVG} from '../assets/total.svg';
 import {ReactComponent as FiledSVG} from '../assets/filed.svg';
-import {ReactComponent as InvestigateSVG} from '../assets/investigate.svg';
 
 function formatNumber(number) {
   return number.toLocaleString() + ' M';
@@ -49,7 +48,7 @@ function Metrics() {
       <div className="metrics-items">
         <div className="metric active-reports">
           <div className="metric-icon">
-            <FiledSVG />
+            <FiledSVG height="48px" width="48px" />
           </div>
           <div className="metric-number">{activeReports.toLocaleString()}</div>
           <div className="metric-label">Active Reports</div>
@@ -57,7 +56,7 @@ function Metrics() {
 
         <div className="metric resolved-reports">
           <div className="metric-icon">
-            <CheckmarkSVG />
+            <CheckmarkSVG height="48px" width="48px"  />
           </div>
           <div className="metric-number">{resolvedReports.toLocaleString()}</div>
           <div className="metric-label">Resolved Reports</div>
@@ -65,7 +64,7 @@ function Metrics() {
 
         <div className="metric">
           <div className="metric-icon">
-            <GoldSVG />
+            <GoldSVG height="48px" width="48px"  />
           </div>
           <div className="metric-number gp">{formatNumber(totalGPRecovered)}</div>
           <div className="metric-label">Total GP Recovered</div>
@@ -73,7 +72,7 @@ function Metrics() {
 
         <div className="metric total-submissions">
         <div className="metric-icon">
-          <TotalSVG />
+          <TotalSVG height="48px" width="48px"  />
         </div>
           <div className="metric-number">{totalSubmissions.toLocaleString()}</div>
           <div className="metric-label">Total Submissions</div>

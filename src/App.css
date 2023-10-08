@@ -28,27 +28,31 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-image: url('./assets/Thumb.svg');
-  background-size: cover;
-  background-repeat: transparent;
+  background-size: contain; /* Use "contain" to prevent distortion */
+  width: 16px; /* Set fixed width */
+  height: 16px; /* Set fixed height */
 }
 
 ::-webkit-scrollbar-button:start:decrement {
   background-image: url('./assets/Up-Arrow.svg');
-  background-size: cover;
-  background-repeat: transparent;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
 }
 
 ::-webkit-scrollbar-button:end:increment {
   background-image: url('./assets/Down-Arrow.svg');
-  background-size: cover;
-  background-repeat: transparent;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
 }
 
 ::-webkit-scrollbar-track {
   background-image: url('./assets/track.svg');
-  background-size: cover;
-  background-repeat: transparent;
+  background-size: contain;
+  width: 16px;
 }
+
 
 
 .App-link {
