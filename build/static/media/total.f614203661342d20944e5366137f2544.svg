@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 119 119" width="119" height="119">
+	<title>envelope</title>
+	<defs>
+		<image  width="119" height="119" id="totalSVG" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3BAMAAADLF8K5AAAAAXNSR0IB2cksfwAAABtQTFRFAAAADg4MlHpcJigsrLOw2u7eYmtpfUoZtZp7jNYJJwAAAAl0Uk5TAP//////////NwKb1AAAAQpJREFUeJzt2D0SgjAQBWC8gdrQ02CppvAAxuEA/hzBA1gYaho5tknW2RAFRGQIxXtdYL9q5zEZoqgxs4VN80BbgMfBpJaJDR3mwMNi0S1r4KDYNEi/kFIezrU5SZu9EJuPpgF3xq5BGuupy7Uakhc+HIXYVpoGPDKOlQ3h9mi8o2ngEFgvOWXsdupvnPdsMK0auCc20Q/lt2RK3fjCABwCr8qyJH9/366LsvI1ChwQ08OU153Rl84dkuoc8N9Yp6CNKa6PO/AM8CSwyftO9e5zbwB4IPwg6c0WVDbgCeGP+lS96VcOPAXsFbEurpzAf+G0pkt1KXgUOASO+RbQNcr7ZwD8C+4b4FHxEzIhDPwUSYfwAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#totalSVG" x="0" y="0"/>
+</svg>
