@@ -128,34 +128,59 @@ function ManageTickets() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button onClick={() => toggleTag('id:')} className={tag === 'id:' ? 'active' : ''}>
+        <button
+          className={`admin-btn ${tag === 'id:' ? 'active' : ''}`}
+          onClick={() => toggleTag('id:')}
+        >
           id
         </button>
-        <button onClick={() => toggleTag('rsn:')} className={tag === 'rsn:' ? 'active' : ''}>
+        <button
+          className={`admin-btn ${tag === 'rsn:' ? 'active' : ''}`}
+          onClick={() => toggleTag('rsn:')}
+        >
           rsn
         </button>
         <div className="FilterStatus">
           <span>Filter by Status: </span>
-          <button onClick={() => setFilterStatus('')} className={filterStatus === '' ? 'active' : ''}>
+          <button
+            className={`admin-btn ${filterStatus === '' ? 'active' : ''}`}
+            onClick={() => setFilterStatus('')}
+          >
             All
           </button>
-          <button onClick={() => setFilterStatus('New')} className={filterStatus === 'New' ? 'active' : ''}>
+          <button
+            className={`admin-btn ${filterStatus === 'New' ? 'active' : ''}`}
+            onClick={() => setFilterStatus('New')}
+          >
             New
           </button>
-          <button onClick={() => setFilterStatus('Open')} className={filterStatus === 'Open' ? 'active' : ''}>
+          <button
+            className={`admin-btn ${filterStatus === 'Open' ? 'active' : ''}`}
+            onClick={() => setFilterStatus('Open')}
+          >
             Open
           </button>
-          <button onClick={() => setFilterStatus('Resolved')} className={filterStatus === 'Resolved' ? 'active' : ''}>
+          <button
+            className={`admin-btn ${filterStatus === 'Resolved' ? 'active' : ''}`}
+            onClick={() => setFilterStatus('Resolved')}
+          >
             Resolved
           </button>
-          <button onClick={() => setFilterStatus('Denied')} className={filterStatus === 'Denied' ? 'active' : ''}>
+          <button
+            className={`admin-btn ${filterStatus === 'Denied' ? 'active' : ''}`}
+            onClick={() => setFilterStatus('Denied')}
+          >
             Denied
           </button>
         </div>
       </div>
       <div className="card-container">
         {filteredTickets.map((ticket) => (
-          <div key={ticket.id} className="ticket-card" style={{ borderColor: getStatusColor(ticket.status) }}>
+          <div
+            key={ticket.id}
+            className="ticket-card"
+            style={{ borderColor: getStatusColor(ticket.status) }}
+          >
             <div className="card-header">
               <span>ID: {ticket.id}</span>
               <select
@@ -250,7 +275,7 @@ function ManageTickets() {
               </div>
               <button
                 onClick={() => handleSave(ticket.id)}
-                className="save-button"
+                className="admin-btn"
               >
                 Save
               </button>

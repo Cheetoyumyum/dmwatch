@@ -103,6 +103,39 @@
   .modal-button:hover {
     background-color: #0056b3;
   }
+
+.modal-input[type="file"] {
+  display: none;
+}
+
+.modal-input-file {
+  position: relative;
+}
+
+.modal-input-file label {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.modal-input-file .selected-file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.modal-input-file .selected-file-name span {
+  font-weight: bold;
+}
+
+.modal-input-file label:hover {
+  background-color: #0056b3;
+}
   
   .close-button {
     position: absolute;

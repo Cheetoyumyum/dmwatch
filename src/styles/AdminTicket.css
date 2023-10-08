@@ -1,26 +1,3 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: #fff;
-  background-color: #2b2620;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, a, strong, small, .sign-in {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-a {
-  color: #fff;
-}
-
 .ticker-gp, .metric-number.gp {
   color: #00FF00;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -123,6 +100,7 @@ code {
 .manage-tickets {
   padding: 20px;
   border-radius: 5px;
+  animation: fadeInUp 1s ease-in-out;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: 100%;
@@ -166,7 +144,7 @@ code {
   align-items: center;
 }
 
-button {
+.admin-btn {
   background-color: #4b4b4b;
   color: #fff;
   border: none;
@@ -177,7 +155,7 @@ button {
   outline: none;
 }
 
-button.active {
+.admin-btn button.active {
   background-color: #0f0f0f;
 }
 

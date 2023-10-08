@@ -97,30 +97,34 @@ function DeniedTickets() {
   return (
     <div className="denied-tickets">
       <h2>Denied Tickets</h2>
-      <div className='SearchContainer'>
+      <div className="SearchContainer">
         <input
-          className='TicketSearch'
+          className="TicketSearch"
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
+          className={`admin-btn ${tag === 'id:' ? 'active' : ''}`}
           onClick={() => toggleTag('id:')}
-          className={tag === 'id:' ? 'active' : ''}
         >
           id
         </button>
         <button
+          className={`admin-btn ${tag === 'rsn:' ? 'active' : ''}`}
           onClick={() => toggleTag('rsn:')}
-          className={tag === 'rsn:' ? 'active' : ''}
         >
           rsn
         </button>
       </div>
       <div className="card-container">
         {filteredTickets.map((ticket) => (
-          <div key={ticket.id} className="ticket-card" style={{ borderColor: getStatusColor(ticket.status) }}>
+          <div
+            key={ticket.id}
+            className="ticket-card"
+            style={{ borderColor: getStatusColor(ticket.status) }}
+          >
             <div className="card-header">
               <span>ID: {ticket.id}</span>
               <select
@@ -215,7 +219,7 @@ function DeniedTickets() {
               </div>
               <button
                 onClick={() => handleSave(ticket.id)}
-                className="save-button"
+                className="admin-btn"
               >
                 Save
               </button>
@@ -224,7 +228,7 @@ function DeniedTickets() {
         ))}
       </div>
     </div>
-  );
+  );  
 }
 
 

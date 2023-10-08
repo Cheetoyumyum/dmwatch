@@ -173,7 +173,7 @@ function ManagePlayers() {
                     : `${calculateTotalAmount(player.scammerName)}m`}
                 </span>
               </div>
-              <button onClick={() => handleSave(player.id)} className="save-button">
+              <button onClick={() => handleSave(player.id)} className="admin-btn">
                 Save
               </button>
             </div>
@@ -181,7 +181,7 @@ function ManagePlayers() {
         ))}
       </div>
     </div>
-  );
+  );  
 }
 
 export default ManagePlayers;

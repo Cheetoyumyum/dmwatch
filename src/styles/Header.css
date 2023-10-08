@@ -1,26 +1,3 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: #fff;
-  background-color: #2b2620;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, a, strong, small, .sign-in {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-a{
-  color: #fff;
-}
-
 .App__header {
   display: flex;
   justify-content: space-between;
@@ -33,7 +10,10 @@ a{
 .center-content {
   flex: 1;
   text-align: center;
-  margin-left: 80px;
+  margin-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-image {
@@ -42,7 +22,11 @@ a{
   margin-right: 10px;
 }
 
-h1 {
+.brand {
+  margin-right: 80px;
+}
+
+.brand h1 {
   margin: 0;
   font-size: 36px;
   display: flex;
@@ -54,6 +38,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .navbar ul {
@@ -63,7 +48,32 @@ h1 {
   display: flex;
   gap: 20px;
   justify-content: center;
-  flex: 1;
+}
+
+.nav-button {
+  background-color: #444;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0;
+  margin-right: 10px;
+  display: inline-block;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+  background-color: #555;
+  color: #fff;
+  text-shadow: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .navbar li {
@@ -74,7 +84,35 @@ a:visited {
   color: #fff;
 }
 
-.navbar:hover .logo-text {
+.left-content, .right-content {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.discord-button {
+  background-color: #7289da;
+  border: 2px solid #7289da;
+  color: #fff;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  font-family: Whitney, "Open Sans", Helvetica, sans-serif;
+  font-weight: 400;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  height: 45px;
+  width: 180px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-left: 20px;
+}
+
+.discord-button:hover{
+  background-color: #4752c4;
+  border: 2px transparent;
+}
+
+.brand:hover .logo-text {
   color: rgb(165, 18, 18);
   animation: colorCycle 5s infinite alternate;
 }
@@ -97,26 +135,13 @@ a:visited {
   transition: color 0.3s;
 }
 
-#submit {
-  color: white;
-}
-
-#submit:hover {
-  text-shadow: 0 0 5px rgb(112, 14, 14);
-}
-
-#resolve {
-  color: white;
-}
-
-#resolve:hover {
-  text-shadow: 0 0 5px rgb(0, 165, 0);
-}
-
 .sign-in {
-  background-color: transparent;
-  border: 2px solid rgb(85, 85, 85);
-  color: white;
+  color: #fff;
+  display: inline-block;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #444; 
+  color: #fff;
+  margin: auto;
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
@@ -125,28 +150,25 @@ a:visited {
   outline: none;
   appearance: none;
   text-decoration: none;
-  font-size: 16px;
+}
+
+.sign-in:hover:{
+  background-color: #555;
+  color: #fff;
+  text-shadow: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
-  .App__header {
-    padding: 10px;
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
   .center-content {
     margin-left: 0;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
 
   .navbar ul {
@@ -157,10 +179,22 @@ a:visited {
     font-size: 16px;
   }
 
-  .sign-in {
-    background-color: transparent;
-    border: 2px solid rgb(85, 85, 85);
-    padding: 10px 20px;
-    font-weight: bold;
+  .brand {
+    font-size: 24px;
+    margin-right: 0px;
+    display: flex;
+    flex: 1;
+    order: 1;
+  }
+
+  .left-content, .right-content {
+    display: flex;
+    order: 3;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .discord-button {
+    order: 4;
   }
 }

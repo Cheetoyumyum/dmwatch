@@ -24,29 +24,24 @@ function Header({ onOpenReportModal, onOpenSignInModal, modalType, setModalType 
   return (
     <header className="App__header">
       <nav className="navbar">
+      <div className='left-content'>
+        <button className="discord-button" href='https://discord.gg/dmwatch'>Join our Discord</button>
+        <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
+          Submit a report
+        </button>
+        </div>
         <div className="center-content">
-          <ul>
-            <li>
-              <a id="submit" href="#" onClick={() => onOpenReportModal('Submit')}>
-                Submit a report
-              </a>
-            </li>
               <div className="brand">
               <Link to='/'>
                 <img src={logoImage} alt="DMWatch Logo" className="logo-image" />
                 <h1 className='logo-text'>DMWatch</h1>
               </Link>
               </div>
-            <li>
-              <Link to='/resolve'>
-              <a id="resolve">
-                Resolve a report
-              </a>
-              </Link>
-            </li>
-          </ul>
         </div>
         <div className="right-content">
+        <button className="nav-button" onClick={() => onOpenReportModal('Resolve')}>
+          Resolve a report
+        </button>
           {isAuthenticated ? (
             <div className="user-dropdown">
               <button className="username">Username</button>

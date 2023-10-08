@@ -31,6 +31,11 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
     console.log("Handle sign-in submit");
     fakeSignIn();
   };
+
+  const handleEvidenceUpload = (e) => {
+    const selectedFile = e.target.files[0];
+    // Upload to S3 Bucket plsplspls. (also something here for making sure its the same caseid)
+  };
   
 
   const signInForm = (
@@ -71,77 +76,87 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
   );
 
   const reportSubmissionForm = (
-    <form onSubmit={handleReportSubmit}>
-      <div className="form-group">
-        <label htmlFor="scammerName">Scammer's RSN *</label>
-        <input
-          type="text"
-          id="scammerName"
-          value={scammerName}
-          onChange={(e) => setScammerName(e.target.value)}
-          placeholder='Scammers runescape in-game name'
-          required
-          className="modal-input"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="victimName">Victim's RSN *</label>
-        <input
-          type="text"
-          id="victimName"
-          value={victimName}
-          onChange={(e) => setVictimName(e.target.value)}
-          placeholder='Victim Runescape in-game name'
-          required
-          className="modal-input"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="amountScammed">Amount Scammed *</label>
-        <input
-          type="text"
-          id="amountScammed"
-          value={amountScammed}
-          onChange={(e) => setAmountScammed(e.target.value)}
-          placeholder='The amount scammed Example: 1.5b'
-          required
-          className="modal-input"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="itemsScammed">Items Scammed *</label>
-        <textarea
-          id="itemsScammed"
-          value={itemsScammed}
-          onChange={(e) => setItemsScammed(e.target.value)}
-          placeholder='Enter the items scammed'
-          required
-          maxLength="200"
-          className="modal-textarea"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="description">Description & Evidence of Scam *</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder='What happened/proof&#10;https://www.streamable.com/link'
-          required
-          maxLength="500"
-          className="modal-textarea"
-        />
-      </div>
-      <div className="modal-buttons">
-        <button type="button" onClick={onClose} className="cancel-button">
-          Cancel
-        </button>
-        <button type="submit" className="submit-button">
-          Submit
-        </button>
-      </div>
-    </form>
-  );
+  <form onSubmit={handleReportSubmit}>
+    <div className="form-group">
+      <label htmlFor="scammerName">Scammer's RSN *</label>
+      <input
+        type="text"
+        id="scammerName"
+        value={scammerName}
+        onChange={(e) => setScammerName(e.target.value)}
+        placeholder="Scammers runescape in-game name"
+        required
+        className="modal-input"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="victimName">Victim's RSN *</label>
+      <input
+        type="text"
+        id="victimName"
+        value={victimName}
+        onChange={(e) => setVictimName(e.target.value)}
+        placeholder="Victim Runescape in-game name"
+        required
+        className="modal-input"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="amountScammed">Amount Scammed *</label>
+      <input
+        type="text"
+        id="amountScammed"
+        value={amountScammed}
+        onChange={(e) => setAmountScammed(e.target.value)}
+        placeholder="The amount scammed Example: 1.5b"
+        required
+        className="modal-input"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="itemsScammed">Items Scammed *</label>
+      <textarea
+        id="itemsScammed"
+        value={itemsScammed}
+        onChange={(e) => setItemsScammed(e.target.value)}
+        placeholder="Enter the items scammed"
+        required
+        maxLength="200"
+        className="modal-textarea"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="description">Description & Evidence of Scam *</label>
+      <textarea
+        id="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="What happened/proof&#10;https://www.streamable.com/link"
+        required
+        maxLength="500"
+        className="modal-textarea"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="evidence">Evidence (Optional)</label>
+      <input
+        type="file"
+        id="evidence"
+        accept=".mp4, .avi, .mov, .pdf, .jpg, .png"
+        onChange={(e) => handleEvidenceUpload(e)}
+        className="modal-input"
+      />
+    </div>
+    <div className="modal-buttons">
+      <button type="button" onClick={onClose} className="cancel-button">
+        Cancel
+      </button>
+      <button type="submit" className="submit-button">
+        Submit
+      </button>
+    </div>
+  </form>
+);
 
   return (
     <div>

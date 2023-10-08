@@ -1,9 +1,0 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 29" width="22" height="29">
-	<title>image</title>
-	<defs>
-		<image  width="22" height="29" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAdCAMAAACZrWzKAAAAAXNSR0IB2cksfwAAAMBQTFRFAAAAAAACYmFeZ2ViaWdkbWtocW9sa2lmWllWSklHOTg2ZWNgfHt3eHdzd3VxUVBNPDs5Xl1ac3FtQ0BATUxJYF9cb21qXFtYVlRSWFdUQ0JAU1JQT05LgoB8SEdFRkVCdXNvhIJ+QUA+lJKNj42IiYeDkWgTKCMaUUc1T0U0NC0iJSEYWk87Rj0uOTIlKyYcSD8vQTgqMSsgU0k3SkExPjYpQzssHxsUPDQnLigeYEUMtIIYd1UPw40asYAXhmARxOnzXAAAAEB0Uk5TAP///////////////////////////////////////////////////////////////////////////////////xMrnjEAAADtSURBVHicbdDpVoMwEAVghgAJRo00pEAt1bp1UWqrgrj2/d9KTiA20bk/v+RMMtfz+oCJZwXAJ0EYURYfgYUBp2F0fHIaUXFmHBLC6UjqjEg6eKeKS5Nx1jsolRfyEFVMNGe5kHaSWDM7d1T6QnPxh1mh2XdnyCzXHE4dFSzVXPLU5mky/Lvks4PGig9rQqkmRi8Iufzdfj7m+dVMMD+gyuoQrm9u52WXu4XTrCl7uVrfO433pw/V5hHh1Xb3hPDzS7X5zx4stzXC3ZjmFfV2jfKufcOmV3W7wLyp23fkk1Xz8Yld//reo692df0AoW4Y76LIMQAAAAAASUVORK5CYII="/>
-	</defs>
-	<style>
-	</style>
-	<use id="Background" href="#img1" x="0" y="0"/>
-</svg>

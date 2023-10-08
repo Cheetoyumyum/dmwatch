@@ -2,6 +2,7 @@
   text-align: center;
   padding: 20px;
   margin: 0 10%;
+  animation: fadeInUp 1s ease-in-out;
 }
 
 .metrics-text {
@@ -22,7 +23,6 @@
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 1s ease-in-out;
 }
 
 .metric-icon {

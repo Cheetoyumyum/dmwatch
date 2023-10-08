@@ -57,6 +57,7 @@ function SearchBar({ onLoadPlayerFile }) {
         <input
           type="text"
           placeholder="Search by player name or case details"
+          className='search-input'
           value={searchTerm}
           onChange={handleSearch}
           onKeyPress={handleKeyPress}
@@ -65,6 +66,7 @@ function SearchBar({ onLoadPlayerFile }) {
         <input
           type="text"
           placeholder="Search by case details"
+          className='search-input'
           value={searchTerm}
           onChange={handleSearch}
           onKeyPress={handleKeyPress}
