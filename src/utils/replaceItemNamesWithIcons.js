@@ -27,13 +27,15 @@ const itemNameToIcon = {
   "brimstone ring" : "brimstone-ring.png",
   "dragon dagger": "dragon-dagger.png",
   "Elysian spirit shield": "elysian-spirit-shield.png",
-  "ags": "armadyl-god-sword.png",
+  "ags": "armadyl-godsword.png",
   "amulet of torture": "amulet-of-torture.png",
   "amulet of strength": "amulet-of-strength.png",
   "amulet of glory": "amulet-of-glory.png",
   "amulet of fury" : "amulet-of-fury.png",
   "inquisitors set" : "inquisitors-armour-set.png",
-  "inq set" : "inquisitors-armour-set.png"
+  "inq set" : "inquisitors-armour-set.png",
+  "Armadyl Godsword" : "armadyl-godsword.png",
+  "armadyl gs" : "armadyl-godsword.png"
 };
 
 function replaceItemNamesWithIcons(items) {

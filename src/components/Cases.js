@@ -63,7 +63,7 @@ function Cases() {
       </div>
       <div className="case-details">
         <p>
-          <strong>ID:</strong> {caseData.id}<br />
+          <strong className='id-label'>ID: {caseData.id}</strong> <br />
           <strong>Description:</strong> {caseData.description}<br />
           <strong>Amount:</strong> {caseData.amount}<br />
           <strong>Items:</strong> {replaceItemNamesWithIcons(caseData.items)
@@ -80,7 +80,8 @@ function Cases() {
           <strong>Evidence:</strong> <a href={caseData.evidence} target="_blank" rel="noopener noreferrer">{caseData.evidence}</a><br />
           <strong>Status:</strong> {caseData.status}<br />
           <strong>Scam Type:</strong> {caseData.scamType}<br />
-          <strong>Previous Names:</strong> {caseData.previousNames}
+          <strong>Previous Names:</strong> {caseData.previousNames}<br />
+          <strong>Repaid Debt:</strong> {caseData.debtRepaid}
         </p>
       </div>
       <button onClick={handleBack} className="back-link">

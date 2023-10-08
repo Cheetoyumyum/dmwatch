@@ -37,12 +37,16 @@
   display: block;
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.5s ease-out;
   border-left: 3px solid #705c53;
   background-color: #524538;
   border: 1px solid black;
 }
 
+.ticker-entry:hover {
+  color: #ccc;
+  background-color: #524538;
+}
 .ticker-entry:first-child {
   margin-top: 0;
 }

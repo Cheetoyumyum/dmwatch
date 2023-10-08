@@ -8,7 +8,6 @@ function Header({ onOpenReportModal, onOpenSignInModal, modalType, setModalType 
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   useEffect(() => {
-    // This effect runs whenever isAuthenticated changes.
   }, [isAuthenticated]);
 
   const handleLogOut = () => {
@@ -32,12 +31,12 @@ function Header({ onOpenReportModal, onOpenSignInModal, modalType, setModalType 
                 Submit a report
               </a>
             </li>
-              <Link to='/'>
               <div className="brand">
+              <Link to='/'>
                 <img src={logoImage} alt="DMWatch Logo" className="logo-image" />
-                <h1>DMWatch</h1>
-              </div>
+                <h1 className='logo-text'>DMWatch</h1>
               </Link>
+              </div>
             <li>
               <Link to='/resolve'>
               <a id="resolve">

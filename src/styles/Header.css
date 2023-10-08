@@ -1,9 +1,27 @@
-.brand {
-  display: flex;
-  align-items: center;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: #fff;
+  background-color: #2b2620;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-header {
+h1, h2, h3, a, strong, small, .sign-in {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+a{
+  color: #fff;
+}
+
+.App__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,10 +74,22 @@ a:visited {
   color: #fff;
 }
 
-a:hover {
+.navbar:hover .logo-text {
   color: rgb(165, 18, 18);
+  animation: colorCycle 5s infinite alternate;
 }
 
+@keyframes colorCycle {
+  0% {
+    color: white;
+  }
+  50% {
+    color: rgb(165, 18, 18);
+  }
+  100% {
+    color: white;
+  }
+}
 
 .navbar a {
   text-decoration: none;
@@ -98,40 +128,17 @@ a:hover {
   font-size: 16px;
 }
 
-
 @media (max-width: 768px) {
-  .brand {
-    display: flex;
-    align-items: center;
-    color: white;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
+  .App__header {
+    padding: 10px;
   }
 
   .center-content {
-    flex: 1;
-    text-align: center;
     margin-left: 0;
   }
 
-  .logo-image {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-  }
-
   h1 {
-    margin: 0;
     font-size: 24px;
-    display: flex;
-    align-items: center;
   }
 
   .navbar {
@@ -143,71 +150,17 @@ a:hover {
   }
 
   .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex: 1;
-  }
-
-  .navbar li {
-    margin: 0;
-  }
-
-  a:visited {
-    color: #fff;
-  }
-
-  a:hover {
-    color: rgb(165, 18, 18);
+    gap: 10px;
   }
 
   .navbar a {
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-
-  #submit {
-    color: white;
-  }
-  
-  .mobile-links {
-    text-align: center;
-  }
-
-  #submit,
-  #resolve {
-    display: block;
-    margin-top: 10px;
-  }
-
-  #submit:hover {
-    text-shadow: 0 0 5px rgb(112, 14, 14);
-  }
-
-  #resolve {
-    color: white;
-  }
-
-  #resolve:hover {
-    text-shadow: 0 0 5px rgb(0, 165, 0);
+    font-size: 16px;
   }
 
   .sign-in {
     background-color: transparent;
     border: 2px solid rgb(85, 85, 85);
-    color: white;
     padding: 10px 20px;
-    border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    text-decoration: none;
-    font-size: 16px;
   }
 }
