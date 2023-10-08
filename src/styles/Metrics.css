@@ -16,8 +16,9 @@
 
 .metric {
   flex: 1;
-  background-color: #f0f0f0;
+  background-color: #493f35;
   padding: 20px;
+  border: 1px solid black;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

@@ -82,13 +82,13 @@ function DeniedTickets() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'Open':
-        return '#fff3cd';
+        return '#ab9d05';
       case 'Resolved':
-        return '#d4edda';
+        return '#16ab05';
       case 'New':
-        return '#d1ecf1';
+        return '#0587ab';
       case 'Denied':
-        return '#f8d7da';
+        return '#ab0505';
       default:
         return '';
     }

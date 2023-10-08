@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { FaTasks, FaCheck, FaCoins, FaFileAlt } from 'react-icons/fa';
+import { FaTasks, FaCheck, FaFileAlt } from 'react-icons/fa';
 import '../styles/Metrics.css';
 import { getAllTickets } from '../server/ticketService';
+import {ReactComponent as CheckmarkSVG} from '../assets/checkmark.svg';
+import {ReactComponent as GoldSVG} from '../assets/gold.svg';
+import {ReactComponent as TotalSVG} from '../assets/total.svg';
+import {ReactComponent as FiledSVG} from '../assets/filed.svg';
+import {ReactComponent as InvestigateSVG} from '../assets/investigate.svg';
 
 function formatNumber(number) {
-  //code here to handle conversion once we are ready
   return number.toLocaleString() + ' M';
 }
 
@@ -45,7 +49,7 @@ function Metrics() {
       <div className="metrics-items">
         <div className="metric active-reports">
           <div className="metric-icon">
-            <FaTasks />
+            <FiledSVG />
           </div>
           <div className="metric-number">{activeReports.toLocaleString()}</div>
           <div className="metric-label">Active Reports</div>
@@ -53,7 +57,7 @@ function Metrics() {
 
         <div className="metric resolved-reports">
           <div className="metric-icon">
-            <FaCheck />
+            <CheckmarkSVG />
           </div>
           <div className="metric-number">{resolvedReports.toLocaleString()}</div>
           <div className="metric-label">Resolved Reports</div>
@@ -61,16 +65,16 @@ function Metrics() {
 
         <div className="metric">
           <div className="metric-icon">
-            <FaCoins />
+            <GoldSVG />
           </div>
-          <div className="metric-number">{formatNumber(totalGPRecovered)}</div>
+          <div className="metric-number gp">{formatNumber(totalGPRecovered)}</div>
           <div className="metric-label">Total GP Recovered</div>
         </div>
 
         <div className="metric total-submissions">
-          <div className="metric-icon">
-            <FaFileAlt />
-          </div>
+        <div className="metric-icon">
+          <TotalSVG />
+        </div>
           <div className="metric-number">{totalSubmissions.toLocaleString()}</div>
           <div className="metric-label">Total Submissions</div>
         </div>

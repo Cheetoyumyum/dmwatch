@@ -1,8 +1,8 @@
 .player-card {
   margin: 20px 10%;
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background-color: #493f35;
+  border-radius: 10px;
   text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
@@ -11,10 +11,11 @@
 
 .player-card h1 {
   text-align: center;
+  color: #fff;
 }
 
 .caseTitle {
-  color: #333;
+  color: #fff;
   display: flex;
   justify-content: center;
 }
@@ -27,7 +28,7 @@
   overflow-x: hidden;
   max-width: 80%;
   overflow: visible;
-  border-radius: 8px;
+  border-radius: 10px;
   padding-bottom: 20px;
 }
 
@@ -37,8 +38,8 @@
   cursor: pointer;
   margin: 10px 15px 10px 5px;
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background-color: #493f35;
+  border-radius: 10px;
   text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
@@ -47,6 +48,7 @@
 .case-card h2 {
   font-size: 18px;
   font-weight: bold;
+  color: #fff;
 }
 
 .case-card small {
@@ -56,7 +58,7 @@
 
 .case-card p {
   font-size: 16px;
-  color: #333;
+  color: #fff;
 }
 
 .case-card .evidence-meter {
@@ -89,42 +91,11 @@
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
+  color: #fff;
 }
 
 .back-link {
   display: flex;
   margin: 0 auto;
   margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .player-card {
-    margin-top: 20px;
-    margin: 15px;
-    padding: 20x;
-    width: 100%;
-  }
-
-  .player-container {
-    padding: 20x;
-  }
-
-  .case-cards-container {
-    flex-direction: column;
-  }
-
-  .case-cards {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    margin: 15px;
-    overflow: visible;
-    padding-bottom: 20px;
-  }
-
-  .case-card {
-    width: 100%;
-    margin-top: 10px;
-  }
 }

@@ -1,7 +1,7 @@
 .cases-container {
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background-color: #493f35;
+  border-radius: 10px;
   text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
@@ -14,17 +14,16 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 }
-
-.case-cards{
-  width: 100%;
-}
-
 
 .case-details h2 {
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 }
 
 .case-card {
@@ -36,14 +35,12 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-
-button{
+button {
   margin-right: 10px;
 }
 
 .case-details p {
   font-size: 16px;
-  color: #333;
   margin-bottom: 20px;
 }
 
@@ -118,10 +115,10 @@ button{
     font-size: 14px;
   }
 
-  .error-message{
-      width: 100%;
+  .error-message {
+    width: 100%;
   }
-  
+
   .error-title,
   .error-code {
     font-size: 2em;

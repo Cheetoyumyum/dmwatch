@@ -7,12 +7,17 @@
 .ticker-left,
 .ticker-right {
   width: 45%;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background-color: #493f35;
+  border-radius: 10px;
   text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
+  border: 1px solid black;
+}
+
+.ticker-svg {
+  float: right;
+  margin-right: 10px;
 }
 
 .ticker-left h2,
@@ -30,14 +35,24 @@
 
 .ticker-entry {
   display: block;
-  margin-bottom: 10px;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.2s;
+  border-left: 3px solid #705c53;
+  background-color: #524538;
+  border: 1px solid black;
+}
+
+.ticker-entry:first-child {
+  margin-top: 0;
+}
+
+.ticker-entry:last-child {
+  margin-bottom: 0;
 }
 
 .ticker-entry:hover {
-  background-color: #ddd;
+  background-color: #524538;
 }
 
 .ticker-name {
@@ -48,7 +63,11 @@
 .ticker-offence,
 .ticker-amount {
   font-size: 16px;
-  color: #333;
+  margin: 0;
+}
+
+.ticker-offence {
+  margin-bottom: 5px;
 }
 
 @media (max-width: 768px) {
@@ -64,4 +83,18 @@
     margin-right: 0;
     margin-bottom: 20px;
   }
+}
+
+.ticker-left h2,
+.ticker-right h2 {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-align: center;
+}
+
+.ticker-left h2 {
+  color: red;
+}
+
+.ticker-right h2 {
+  color: #00ff00;
 }

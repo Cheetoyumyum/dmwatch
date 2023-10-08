@@ -16,10 +16,40 @@ html, body {
 }
 
 body {
-  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+  background: linear-gradient(to bottom, #2b2620, #493f35);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-attachment: fixed;
 }
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: url('./assets/Thumb.svg');
+  background-size: cover;
+  background-repeat: transparent;
+}
+
+::-webkit-scrollbar-button:start:decrement {
+  background-image: url('./assets/Up-Arrow.svg');
+  background-size: cover;
+  background-repeat: transparent;
+}
+
+::-webkit-scrollbar-button:end:increment {
+  background-image: url('./assets/Down-Arrow.svg');
+  background-size: cover;
+  background-repeat: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-image: url('./assets/track.svg');
+  background-size: cover;
+  background-repeat: transparent;
+}
+
 
 .App-link {
   color: #61dafb;

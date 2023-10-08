@@ -69,7 +69,7 @@ function ManagePlayers() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'Scammer':
-        return '#cfcc23';
+        return '#ab0505';
       case 'Victim':
         return '#28a745';
       case 'Serial Scammer':

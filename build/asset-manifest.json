@@ -1,13 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.29a68cbc.css",
-    "main.js": "/static/js/main.07da1b2e.js",
+    "main.css": "/static/css/main.091a1461.css",
+    "main.js": "/static/js/main.d8257da0.js",
+    "static/media/settingsCheckmark.svg": "/static/media/settingsCheckmark.a38410e545f5e008f73e78d0c9896fa1.svg",
+    "static/media/total.svg": "/static/media/total.b7df7ef88901efa682a3552bb7917f72.svg",
+    "static/media/checkmark.svg": "/static/media/checkmark.50b42532985781a871a898ecbe3623a2.svg",
+    "static/media/gold.svg": "/static/media/gold.6b5414ddc98549e8e1abec4583fdf742.svg",
+    "static/media/filed.svg": "/static/media/filed.d7c34cf99522dc991f52fcc3c6ceb5e7.svg",
+    "static/media/track.svg": "/static/media/track.7a0910b5528ea3c4bf17.svg",
+    "static/media/Down-Arrow.svg": "/static/media/Down-Arrow.9430dcc0fe41412f1ff1.svg",
+    "static/media/Thumb.svg": "/static/media/Thumb.e8a7ab4a5df4857fa760.svg",
+    "static/media/Up-Arrow.svg": "/static/media/Up-Arrow.11e34b48b1c0a7f150b3.svg",
+    "static/media/investigate.svg": "/static/media/investigate.429b1d16504a20f4a29f8e0580003d93.svg",
     "index.html": "/index.html",
-    "main.29a68cbc.css.map": "/static/css/main.29a68cbc.css.map",
-    "main.07da1b2e.js.map": "/static/js/main.07da1b2e.js.map"
+    "main.091a1461.css.map": "/static/css/main.091a1461.css.map",
+    "main.d8257da0.js.map": "/static/js/main.d8257da0.js.map"
   },
   "entrypoints": [
-    "static/css/main.29a68cbc.css",
-    "static/js/main.07da1b2e.js"
+    "static/css/main.091a1461.css",
+    "static/js/main.d8257da0.js"
   ]
 }

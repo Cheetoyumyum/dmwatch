@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { fetchLatestCases, fetchLatestResolvedCases } from '../server/ticketService'; 
 import '../styles/Ticker.css';
 import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons';
+import {ReactComponent as ResolvedSVG} from '../assets/settingsCheckmark.svg';
+import {ReactComponent as InvestigateSVG} from '../assets/investigate.svg';
 
 function Ticker() {
   const [latestCasesData, setLatestCasesData] = useState([]);
@@ -46,8 +48,9 @@ function Ticker() {
               <div className="ticker-offence">
                 <strong>Offence:</strong> {entry.scamType}
               </div>
+              <InvestigateSVG className='ticker-svg' width="22" height="29"  />
               <div className="ticker-amount">
-                <strong>Amount:</strong> {entry.amount}
+                <strong>Amount:   </strong><span className='ticker-gp'>{entry.amount}</span>
               </div>
               <div className="ticker-items">
                 <strong>Items:</strong> {replaceItemNamesWithIcons(entry.items)
@@ -76,8 +79,9 @@ function Ticker() {
               <div className="ticker-offence">
                 <strong>Offence:</strong> {entry.scamType}
               </div>
+              <ResolvedSVG className='ticker-svg' width="24" height="24" />
               <div className="ticker-amount">
-                <strong>Amount:</strong> {entry.amount}
+                <strong>Amount:</strong> <span className='ticker-gp'>{entry.amount}</span>
               </div>
               <div className="ticker-items">
                 <strong>Items:</strong> {replaceItemNamesWithIcons(entry.items)

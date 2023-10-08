@@ -77,21 +77,6 @@ function ResolvedTickets() {
     setTag(tag === selectedTag ? '' : selectedTag);
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Open':
-        return '#fff3cd';
-      case 'Resolved':
-        return '#d4edda';
-      case 'New':
-        return '#d1ecf1';
-      case 'Resolved':
-        return '#f8d7da';
-      default:
-        return '';
-    }
-  };
-
   return (
     <div className="resolved-tickets">
       <h2>Resolved Tickets</h2>
@@ -118,7 +103,7 @@ function ResolvedTickets() {
       </div>
       <div className="card-container">
         {filteredTickets.map((ticket) => (
-          <div key={ticket.id} className="ticket-card" style={{ borderColor: getStatusColor(ticket.status) }}>
+          <div key={ticket.id} className="ticket-card">
             <div className="card-header">
               <span>ID: {ticket.id}</span>
               <select
