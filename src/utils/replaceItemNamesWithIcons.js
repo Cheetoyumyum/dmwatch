@@ -32,8 +32,8 @@ const itemNameToIcon = {
   "amulet of strength": "amulet-of-strength.png",
   "amulet of glory": "amulet-of-glory.png",
   "amulet of fury" : "amulet-of-fury.png",
-  "inquisitors set" : "inquisitors-armour-set.png",
-  "inq set" : "inquisitors-armour-set.png",
+  "inquisitors set" : "inq-set.png",
+  "inq set" : "inq-set.png",
   "Armadyl Godsword" : "armadyl-godsword.png",
   "armadyl gs" : "armadyl-godsword.png"
 };
