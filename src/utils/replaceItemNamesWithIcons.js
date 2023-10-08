@@ -33,6 +33,7 @@ const itemNameToIcon = {
   "amulet of glory": "amulet-of-glory.png",
   "amulet of fury" : "amulet-of-fury.png",
   "inquisitors set" : "inquisitors-armour-set.png",
+  "inq set" : "inquisitors-armour-set.png"
 };
 
 function replaceItemNamesWithIcons(items) {
