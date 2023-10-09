@@ -8,7 +8,6 @@ function ResolvedTickets () {
   const [searchTerm, setSearchTerm] = useState('')
   const [tag, setTag] = useState('')
   const [staffComment, setStaffComment] = useState('')
-  const [selectedTicketId, setSelectedTicketId] = useState(null)
 
   useEffect(() => {
     getAllTickets()
@@ -54,17 +53,6 @@ function ResolvedTickets () {
         .catch((error) => {
           console.error(`Error saving ticket ${ticketId}: ${error.message}`)
         })
-    }
-  }
-
-  const selectTicket = (ticketId) => {
-    setSelectedTicketId(ticketId)
-    const selectedTicket = resolvedTickets.find((ticket) => ticket.id === ticketId)
-
-    if (selectedTicket) {
-      setStaffComment(selectedTicket.staffComment || '')
-    } else {
-      setStaffComment('')
     }
   }
 
@@ -157,7 +145,7 @@ function ResolvedTickets () {
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
               </div>
-              <button disabled>Select Items (Broken rightnow)</button>
+              <button disabled>Select Items (Broken right now)</button>
               <div className="field">
                 <label>Scammer Name</label>
                 <input

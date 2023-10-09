@@ -1,4 +1,3 @@
-// ManageTickets.js
 import React, { useState, useEffect } from 'react'
 import '../../styles/AdminTicket.css?v=1'
 import { getAllTickets, updateTicketById } from '../../server/ticketService'
@@ -13,6 +12,7 @@ function ManageTickets () {
   const [filterStatus, setFilterStatus] = useState('')
   const [staffComment, setStaffComment] = useState('')
   const [isItemPopupOpen, setIsItemPopupOpen] = useState(false)
+  // eslint-disable-next-line no-unused-vars
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedTicketId, setSelectedTicketId] = useState(null)
 

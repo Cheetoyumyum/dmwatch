@@ -9,6 +9,7 @@ function DeniedTickets () {
   const [searchTerm, setSearchTerm] = useState('')
   const [tag, setTag] = useState('')
   const [isItemPopupOpen, setIsItemPopupOpen] = useState(false)
+  // eslint-disable-next-line no-unused-vars
   const [selectedItems, setSelectedItems] = useState([])
   const [staffComment, setStaffComment] = useState('')
 
