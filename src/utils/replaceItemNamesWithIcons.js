@@ -3,11 +3,11 @@ import React from 'react'
 const itemNameToIcon = {
   'dharoks set': 'dharok-set.png',
   'dharok armour set': 'dharok-set.png',
-  'guthans set': 'guthans-set.png',
+  'guthans set': 'Guthans-set.png',
   'dharoks greataxe': 'dh-axe.png',
   'dragon boots': 'dragon-boots.png',
-  'dragon claws': 'Dragon-claws.png',
-  'brimstone ring': 'Brimstone-ring.png',
+  'dragon claws': 'dragon-claws.png',
+  'brimstone ring': 'brimstone-ring.png',
   bcp: 'bandos-chestplate.png',
   'bandos chestplate': 'bandos-chestplate.png',
   tassys: 'bandos-tassets.png',
@@ -45,9 +45,9 @@ const itemNameToIcon = {
   '3rd Age Robe Bottom': '3a-robe-bottom.png',
   'Guthans set': 'Guthans-set.png',
   'Veracs Set': 'Veracs-set.png',
-  'Torva Full Helm': 'Torva-helm.png',
-  'Torva Platebody': 'Torva-body.png',
-  'Torva Platelegs': 'Torva-legs.png',
+  'Torva Full Helm': 'torva-helm.png',
+  'Torva Platebody': 'torva-body.png',
+  'Torva Platelegs': 'torva-legs.png',
   'Abyssal Bludgeon': 'Abyssal-bludgeon.png',
   'Inquisitors Mace': 'inq-mace.png'
 }
