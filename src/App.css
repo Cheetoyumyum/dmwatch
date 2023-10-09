@@ -28,9 +28,10 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-image: url('./assets/Thumb.svg');
-  background-size: contain; /* Use "contain" to prevent distortion */
-  width: 16px; /* Set fixed width */
-  height: 16px; /* Set fixed height */
+  background-size: 16px auto;
+  background-repeat: contain;
+  width: 16px;
+  height: auto;
 }
 
 ::-webkit-scrollbar-button:start:decrement {
