@@ -16,6 +16,7 @@ import ManagePlayers from './components/AdminTickets/ManagePlayers'
 import Resolve from './components/resolve'
 
 function App () {
+  // eslint-disable-next-line no-unused-vars
   const [loadingPlayerFile, setLoadingPlayerFile] = useState(false)
   const [reportModalType, setReportModalType] = useState('')
   const [signInModalType, setSignInModalType] = useState('')
