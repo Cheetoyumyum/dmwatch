@@ -24,8 +24,6 @@ const itemNameToIcon = {
   "primordial boots": "Primordial-boots.png",
   "elder maul": "elder-maul.png",
   "abyssal whip": "abyssal-whip.png",
-  "brimstone ring" : "brimstone-ring.png",
-  "dragon dagger": "dragon-dagger.png",
   "Elysian spirit shield": "elysian-spirit-shield.png",
   "ags": "armadyl-godsword.png",
   "amulet of torture": "amulet-of-torture.png",
