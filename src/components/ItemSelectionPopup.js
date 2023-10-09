@@ -29,9 +29,7 @@ const items = [
   '3rd Age Robe Top',
   '3rd Age Robe Bottom',
   'Ghrazi Rapier',
-  'Elysian Spirit Shield',
-  'Guthans set',
-  'Veracs set'
+  'Elysian Spirit Shield'
 ]
 
 function ItemSelectionPopup ({ isOpen, onClose, onSelectItems }) {
