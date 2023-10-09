@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons';
 import Draggable from 'react-draggable';
@@ -33,7 +34,7 @@ const items = [
   "Veracs set"
 ];
 
-function ItemSelectionPopup({ isOpen, onClose, onSelectItems, ticketId }) {
+function ItemSelectionPopup({ isOpen, onClose, onSelectItems }) {
   const [selectedItems, setSelectedItems] = useState([]);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
@@ -46,7 +47,8 @@ function ItemSelectionPopup({ isOpen, onClose, onSelectItems, ticketId }) {
   };
 
   const handleConfirmSelection = () => {
-    onSelectItems(ticketId, selectedItems);
+    onSelectItems(selectedItems);
+    onClose();
   };
 
   const handleOpenPopup = (e) => {
