@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Header.css'
 import logoImage from '../assets/logo.png'
+import PropTypes from 'prop-types'
 
 function Header ({ onOpenReportModal }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false)
 
   useEffect(() => {
     const checkAuthAndAdminStatus = () => {
@@ -52,7 +52,8 @@ function Header ({ onOpenReportModal }) {
           <Link to='/admin'>
             <button className='nav-button'>Admin</button>
           </Link>
-          {isAuthenticated ? (
+          {isAuthenticated
+            ? (
             <div className="user-dropdown">
               <button className="username">Username</button>
               <div className="dropdown-content">
@@ -65,15 +66,20 @@ function Header ({ onOpenReportModal }) {
                 )}
               </div>
             </div>
-          ) : (
+              )
+            : (
             <button className="sign-in" >
               Sign In
             </button>
-          )}
+              )}
         </div>
       </nav>
     </header>
   )
+}
+
+Header.propTypes = {
+  onOpenReportModal: PropTypes.func.isRequired
 }
 
 export default Header
