@@ -7,6 +7,8 @@ function ResolvedTickets() {
   const [filteredTickets, setFilteredTickets] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [tag, setTag] = useState('');
+  const [staffComment, setStaffComment] = useState('');
+  const [selectedTicketId, setSelectedTicketId] = useState(null);
 
   useEffect(() => {
     getAllTickets()
@@ -38,7 +40,10 @@ function ResolvedTickets() {
     const ticketToUpdate = resolvedTickets.find((ticket) => ticket.id === ticketId);
 
     if (ticketToUpdate) {
-      updateTicketById(ticketId, ticketToUpdate)
+      updateTicketById(ticketId, {
+        ...ticketToUpdate,
+        staffComment: staffComment,
+      })
         .then((updatedTicket) => {
           if (updatedTicket) {
             console.log(`Ticket ${ticketId} saved successfully.`);
@@ -49,6 +54,17 @@ function ResolvedTickets() {
         .catch((error) => {
           console.error(`Error saving ticket ${ticketId}: ${error.message}`);
         });
+    }
+  };
+
+  const selectTicket = (ticketId) => {
+    setSelectedTicketId(ticketId);
+    const selectedTicket = resolvedTickets.find((ticket) => ticket.id === ticketId);
+
+    if (selectedTicket) {
+      setStaffComment(selectedTicket.staffComment || '');
+    } else {
+      setStaffComment('');
     }
   };
 
@@ -103,10 +119,7 @@ function ResolvedTickets() {
       </div>
       <div className="card-container">
         {filteredTickets.map((ticket) => (
-          <div
-            key={ticket.id}
-            className="ticket-card"
-          >
+          <div key={ticket.id} className="ticket-card">
             <div className="card-header">
               <span>ID: {ticket.id}</span>
               <select
@@ -116,7 +129,7 @@ function ResolvedTickets() {
                 <option value="Open">Open</option>
                 <option value="Resolved">Resolved</option>
                 <option value="New">New</option>
-                <option value="Resolved">Resolved</option>
+                <option value="Denied">Denied</option>
               </select>
             </div>
             <div className="card-body">
@@ -144,6 +157,7 @@ function ResolvedTickets() {
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
               </div>
+              <button disabled>Select Items (Broken rightnow)</button>
               <div className="field">
                 <label>Scammer Name</label>
                 <input
@@ -199,6 +213,14 @@ function ResolvedTickets() {
                   onChange={(e) => handleChange(ticket.id, 'debtRepaidGB', e.target.value)}
                 />
               </div>
+              <div className="field">
+                <label>Staff Comments</label>
+                <textarea
+                  value={staffComment}
+                  onChange={(e) => setStaffComment(e.target.value)}
+                  rows="5"
+                />
+              </div>
               <button
                 onClick={() => handleSave(ticket.id)}
                 className="admin-btn"
@@ -210,8 +232,7 @@ function ResolvedTickets() {
         ))}
       </div>
     </div>
-  );  
+  );
 }
-
 
 export default ResolvedTickets;

@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminTicket.css?v=1';
-import { getAllTickets, updateTicketById } from '../../server/ticketService'; // Update the path to import ticket service
+import { getAllTickets, updateTicketById } from '../../server/ticketService';
+import ItemSelectionPopup from '../ItemSelectionPopup';
 
 function DeniedTickets() {
   const [deniedTickets, setDeniedTickets] = useState([]);
   const [filteredTickets, setFilteredTickets] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [tag, setTag] = useState('');
+  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [staffComment, setStaffComment] = useState('');
 
   useEffect(() => {
-    // Fetch all tickets from the service
     getAllTickets()
       .then((tickets) => {
-        // Filter and order denied tickets
         const filteredDeniedTickets = tickets
           .filter((ticket) => ticket.status === 'Denied')
           .sort((a, b) => b.id - a.id);
@@ -94,6 +96,14 @@ function DeniedTickets() {
     }
   };
 
+  const handleOpenItemPopup = () => {
+    setIsItemPopupOpen(true);
+  };
+
+  const handleCloseItemPopup = () => {
+    setIsItemPopupOpen(false);
+  };
+
   return (
     <div className="denied-tickets">
       <h2>Denied Tickets</h2>
@@ -161,6 +171,7 @@ function DeniedTickets() {
                   value={ticket.items}
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
+                <button disabled onClick={handleOpenItemPopup}>Select Items (Broken rightnow)</button>
               </div>
               <div className="field">
                 <label>Scammer Name</label>
@@ -217,6 +228,14 @@ function DeniedTickets() {
                   onChange={(e) => handleChange(ticket.id, 'debtRepaid', e.target.value)}
                 />
               </div>
+              <div className="field">
+                <label>Staff Comments</label>
+                <textarea
+                  value={staffComment}
+                  onChange={(e) => setStaffComment(e.target.value)}
+                  rows="5"
+                />
+              </div>
               <button
                 onClick={() => handleSave(ticket.id)}
                 className="admin-btn"
@@ -227,9 +246,15 @@ function DeniedTickets() {
           </div>
         ))}
       </div>
+      {isItemPopupOpen && (
+        <ItemSelectionPopup
+          isOpen={isItemPopupOpen}
+          onClose={handleCloseItemPopup}
+          onSelectItems={(items) => setSelectedItems(items)}
+        />
+      )}
     </div>
   );  
 }
-
 
 export default DeniedTickets;

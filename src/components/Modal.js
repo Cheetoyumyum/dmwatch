@@ -1,14 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons';
 import '../styles/Modal.css';
+import ItemSelectionPopup from './ItemSelectionPopup';
 
 function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
   const [scammerName, setScammerName] = useState('');
   const [victimName, setVictimName] = useState('');
   const [amountScammed, setAmountScammed] = useState('');
-  const [itemsScammed, setItemsScammed] = useState('');
+  const [itemsScammed, setItemsScammed] = useState([]);
   const [description, setDescription] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false);
+  const [popupX, setPopupX] = useState(400);
+  const [popupY, setPopupY] = useState(400);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffsetX, setDragOffsetX] = useState(0);
+  const [dragOffsetY, setDragOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (isDragging) {
+        setPopupX(e.clientX - dragOffsetX);
+        setPopupY(e.clientY - dragOffsetY);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isItemPopupOpen) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    } else {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isItemPopupOpen, isDragging, dragOffsetX, dragOffsetY]);
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragOffsetX(e.clientX - popupX);
+    setDragOffsetY(e.clientY - popupY);
+  };
 
   const handleReportSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +74,26 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
     setSelectedFile(null);
     setPreviewUrl(null);
   };
+
+  const handleAddItemsClick = () => {
+    setIsItemPopupOpen(true);
+  };
+
+  const handleCloseItemPopup = () => {
+    setIsItemPopupOpen(false);
+  };
+
+  const handleItemSelect = (item) => {
+    setItemsScammed([...itemsScammed, item]);
+  };
+
+  const handleRemoveItem = (indexToRemove) => {
+    const updatedItems = [...itemsScammed];
+    updatedItems.splice(indexToRemove, 1);
+    setItemsScammed(updatedItems);
+  };
+
+  const itemsWithIcons = replaceItemNamesWithIcons(itemsScammed.join(', '));
 
   const reportSubmissionForm = (
     <form onSubmit={handleReportSubmit}>
@@ -74,15 +135,31 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
       </div>
       <div className="form-group">
         <label htmlFor="itemsScammed">Items Scammed *</label>
-        <textarea
-          id="itemsScammed"
-          value={itemsScammed}
-          onChange={(e) => setItemsScammed(e.target.value)}
-          placeholder="Enter the items scammed"
-          required
-          maxLength="200"
-          className="modal-textarea"
-        />
+        <div className="items-selected">
+          {itemsWithIcons.length > 0 ? (
+            itemsWithIcons.map((itemWithIcon, index) => (
+              <div key={index} className="selected-item">
+                <div className="remove-item" onClick={() => handleRemoveItem(index)}>
+                  {itemWithIcon}
+                </div>
+              </div>
+            ))
+          ) : null}
+        </div>
+        <button
+          type="button"
+          onClick={handleAddItemsClick}
+          className="add-items-button"
+        >
+          Add Items
+        </button>
+        <button
+          type="button"
+          onClick={() => setItemsScammed([])}
+          className="remove-items-button"
+        >
+          Remove Items
+        </button>
       </div>
       <div className="form-group">
         <label htmlFor="description">Description of Scam *</label>
@@ -107,6 +184,7 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
           onChange={(e) => handleEvidenceUpload(e)}
           multiple
           className="modal-input custom-file-input"
+          size={500 * 1024 * 1024}
         />
         <div className="selected-files">
           {selectedFile ? (
@@ -141,6 +219,12 @@ function Modal({ isOpen, onClose, title, onSubmit, modalType }) {
           {modalType === 'SignIn' ? null : reportSubmissionForm}
         </div>
       </div>
+
+      <ItemSelectionPopup
+        isOpen={isItemPopupOpen}
+        onClose={handleCloseItemPopup}
+        onSelectItems={handleItemSelect}
+      />
     </div>
   );
 }

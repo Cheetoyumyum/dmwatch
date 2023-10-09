@@ -1,0 +1,133 @@
+.item-selection-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.item-selection-popup.open {
+  opacity: 1;
+  pointer-events: auto;
+  
+}
+
+.item-selection-button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.item-selection-button:hover {
+  background-color: #333;
+}
+
+.preview-selected-items {
+  text-align: center;
+}
+
+.preview-selected-items ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-selected-items ul li {
+  margin: 0 10px;
+}
+
+.item-icon img {
+  display: block;
+  margin: 0 auto;
+}
+
+.popup-content {
+  background-color: #1e1e1e;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  max-width: 400px;
+  width: 100%;
+  color: #fff;
+  perspective: 1000px;
+  transform: scale(0.9) translateZ(100px);
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.popup-content:hover {
+  transform: scale(0.95) translateZ(50px);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.popup-title::before {
+  content: "\2801\2801\2801\2801";
+  display: block;
+  color: #333;
+  font-size: 12px;
+  line-height: 0.7;
+  text-align: center;
+  margin-bottom: 10px;
+  pointer-events: none;
+}
+.popup-title {
+  margin-bottom: 10px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: grab;
+}
+
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-height: 300px;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #333;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+.item-container:hover {
+  background-color: #444;
+}
+
+.item-text {
+  text-align: center;
+  margin-top: 5px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

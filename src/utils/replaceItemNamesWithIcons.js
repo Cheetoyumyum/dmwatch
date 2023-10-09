@@ -1,10 +1,10 @@
 const itemNameToIcon = {
-  "dharok armour set": "dharok-set.png",
-  "guthans armour set": "guthans-set.png",
-  "dharoks greataxe": "dharok-greataxe.png",
+  "dharoks set": "dharok-set.png",
+  "guthans set": "guthans-set.png",
+  "dharoks greataxe": "dh-axe.png",
   "dragon boots": "dragon-boots.png",
-  "dragon claws": "Dragon_claws.png",
-  "brimstone ring": "Brimstone_ring.png",
+  "dragon claws": "Dragon-claws.png",
+  "brimstone ring": "Brimstone-ring.png",
   "bcp" : "bandos-chestplate.png",
   "bandos chestplate" : "bandos-chestplate.png",
   "tassys" : "bandos-tassets.png",
@@ -35,13 +35,26 @@ const itemNameToIcon = {
   "inquisitors set" : "inq-set.png",
   "inq set" : "inq-set.png",
   "Armadyl Godsword" : "armadyl-godsword.png",
-  "armadyl gs" : "armadyl-godsword.png"
+  "armadyl gs" : "armadyl-godsword.png",
+  "Ancient Godsword" : "ancient-godsword.png",
+  "Voidwaker": "Voidwaker.png",
+  "Fang" : "Fang.png",
+  "Ghrazi Rapier" : "Ghrazi-Rapier.png",
+  "3rd Age Robe Top" : "3a-robe-top.png",
+  "3rd Age Robe Bottom" : "3a-robe-bottom.png",
+  "Guthans set" : "Guthans-set.png",
+  "Veracs Set" : "Veracs-set.png",
+  "Torva Full Helm" : "Torva-helm.png",
+  "Torva Platebody" : "Torva-body.png",
+  "Torva Platelegs" : "Torva-legs.png",
+  "Abyssal Bludgeon" : "Abyssal-bludgeon.png",
+  "Inquisitors Mace" : "inq-mace.png"
 };
 
 function replaceItemNamesWithIcons(items) {
-  const itemsArray = items.split(', ');
+  const itemsArray = items.split(',');
   const itemsWithIcons = itemsArray.map((itemName, index) => {
-    const lowerItemName = itemName.toLowerCase();
+    const lowerItemName = itemName.trim().toLowerCase();
     const matchingItem = Object.keys(itemNameToIcon).find(
       (key) => key.toLowerCase() === lowerItemName
     );

@@ -130,7 +130,11 @@ textarea {
   padding: 0;
 }
 
-.custom-file-input-label {
+.remove-items-button {
+  margin-left: 5px;
+}
+
+.custom-file-input-label, .add-items-button, .remove-items-button {
   background-color: #444;
   color: #fff;
   padding: 10px 15px;
@@ -142,7 +146,7 @@ textarea {
   text-align: center;
 }
 
-.custom-file-input-label:hover {
+.custom-file-input-label:hover, .add-items-button:hover, .remove-items-button:hover {
   background-color: #555;
 }
 
@@ -164,7 +168,21 @@ textarea {
   cursor: pointer;
 }
 
+.selected-item {
+  background-color: #222;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
 .selected-file:hover {
+  background-color: #555;
+}
+
+.selected-item:hover {
   background-color: #555;
 }
 

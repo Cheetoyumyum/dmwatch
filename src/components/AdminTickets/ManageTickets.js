@@ -1,6 +1,8 @@
+// ManageTickets.js
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminTicket.css?v=1';
 import { getAllTickets, updateTicketById } from '../../server/ticketService';
+import ItemSelectionPopup from '../ItemSelectionPopup';
 
 function ManageTickets() {
   const [manageTickets, setManageTickets] = useState([]);
@@ -9,6 +11,10 @@ function ManageTickets() {
   const [tag, setTag] = useState('');
   const [debtRepaid, setDebtRepaid] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
+  const [staffComment, setStaffComment] = useState('');
+  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedTicketId, setSelectedTicketId] = useState(null);
 
   useEffect(() => {
     getAllTickets().then((tickets) => {
@@ -52,6 +58,7 @@ function ManageTickets() {
       const updatedTicket = {
         ...ticketToUpdate,
         debtRepaid: debtRepaid,
+        staffComment: staffComment,
       };
 
       updateTicketById(ticketId, updatedTicket)
@@ -115,6 +122,27 @@ function ManageTickets() {
       default:
         return '';
     }
+  };
+
+  const handleOpenItemPopup = (ticketId) => {
+    setSelectedTicketId(ticketId);
+    setIsItemPopupOpen(true);
+  };
+
+  const handleCloseItemPopup = () => {
+    setIsItemPopupOpen(false);
+  };
+
+  const handleSelectItems = (ticketId, items) => {
+    const updatedTickets = manageTickets.map((ticket) => {
+      if (ticket.id === ticketId) {
+        return { ...ticket, items: items.join(', ') };
+      }
+      return ticket;
+    });
+
+    setManageTickets(updatedTickets);
+    setSelectedItems(items);
   };
 
   return (
@@ -217,6 +245,7 @@ function ManageTickets() {
                   value={ticket.items}
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
+                <button onClick={() => handleOpenItemPopup(ticket.id)}>Select Items</button>
               </div>
               <div className="field">
                 <label>Scammer Name</label>
@@ -273,6 +302,14 @@ function ManageTickets() {
                   onChange={(e) => setDebtRepaid(e.target.value)}
                 />
               </div>
+              <div className="field">
+                <label>Staff Comments</label>
+                <textarea
+                  value={staffComment}
+                  onChange={(e) => setStaffComment(e.target.value)}
+                  rows="5"
+                />
+              </div>
               <button
                 onClick={() => handleSave(ticket.id)}
                 className="admin-btn"
@@ -283,6 +320,14 @@ function ManageTickets() {
           </div>
         ))}
       </div>
+      {isItemPopupOpen && (
+        <ItemSelectionPopup
+          isOpen={isItemPopupOpen}
+          onClose={handleCloseItemPopup}
+          onSelectItems={handleSelectItems}
+          ticketId={selectedTicketId}
+        />
+      )}
     </div>
   );
 }
