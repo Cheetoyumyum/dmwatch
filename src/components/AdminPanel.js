@@ -1,22 +1,22 @@
-import React from 'react';
-import { FaTicketAlt, FaCheckSquare, FaTimesCircle, FaUsers } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import '../styles/AdminPanel.css';
-import SearchBar from './SearchBar';
+import React from 'react'
+import { FaTicketAlt, FaCheckSquare, FaTimesCircle, FaUsers } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import '../styles/AdminPanel.css'
+import SearchBar from './SearchBar'
 
-function AdminPanel() {
-  const navigate = useNavigate();
+function AdminPanel () {
+  const navigate = useNavigate()
 
   const handleTileClick = (tileName) => {
     const tileToRouteMap = {
       'Manage Tickets': 'manage-tickets',
       'Resolved Tickets': 'resolved-tickets',
       'Denied Tickets': 'denied-tickets',
-      'Manage Players': 'manage-players',
-    };
+      'Manage Players': 'manage-players'
+    }
 
-    navigate(`/admin/${tileToRouteMap[tileName]}`);
-  };
+    navigate(`/admin/${tileToRouteMap[tileName]}`)
+  }
 
   return (
     <div className="admin-panel">
@@ -44,7 +44,7 @@ function AdminPanel() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default AdminPanel;
+export default AdminPanel

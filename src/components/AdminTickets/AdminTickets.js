@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import ManageTickets from './ManageTickets';
-import ResolvedTickets from './ResolvedTickets';
-import DeniedTickets from './DeniedTickets';
-import '../../styles/AdminTicket.css?v=1'; 
+import React, { useState } from 'react'
+import ManageTickets from './ManageTickets'
+import ResolvedTickets from './ResolvedTickets'
+import DeniedTickets from './DeniedTickets'
+import '../../styles/AdminTicket.css?v=1'
 
-function AdminTickets() {
-  const [activeView, setActiveView] = useState('manage');
+function AdminTickets () {
+  const [activeView, setActiveView] = useState('manage')
 
   const handleViewChange = (view) => {
-    setActiveView(view);
-  };
+    setActiveView(view)
+  }
 
   return (
     <div className="admin-tickets-container">
@@ -40,7 +40,7 @@ function AdminTickets() {
         {activeView === 'denied' && <DeniedTickets />}
       </div>
     </div>
-  );
+  )
 }
 
-export default AdminTickets;
+export default AdminTickets

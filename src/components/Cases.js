@@ -1,59 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { getAllTickets } from '../server/ticketService';
-import Error404 from './Error404';
-import '../styles/Cases.css?v=1';
-import LoadingScreen from './LoadingScreen';
-import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons';
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { getAllTickets } from '../server/ticketService'
+import Error404 from './Error404'
+import '../styles/Cases.css?v=1'
+import LoadingScreen from './LoadingScreen'
+import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons'
 
-function Cases() {
-  const { id } = useParams();
-  const [caseData, setCaseData] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+function Cases () {
+  const { id } = useParams()
+  const [caseData, setCaseData] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [notFound, setNotFound] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData () {
       try {
-        const tickets = await getAllTickets();
-        const ticket = tickets.find((ticket) => ticket.id === id);
+        const tickets = await getAllTickets()
+        const ticket = tickets.find((ticket) => ticket.id === id)
 
         if (ticket) {
-          setCaseData(ticket);
-          setLoading(false);
+          setCaseData(ticket)
+          setLoading(false)
         } else {
-          setNotFound(true);
-          setLoading(false);
+          setNotFound(true)
+          setLoading(false)
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setNotFound(true);
-        setLoading(false);
+        console.error('Error fetching data:', error)
+        setNotFound(true)
+        setLoading(false)
       }
     }
 
-    fetchData();
-  }, [id]);
+    fetchData()
+  }, [id])
 
   if (loading) {
-    return <LoadingScreen />;
+    return <LoadingScreen />
   }
 
   if (notFound) {
-    return <Error404 />;
+    return <Error404 />
   }
 
   const handleBack = () => {
-    const previousURL = location.state ? location.state.from : '/';
-    navigate(previousURL);
-  };
+    const previousURL = location.state ? location.state.from : '/'
+    navigate(previousURL)
+  }
 
   const handleGoToPlayer = () => {
-    const playerURL = `/player/${caseData.scammerName}`;
-    navigate(playerURL);
-  };
+    const playerURL = `/player/${caseData.scammerName}`
+    navigate(playerURL)
+  }
 
   return (
     <div className="cases-container">
@@ -121,9 +121,9 @@ function Cases() {
           Back
         </button>
       </div>
-      <strong className="id-label">ID: {caseData.id}</strong> 
+      <strong className="id-label">ID: {caseData.id}</strong>
     </div>
-  );
+  )
 }
 
-export default Cases;
+export default Cases

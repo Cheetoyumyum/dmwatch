@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/AdminTicket.css?v=1';
-import { getAllTickets, updateTicketById } from '../../server/ticketService';
+import React, { useState, useEffect } from 'react'
+import '../../styles/AdminTicket.css?v=1'
+import { getAllTickets, updateTicketById } from '../../server/ticketService'
 
-function ManagePlayers() {
-  const [managePlayers, setManagePlayers] = useState([]);
-  const [filteredPlayers, setFilteredPlayers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+function ManagePlayers () {
+  const [managePlayers, setManagePlayers] = useState([])
+  const [filteredPlayers, setFilteredPlayers] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     getAllTickets().then((players) => {
       const uniquePlayers = Array.from(
         new Map(players.map((player) => [player.scammerName, player])).values()
-      );
+      )
 
       const sortedPlayers = uniquePlayers.sort((a, b) => {
         const statusOrder = {
@@ -20,111 +20,110 @@ function ManagePlayers() {
           'Serial Scammer': 2,
           Staff: 3,
           Authentic: 4,
-          Streamer: 5,
-        };
+          Streamer: 5
+        }
 
         if (statusOrder[a.status] < statusOrder[b.status]) {
-          return -1;
+          return -1
         } else if (statusOrder[a.status] > statusOrder[b.status]) {
-          return 1;
+          return 1
         } else {
-          return b.id.localeCompare(a.id);
+          return b.id.localeCompare(a.id)
         }
-      });
+      })
 
-      setManagePlayers(sortedPlayers);
-      setFilteredPlayers(sortedPlayers);
-    });
-  }, []);
+      setManagePlayers(sortedPlayers)
+      setFilteredPlayers(sortedPlayers)
+    })
+  }, [])
 
   const handleChange = (playerId, field, value) => {
     const updatedPlayers = managePlayers.map((player) => {
       if (player.id === playerId) {
         return {
           ...player,
-          [field]: value,
-        };
+          [field]: value
+        }
       }
-      return player;
-    });
+      return player
+    })
 
-    setManagePlayers(updatedPlayers);
-  };
+    setManagePlayers(updatedPlayers)
+  }
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
-      setFilteredPlayers(managePlayers);
+      setFilteredPlayers(managePlayers)
     } else {
-      const searchTermLower = searchTerm.toLowerCase();
+      const searchTermLower = searchTerm.toLowerCase()
       const filtered = managePlayers.filter((player) => {
-        let searchField = '';
-        searchField = `${player.id} ${player.scammerName.toLowerCase()} ${player.victimName.toLowerCase()} ${player.amount}`;
+        let searchField = ''
+        searchField = `${player.id} ${player.scammerName.toLowerCase()} ${player.victimName.toLowerCase()} ${player.amount}`
 
-        return searchField.includes(searchTermLower);
-      });
-      setFilteredPlayers(filtered);
+        return searchField.includes(searchTermLower)
+      })
+      setFilteredPlayers(filtered)
     }
-  }, [searchTerm, managePlayers]);
+  }, [searchTerm, managePlayers])
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'Scammer':
-        return '#ab0505';
+        return '#ab0505'
       case 'Victim':
-        return '#28a745';
+        return '#28a745'
       case 'Serial Scammer':
-        return '#da0d0d';
+        return '#da0d0d'
       case 'Staff':
-        return '#0db3cc';
+        return '#0db3cc'
       case 'Authentic':
-        return '#28a745';
+        return '#28a745'
       case 'Streamer':
-        return '#8a00fc';
+        return '#8a00fc'
       default:
-        return '';
+        return ''
     }
-  };
+  }
 
   const calculateTotalAmount = (playerName) => {
     return managePlayers
       .filter((player) => player.scammerName === playerName)
       .reduce((total, player) => {
-        return total + parseFloat(player.amount);
-      }, 0);
-  };
+        return total + parseFloat(player.amount)
+      }, 0)
+  }
 
   const getPlayerPreviousNames = (playerName) => {
-    const previousNames = new Set();
+    const previousNames = new Set()
     managePlayers.forEach((player) => {
       if (player.scammerName === playerName && player.previousNames) {
         player.previousNames.split(',').forEach((name) => {
-          previousNames.add(name.trim());
-        });
+          previousNames.add(name.trim())
+        })
       }
-    });
-    return Array.from(previousNames);
-  };
+    })
+    return Array.from(previousNames)
+  }
 
   const handleSave = (playerId) => {
-    const playerToUpdate = managePlayers.find((player) => player.id === playerId);
+    const playerToUpdate = managePlayers.find((player) => player.id === playerId)
 
     if (playerToUpdate) {
-
-      delete playerToUpdate.evidenceStrength;
+      delete playerToUpdate.evidenceStrength
 
       updateTicketById(playerId, playerToUpdate)
         .then((updatedPlayer) => {
           if (updatedPlayer) {
-            console.log(`Player ${playerId} saved successfully.`);
+            console.log(`Player ${playerId} saved successfully.`)
           } else {
-            console.error(`Player ${playerId} not found.`);
+            console.error(`Player ${playerId} not found.`)
           }
         })
         .catch((error) => {
-          console.error(`Error saving player ${playerId}: ${error.message}`);
-        });
+          console.error(`Error saving player ${playerId}: ${error.message}`)
+        })
     }
-  };
+  }
 
   return (
     <div className="manage-players">
@@ -181,7 +180,7 @@ function ManagePlayers() {
         ))}
       </div>
     </div>
-  );  
+  )
 }
 
-export default ManagePlayers;
+export default ManagePlayers

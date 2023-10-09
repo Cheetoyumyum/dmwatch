@@ -1,97 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/AdminTicket.css?v=1';
-import { getAllTickets, updateTicketById } from '../../server/ticketService';
+import React, { useState, useEffect } from 'react'
+import '../../styles/AdminTicket.css?v=1'
+import { getAllTickets, updateTicketById } from '../../server/ticketService'
 
-function ResolvedTickets() {
-  const [resolvedTickets, setResolvedTickets] = useState([]);
-  const [filteredTickets, setFilteredTickets] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [tag, setTag] = useState('');
-  const [staffComment, setStaffComment] = useState('');
-  const [selectedTicketId, setSelectedTicketId] = useState(null);
+function ResolvedTickets () {
+  const [resolvedTickets, setResolvedTickets] = useState([])
+  const [filteredTickets, setFilteredTickets] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [tag, setTag] = useState('')
+  const [staffComment, setStaffComment] = useState('')
+  const [selectedTicketId, setSelectedTicketId] = useState(null)
 
   useEffect(() => {
     getAllTickets()
       .then((tickets) => {
         const filteredResolvedTickets = tickets
           .filter((ticket) => ticket.status === 'Resolved')
-          .sort((a, b) => b.id - a.id);
+          .sort((a, b) => b.id - a.id)
 
-        setResolvedTickets(filteredResolvedTickets);
-        setFilteredTickets(filteredResolvedTickets);
+        setResolvedTickets(filteredResolvedTickets)
+        setFilteredTickets(filteredResolvedTickets)
       })
       .catch((error) => {
-        console.error('Error fetching tickets:', error);
-      });
-  }, []);
+        console.error('Error fetching tickets:', error)
+      })
+  }, [])
 
   const handleChange = (ticketId, field, value) => {
     const updatedTickets = resolvedTickets.map((ticket) => {
       if (ticket.id === ticketId) {
-        return { ...ticket, [field]: value };
+        return { ...ticket, [field]: value }
       }
-      return ticket;
-    });
+      return ticket
+    })
 
-    setResolvedTickets(updatedTickets);
-  };
+    setResolvedTickets(updatedTickets)
+  }
 
   const handleSave = (ticketId) => {
-    const ticketToUpdate = resolvedTickets.find((ticket) => ticket.id === ticketId);
+    const ticketToUpdate = resolvedTickets.find((ticket) => ticket.id === ticketId)
 
     if (ticketToUpdate) {
       updateTicketById(ticketId, {
         ...ticketToUpdate,
-        staffComment: staffComment,
+        staffComment
       })
         .then((updatedTicket) => {
           if (updatedTicket) {
-            console.log(`Ticket ${ticketId} saved successfully.`);
+            console.log(`Ticket ${ticketId} saved successfully.`)
           } else {
-            console.error(`Ticket ${ticketId} not found.`);
+            console.error(`Ticket ${ticketId} not found.`)
           }
         })
         .catch((error) => {
-          console.error(`Error saving ticket ${ticketId}: ${error.message}`);
-        });
+          console.error(`Error saving ticket ${ticketId}: ${error.message}`)
+        })
     }
-  };
+  }
 
   const selectTicket = (ticketId) => {
-    setSelectedTicketId(ticketId);
-    const selectedTicket = resolvedTickets.find((ticket) => ticket.id === ticketId);
+    setSelectedTicketId(ticketId)
+    const selectedTicket = resolvedTickets.find((ticket) => ticket.id === ticketId)
 
     if (selectedTicket) {
-      setStaffComment(selectedTicket.staffComment || '');
+      setStaffComment(selectedTicket.staffComment || '')
     } else {
-      setStaffComment('');
+      setStaffComment('')
     }
-  };
+  }
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
-      setFilteredTickets(resolvedTickets);
+      setFilteredTickets(resolvedTickets)
     } else {
-      const searchTermLower = searchTerm.toLowerCase();
+      const searchTermLower = searchTerm.toLowerCase()
       const filtered = resolvedTickets.filter((ticket) => {
-        let searchField = '';
+        let searchField = ''
         if (tag === 'id:') {
-          searchField = ticket.id;
+          searchField = ticket.id
         } else if (tag === 'rsn:') {
-          searchField = `${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()}`;
+          searchField = `${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()}`
         } else {
-          searchField = `${ticket.id} ${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()} ${ticket.amount}`;
+          searchField = `${ticket.id} ${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()} ${ticket.amount}`
         }
 
-        return searchField.includes(searchTermLower);
-      });
-      setFilteredTickets(filtered);
+        return searchField.includes(searchTermLower)
+      })
+      setFilteredTickets(filtered)
     }
-  }, [searchTerm, resolvedTickets, tag]);
+  }, [searchTerm, resolvedTickets, tag])
 
   const toggleTag = (selectedTag) => {
-    setTag(tag === selectedTag ? '' : selectedTag);
-  };
+    setTag(tag === selectedTag ? '' : selectedTag)
+  }
 
   return (
     <div className="resolved-tickets">
@@ -232,7 +232,7 @@ function ResolvedTickets() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default ResolvedTickets;
+export default ResolvedTickets

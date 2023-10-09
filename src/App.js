@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Home from './components/Home';
-import AdminPanel from './components/AdminPanel';
-import Header from './components/Header';
-import Modal from './components/Modal';
-import Cases from './components/Cases';
-import Players from './components/Players';
-import LoadingScreen from './components/LoadingScreen';
-import StatsPage from './components/StatsPage';
-import ManageTickets from './components/AdminTickets/ManageTickets';
-import ResolvedTickets from './components/AdminTickets/ResolvedTickets';
-import DeniedTickets from './components/AdminTickets/DeniedTickets';
-import ManagePlayers from './components/AdminTickets/ManagePlayers';
-import Resolve from './components/resolve';
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './App.css'
+import Home from './components/Home'
+import AdminPanel from './components/AdminPanel'
+import Header from './components/Header'
+import Modal from './components/Modal'
+import Cases from './components/Cases'
+import Players from './components/Players'
+import LoadingScreen from './components/LoadingScreen'
+import StatsPage from './components/StatsPage'
+import ManageTickets from './components/AdminTickets/ManageTickets'
+import ResolvedTickets from './components/AdminTickets/ResolvedTickets'
+import DeniedTickets from './components/AdminTickets/DeniedTickets'
+import ManagePlayers from './components/AdminTickets/ManagePlayers'
+import Resolve from './components/resolve'
 
-function App() {
-  const [loadingPlayerFile, setLoadingPlayerFile] = useState(false);
-  const [reportModalType, setReportModalType] = useState('');
-  const [signInModalType, setSignInModalType] = useState('');
+function App () {
+  const [loadingPlayerFile, setLoadingPlayerFile] = useState(false)
+  const [reportModalType, setReportModalType] = useState('')
+  const [signInModalType, setSignInModalType] = useState('')
 
   return (
     <Router>
@@ -39,16 +39,18 @@ function App() {
         <Route path="admin/manage-players" element={<ManagePlayers />} />
         <Route path="resolve" element={<Resolve />} />
       </Routes>
-      {loadingPlayerFile ? (
+      {loadingPlayerFile
+        ? (
         <LoadingScreen />
-      ) : (
+          )
+        : (
         <>
           <Modal
             isOpen={reportModalType === 'Submit'}
             onClose={() => setReportModalType('')}
             title="Report a Scammer"
             onSubmit={() => {
-              setReportModalType('');
+              setReportModalType('')
             }}
             modalType={reportModalType}
           />
@@ -57,14 +59,14 @@ function App() {
             onClose={() => setSignInModalType('')}
             title="Sign In"
             onSubmit={() => {
-              setSignInModalType('');
+              setSignInModalType('')
             }}
             modalType={signInModalType}
           />
         </>
-      )}
+          )}
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

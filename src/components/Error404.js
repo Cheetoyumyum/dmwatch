@@ -1,12 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Error404() {
-  const navigate = useNavigate();
+function Error404 () {
+  const navigate = useNavigate()
 
   const handleHomeClick = () => {
-    navigate('/');
-  };
+    navigate('/')
+  }
 
   return (
     <div className="error-message">
@@ -18,7 +18,7 @@ function Error404() {
         Home
       </button>
     </div>
-  );
+  )
 }
 
-export default Error404;
+export default Error404

@@ -1,54 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import LoadingScreen from './LoadingScreen';
-import { getPlayerByName } from '../server/ticketService';
-import '../styles/Players.css?v=1';
-import Error404 from './Error404';
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import LoadingScreen from './LoadingScreen'
+import { getPlayerByName } from '../server/ticketService'
+import '../styles/Players.css?v=1'
+import Error404 from './Error404'
 
-function Players() {
-  const { player } = useParams();
-  const [playerData, setPlayerData] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-  const navigate = useNavigate();
+function Players () {
+  const { player } = useParams()
+  const [playerData, setPlayerData] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [notFound, setNotFound] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData () {
       try {
-        const playerInfo = await getPlayerByName(player);
+        const playerInfo = await getPlayerByName(player)
         if (playerInfo) {
-          setPlayerData(playerInfo);
-          setLoading(false);
+          setPlayerData(playerInfo)
+          setLoading(false)
         } else {
-          setNotFound(true);
-          setLoading(false);
+          setNotFound(true)
+          setLoading(false)
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoading(false);
+        console.error('Error fetching data:', error)
+        setLoading(false)
       }
     }
-    
 
-    fetchData();
-  }, [player]);
+    fetchData()
+  }, [player])
 
   const handleCaseClick = (caseId) => {
-    navigate(`/cases/${caseId}`);
-  };
+    navigate(`/cases/${caseId}`)
+  }
 
   const handleBack = () => {
-    navigate(-1);
-  };
+    navigate(-1)
+  }
 
   if (loading) {
-    return <LoadingScreen />;
+    return <LoadingScreen />
   }
-  
+
   if (notFound) {
-    return <Error404 />;
+    return <Error404 />
   }
-  
+
   return (
     <div className="players-container">
       <div className="player-card">
@@ -80,7 +79,7 @@ function Players() {
         Back
       </button>
     </div>
-  );
+  )
 }
 
-export default Players;
+export default Players

@@ -1,101 +1,98 @@
-import ticketsData from './tickets.json';
+import ticketsData from './tickets.json'
 
-function filterTicketsByStatus(status) {
-  return ticketsData.filter((ticket) => ticket.status === status);
+function filterTicketsByStatus (status) {
+  return ticketsData.filter((ticket) => ticket.status === status)
 }
 
-
-function filterTicketsByPlayerName(playerName) {
+function filterTicketsByPlayerName (playerName) {
   return ticketsData.filter(
     (ticket) => ticket.scammerName === playerName || ticket.victimName === playerName
-  );
+  )
 }
 
-async function fetchLatestCases() {
+async function fetchLatestCases () {
   try {
-    const latestOpenCases = filterTicketsByStatus('Open').slice(0, 3);
+    const latestOpenCases = filterTicketsByStatus('Open').slice(0, 3)
 
     if (latestOpenCases.length < 3) {
-      const newCases = filterTicketsByStatus('New').slice(0, 3 - latestOpenCases.length);
-      return [...latestOpenCases, ...newCases];
+      const newCases = filterTicketsByStatus('New').slice(0, 3 - latestOpenCases.length)
+      return [...latestOpenCases, ...newCases]
     }
 
-    return latestOpenCases;
+    return latestOpenCases
   } catch (error) {
-    console.error('Error fetching latest cases:', error);
-    throw error;
+    console.error('Error fetching latest cases:', error)
+    throw error
   }
 }
 
-async function fetchLatestResolvedCases() {
+async function fetchLatestResolvedCases () {
   try {
-    const latestResolvedCases = filterTicketsByStatus('Resolved').slice(0, 3);
-    return latestResolvedCases;
+    const latestResolvedCases = filterTicketsByStatus('Resolved').slice(0, 3)
+    return latestResolvedCases
   } catch (error) {
-    console.error('Error fetching latest resolved cases:', error);
-    throw error;
+    console.error('Error fetching latest resolved cases:', error)
+    throw error
   }
 }
 
-async function getAllTickets() {
+async function getAllTickets () {
   try {
-    const tickets = ticketsData;
-    return tickets;
+    const tickets = ticketsData
+    return tickets
   } catch (error) {
-    console.error('Error fetching tickets:', error);
-    throw error;
+    console.error('Error fetching tickets:', error)
+    throw error
   }
 }
 
-async function createTicket(newTicket) {
+async function createTicket (newTicket) {
   try {
-    return newTicket;
+    return newTicket
   } catch (error) {
-    console.error('Error creating ticket:', error);
-    throw error;
+    console.error('Error creating ticket:', error)
+    throw error
   }
 }
 
-async function updateTicketById(id, updatedTicket) {
+async function updateTicketById (id, updatedTicket) {
   try {
-    return updatedTicket;
+    return updatedTicket
   } catch (error) {
-    console.error('Error updating ticket:', error);
-    throw error;
+    console.error('Error updating ticket:', error)
+    throw error
   }
 }
 
-async function deleteTicketById(id) {
+async function deleteTicketById (id) {
   try {
-    return `Ticket ${id} deleted successfully`;
+    return `Ticket ${id} deleted successfully`
   } catch (error) {
-    console.error('Error deleting ticket:', error);
-    throw error;
+    console.error('Error deleting ticket:', error)
+    throw error
   }
 }
 
-async function getPlayerByName(playerName) {
+async function getPlayerByName (playerName) {
   try {
-    const playerCases = filterTicketsByPlayerName(playerName);
+    const playerCases = filterTicketsByPlayerName(playerName)
     if (playerCases.length > 0) {
       const previousNames = playerCases[0].previousNames
         ? playerCases[0].previousNames.split(', ')
-        : [];
+        : []
       return {
         cases: playerCases,
         scammerName: playerCases[0].scammerName,
         status: playerCases[0].status,
-        previousNames,
-      };
+        previousNames
+      }
     }
-    return null;
+    return null
   } catch (error) {
-    console.error('Error fetching player data by name:', error);
-    throw error;
+    console.error('Error fetching player data by name:', error)
+    throw error
   }
 }
-
-
 
 export {
   getAllTickets,
@@ -104,5 +101,5 @@ export {
   deleteTicketById,
   fetchLatestCases,
   fetchLatestResolvedCases,
-  getPlayerByName,
-};
+  getPlayerByName
+}

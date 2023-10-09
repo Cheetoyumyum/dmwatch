@@ -130,6 +130,10 @@ textarea {
   padding: 0;
 }
 
+.remove-tiem {
+  width: 100%;
+  height: 100%;
+}
 .remove-items-button {
   margin-left: 5px;
 }

@@ -1,9 +1,0 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117 117" width="117" height="117">
-	<title>file</title>
-	<defs>
-		<image  width="117" height="117" id="filedSVG" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHUAAAB1BAMAAACCKrOPAAAAAXNSR0IB2cksfwAAABJQTFRFAAAAAAABPjo0lHpctZp7aGNdVaUcEQAAAAZ0Uk5TAP//////enng/gAAAKtJREFUeJzt1dsNQDAYhuHawCEGIDGA1AYsQGL/VbSps6qS6K/yvXfoc9Vfy9hSZFHI9ME6s3FuCtZbG4j34mtmHIxxASy5TTjnzaZavIEltdLF6he7bFoH66WVc1E1uriaD1gCOz6bD9dt85UI69ye7u1qj0tY7+zDYB1aub9Fb99+NmDft+kNNwVLattIHYVL8hCF/ZM9Bvsl2+W6YEmtj/cvrL19GKwjOwCgkAwBe8EcdAAAAABJRU5ErkJggg=="/>
-	</defs>
-	<style>
-	</style>
-	<use id="Background" href="#filedSVG" x="0" y="0"/>
-</svg>

@@ -1,108 +1,108 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/AdminTicket.css?v=1';
-import { getAllTickets, updateTicketById } from '../../server/ticketService';
-import ItemSelectionPopup from '../ItemSelectionPopup';
+import React, { useState, useEffect } from 'react'
+import '../../styles/AdminTicket.css?v=1'
+import { getAllTickets, updateTicketById } from '../../server/ticketService'
+import ItemSelectionPopup from '../ItemSelectionPopup'
 
-function DeniedTickets() {
-  const [deniedTickets, setDeniedTickets] = useState([]);
-  const [filteredTickets, setFilteredTickets] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [tag, setTag] = useState('');
-  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [staffComment, setStaffComment] = useState('');
+function DeniedTickets () {
+  const [deniedTickets, setDeniedTickets] = useState([])
+  const [filteredTickets, setFilteredTickets] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [tag, setTag] = useState('')
+  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false)
+  const [selectedItems, setSelectedItems] = useState([])
+  const [staffComment, setStaffComment] = useState('')
 
   useEffect(() => {
     getAllTickets()
       .then((tickets) => {
         const filteredDeniedTickets = tickets
           .filter((ticket) => ticket.status === 'Denied')
-          .sort((a, b) => b.id - a.id);
+          .sort((a, b) => b.id - a.id)
 
-        setDeniedTickets(filteredDeniedTickets);
-        setFilteredTickets(filteredDeniedTickets);
+        setDeniedTickets(filteredDeniedTickets)
+        setFilteredTickets(filteredDeniedTickets)
       })
       .catch((error) => {
-        console.error('Error fetching tickets:', error);
-      });
-  }, []);
+        console.error('Error fetching tickets:', error)
+      })
+  }, [])
 
   const handleChange = (ticketId, field, value) => {
     const updatedTickets = deniedTickets.map((ticket) => {
       if (ticket.id === ticketId) {
-        return { ...ticket, [field]: value };
+        return { ...ticket, [field]: value }
       }
-      return ticket;
-    });
+      return ticket
+    })
 
-    setDeniedTickets(updatedTickets);
-  };
+    setDeniedTickets(updatedTickets)
+  }
 
   const handleSave = (ticketId) => {
-    const ticketToUpdate = deniedTickets.find((ticket) => ticket.id === ticketId);
+    const ticketToUpdate = deniedTickets.find((ticket) => ticket.id === ticketId)
 
     if (ticketToUpdate) {
       updateTicketById(ticketId, ticketToUpdate)
         .then((updatedTicket) => {
           if (updatedTicket) {
-            console.log(`Ticket ${ticketId} saved successfully.`);
+            console.log(`Ticket ${ticketId} saved successfully.`)
           } else {
-            console.error(`Ticket ${ticketId} not found.`);
+            console.error(`Ticket ${ticketId} not found.`)
           }
         })
         .catch((error) => {
-          console.error(`Error saving ticket ${ticketId}: ${error.message}`);
-        });
+          console.error(`Error saving ticket ${ticketId}: ${error.message}`)
+        })
     }
-  };
+  }
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
-      setFilteredTickets(deniedTickets);
+      setFilteredTickets(deniedTickets)
     } else {
-      const searchTermLower = searchTerm.toLowerCase();
+      const searchTermLower = searchTerm.toLowerCase()
       const filtered = deniedTickets.filter((ticket) => {
-        let searchField = '';
+        let searchField = ''
         if (tag === 'id:') {
-          searchField = ticket.id;
+          searchField = ticket.id
         } else if (tag === 'rsn:') {
-          searchField = `${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()}`;
+          searchField = `${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()}`
         } else {
-          searchField = `${ticket.id} ${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()} ${ticket.amount}`;
+          searchField = `${ticket.id} ${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()} ${ticket.amount}`
         }
 
-        return searchField.includes(searchTermLower);
-      });
-      setFilteredTickets(filtered);
+        return searchField.includes(searchTermLower)
+      })
+      setFilteredTickets(filtered)
     }
-  }, [searchTerm, deniedTickets, tag]);
+  }, [searchTerm, deniedTickets, tag])
 
   const toggleTag = (selectedTag) => {
-    setTag(tag === selectedTag ? '' : selectedTag);
-  };
+    setTag(tag === selectedTag ? '' : selectedTag)
+  }
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'Open':
-        return '#ab9d05';
+        return '#ab9d05'
       case 'Resolved':
-        return '#16ab05';
+        return '#16ab05'
       case 'New':
-        return '#0587ab';
+        return '#0587ab'
       case 'Denied':
-        return '#ab0505';
+        return '#ab0505'
       default:
-        return '';
+        return ''
     }
-  };
+  }
 
   const handleOpenItemPopup = () => {
-    setIsItemPopupOpen(true);
-  };
+    setIsItemPopupOpen(true)
+  }
 
   const handleCloseItemPopup = () => {
-    setIsItemPopupOpen(false);
-  };
+    setIsItemPopupOpen(false)
+  }
 
   return (
     <div className="denied-tickets">
@@ -254,7 +254,7 @@ function DeniedTickets() {
         />
       )}
     </div>
-  );  
+  )
 }
 
-export default DeniedTickets;
+export default DeniedTickets

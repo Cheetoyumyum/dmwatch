@@ -1,9 +1,0 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 115" width="101" height="115">
-	<title>checkmark</title>
-	<defs>
-		<image  width="101" height="115" id="chkSVG" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABzBAMAAABz3dF6AAAAAXNSR0IB2cksfwAAAB5QTFRFAAAAAAACAAAB4dGo3c2m8N6yKc1IPDEVV0giHRkNADT0YwAAAAp0Uk5TAJ///////////yLqlfIAAADGSURBVHic7dbRCcIwEMbx6AZuIFEQn12hOoG6gR1AhHMEV3Bb70pTDpPGCMak8P1fWsr96EOaEmP6ZotYJtjcxoL5lZH51S6W72DqN+uGO40Fk83I/Z6v55YLO5i6jXNWL73MX/QDmFJmWFM31qa9A2YChjvorXnUm3fkO4D5yjhn+1+hnz8PU7eR+e6c6EaaEPa/HZj8Ru42RHTTWzIYD5FML2EmYq72UzAlzf3Bkap7oIMpZbbP1GD+bYYzSFJv5xaY3OYF43VFpIEQkk4AAAAASUVORK5CYII="/>
-	</defs>
-	<style>
-	</style>
-	<use id="Background" href="#chkSVG" x="0" y="0"/>
-</svg>

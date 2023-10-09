@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/Metrics.css';
-import { getAllTickets } from '../server/ticketService';
-import {ReactComponent as CheckmarkSVG} from '../assets/checkmark.svg';
-import {ReactComponent as GoldSVG} from '../assets/gold.svg';
-import {ReactComponent as TotalSVG} from '../assets/total.svg';
-import {ReactComponent as FiledSVG} from '../assets/filed.svg';
+import React, { useState, useEffect } from 'react'
+import '../styles/Metrics.css'
+import { getAllTickets } from '../server/ticketService'
+import { ReactComponent as CheckmarkSVG } from '../assets/checkmark.svg'
+import { ReactComponent as GoldSVG } from '../assets/gold.svg'
+import { ReactComponent as TotalSVG } from '../assets/total.svg'
+import { ReactComponent as FiledSVG } from '../assets/filed.svg'
 
-function formatNumber(number) {
-  return number.toLocaleString() + ' M';
+function formatNumber (number) {
+  return number.toLocaleString() + ' M'
 }
 
-function Metrics() {
-  const [activeReports, setActiveReports] = useState(0);
-  const [resolvedReports, setResolvedReports] = useState(0);
-  const [totalGPRecovered, setTotalGPRecovered] = useState(0);
-  const [totalSubmissions, setTotalSubmissions] = useState(0);
+function Metrics () {
+  const [activeReports, setActiveReports] = useState(0)
+  const [resolvedReports, setResolvedReports] = useState(0)
+  const [totalGPRecovered, setTotalGPRecovered] = useState(0)
+  const [totalSubmissions, setTotalSubmissions] = useState(0)
 
   useEffect(() => {
-    async function fetchMetricsData() {
+    async function fetchMetricsData () {
       try {
-        const tickets = await getAllTickets();
-        const activeReportsCount = tickets.filter((ticket) => ticket.status !== 'Resolved').length;
-        const resolvedReportsCount = tickets.filter((ticket) => ticket.status === 'Resolved').length;
-        const totalRecovered = tickets.reduce((total, ticket) => total + parseFloat(ticket.debtRepaid), 0);
+        const tickets = await getAllTickets()
+        const activeReportsCount = tickets.filter((ticket) => ticket.status !== 'Resolved').length
+        const resolvedReportsCount = tickets.filter((ticket) => ticket.status === 'Resolved').length
+        const totalRecovered = tickets.reduce((total, ticket) => total + parseFloat(ticket.debtRepaid), 0)
 
-        setActiveReports(activeReportsCount);
-        setResolvedReports(resolvedReportsCount);
-        setTotalGPRecovered(totalRecovered);
-        setTotalSubmissions(tickets.length);
+        setActiveReports(activeReportsCount)
+        setResolvedReports(resolvedReportsCount)
+        setTotalGPRecovered(totalRecovered)
+        setTotalSubmissions(tickets.length)
       } catch (error) {
-        console.error('Error fetching metrics data:', error);
+        console.error('Error fetching metrics data:', error)
       }
     }
 
-    fetchMetricsData();
-  }, []);
+    fetchMetricsData()
+  }, [])
 
   return (
     <section className="metrics-container">
@@ -55,7 +55,7 @@ function Metrics() {
 
         <div className="metric resolved-reports">
           <div className="metric-icon">
-            <CheckmarkSVG height="48px" width="48px"  />
+            <CheckmarkSVG height="48px" width="48px" />
           </div>
           <div className="metric-number">{resolvedReports.toLocaleString()}</div>
           <div className="metric-label">Resolved Reports</div>
@@ -63,7 +63,7 @@ function Metrics() {
 
         <div className="metric">
           <div className="metric-icon">
-            <GoldSVG height="48px" width="48px"  />
+            <GoldSVG height="48px" width="48px" />
           </div>
           <div className="metric-number gp">{formatNumber(totalGPRecovered)}</div>
           <div className="metric-label">Total GP Recovered</div>
@@ -71,14 +71,14 @@ function Metrics() {
 
         <div className="metric total-submissions">
         <div className="metric-icon">
-          <TotalSVG height="48px" width="48px"  />
+          <TotalSVG height="48px" width="48px" />
         </div>
           <div className="metric-number">{totalSubmissions.toLocaleString()}</div>
           <div className="metric-label">Total Submissions</div>
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Metrics;
+export default Metrics

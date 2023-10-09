@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Header.css';
-import logoImage from '../assets/logo.png';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import '../styles/Header.css'
+import logoImage from '../assets/logo.png'
 
-function Header({ onOpenReportModal }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+function Header ({ onOpenReportModal }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false)
 
   useEffect(() => {
     const checkAuthAndAdminStatus = () => {
-      const userIsAuthenticated = /* Your authentication logic */ false;
-      const userIsAdmin = /* Your staff check logic */ false;
+      const userIsAuthenticated = /* Your authentication logic */ false
+      const userIsAdmin = /* Your staff check logic */ false
 
-      setIsAuthenticated(userIsAuthenticated);
-      setIsAdmin(userIsAdmin);
-    };
+      setIsAuthenticated(userIsAuthenticated)
+      setIsAdmin(userIsAdmin)
+    }
 
-    checkAuthAndAdminStatus();
-  }, []);
+    checkAuthAndAdminStatus()
+  }, [])
 
   const handleLogOut = () => {
-    setIsAuthenticated(false);
-    console.log('User logged out. isAuthenticated:', isAuthenticated);
-  };
+    setIsAuthenticated(false)
+    console.log('User logged out. isAuthenticated:', isAuthenticated)
+  }
 
   return (
     <header className="App__header">
@@ -73,7 +73,7 @@ function Header({ onOpenReportModal }) {
         </div>
       </nav>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header

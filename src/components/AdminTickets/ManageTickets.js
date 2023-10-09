@@ -1,20 +1,20 @@
 // ManageTickets.js
-import React, { useState, useEffect } from 'react';
-import '../../styles/AdminTicket.css?v=1';
-import { getAllTickets, updateTicketById } from '../../server/ticketService';
-import ItemSelectionPopup from '../ItemSelectionPopup';
+import React, { useState, useEffect } from 'react'
+import '../../styles/AdminTicket.css?v=1'
+import { getAllTickets, updateTicketById } from '../../server/ticketService'
+import ItemSelectionPopup from '../ItemSelectionPopup'
 
-function ManageTickets() {
-  const [manageTickets, setManageTickets] = useState([]);
-  const [filteredTickets, setFilteredTickets] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [tag, setTag] = useState('');
-  const [debtRepaid, setDebtRepaid] = useState('');
-  const [filterStatus, setFilterStatus] = useState('');
-  const [staffComment, setStaffComment] = useState('');
-  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [selectedTicketId, setSelectedTicketId] = useState(null);
+function ManageTickets () {
+  const [manageTickets, setManageTickets] = useState([])
+  const [filteredTickets, setFilteredTickets] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [tag, setTag] = useState('')
+  const [debtRepaid, setDebtRepaid] = useState('')
+  const [filterStatus, setFilterStatus] = useState('')
+  const [staffComment, setStaffComment] = useState('')
+  const [isItemPopupOpen, setIsItemPopupOpen] = useState(false)
+  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedTicketId, setSelectedTicketId] = useState(null)
 
   useEffect(() => {
     getAllTickets().then((tickets) => {
@@ -23,127 +23,127 @@ function ManageTickets() {
           New: 0,
           Open: 1,
           Resolved: 2,
-          Denied: 3,
-        };
+          Denied: 3
+        }
 
         if (statusOrder[a.status] < statusOrder[b.status]) {
-          return -1;
+          return -1
         } else if (statusOrder[a.status] > statusOrder[b.status]) {
-          return 1;
+          return 1
         } else {
-          return b.id.localeCompare(a.id);
+          return b.id.localeCompare(a.id)
         }
-      });
+      })
 
-      setManageTickets(sortedTickets);
-      setFilteredTickets(sortedTickets);
-    });
-  }, []);
+      setManageTickets(sortedTickets)
+      setFilteredTickets(sortedTickets)
+    })
+  }, [])
 
   const handleChange = (ticketId, field, value) => {
     const updatedTickets = manageTickets.map((ticket) => {
       if (ticket.id === ticketId) {
-        return { ...ticket, [field]: value };
+        return { ...ticket, [field]: value }
       }
-      return ticket;
-    });
+      return ticket
+    })
 
-    setManageTickets(updatedTickets);
-  };
+    setManageTickets(updatedTickets)
+  }
 
   const handleSave = (ticketId) => {
-    const ticketToUpdate = manageTickets.find((ticket) => ticket.id === ticketId);
+    const ticketToUpdate = manageTickets.find((ticket) => ticket.id === ticketId)
 
     if (ticketToUpdate) {
       const updatedTicket = {
         ...ticketToUpdate,
-        debtRepaid: debtRepaid,
-        staffComment: staffComment,
-      };
+        debtRepaid,
+        staffComment
+      }
 
       updateTicketById(ticketId, updatedTicket)
         .then((updatedTicket) => {
           if (updatedTicket) {
-            console.log(`Ticket ${ticketId} saved successfully.`);
+            console.log(`Ticket ${ticketId} saved successfully.`)
           } else {
-            console.error(`Ticket ${ticketId} not found.`);
+            console.error(`Ticket ${ticketId} not found.`)
           }
         })
         .catch((error) => {
-          console.error(`Error saving ticket ${ticketId}: ${error.message}`);
-        });
+          console.error(`Error saving ticket ${ticketId}: ${error.message}`)
+        })
     }
-  };
+  }
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
-      setFilteredTickets(manageTickets);
+      setFilteredTickets(manageTickets)
     } else {
-      const searchTermLower = searchTerm.toLowerCase();
+      const searchTermLower = searchTerm.toLowerCase()
       const filtered = manageTickets.filter((ticket) => {
-        let searchField = '';
+        let searchField = ''
         if (tag === 'id:') {
-          searchField = ticket.id;
+          searchField = ticket.id
         } else if (tag === 'rsn:') {
-          searchField = `${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()}`;
+          searchField = `${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()}`
         } else {
-          searchField = `${ticket.id} ${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()} ${ticket.amount}`;
+          searchField = `${ticket.id} ${ticket.scammerName.toLowerCase()} ${ticket.victimName.toLowerCase()} ${ticket.amount}`
         }
 
-        return searchField.includes(searchTermLower);
-      });
-      setFilteredTickets(filtered);
+        return searchField.includes(searchTermLower)
+      })
+      setFilteredTickets(filtered)
     }
-  }, [searchTerm, manageTickets, tag]);
+  }, [searchTerm, manageTickets, tag])
 
   useEffect(() => {
     if (filterStatus === '') {
-      setFilteredTickets(manageTickets);
+      setFilteredTickets(manageTickets)
     } else {
-      const filtered = manageTickets.filter((ticket) => ticket.status === filterStatus);
-      setFilteredTickets(filtered);
+      const filtered = manageTickets.filter((ticket) => ticket.status === filterStatus)
+      setFilteredTickets(filtered)
     }
-  }, [filterStatus, manageTickets]);
+  }, [filterStatus, manageTickets])
 
   const toggleTag = (selectedTag) => {
-    setTag(tag === selectedTag ? '' : selectedTag);
-  };
+    setTag(tag === selectedTag ? '' : selectedTag)
+  }
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'Open':
-        return '#ab9d05';
+        return '#ab9d05'
       case 'Resolved':
-        return '#16ab05';
+        return '#16ab05'
       case 'New':
-        return '#0587ab';
+        return '#0587ab'
       case 'Denied':
-        return '#ab0505';
+        return '#ab0505'
       default:
-        return '';
+        return ''
     }
-  };
+  }
 
   const handleOpenItemPopup = (ticketId) => {
-    setSelectedTicketId(ticketId);
-    setIsItemPopupOpen(true);
-  };
+    setSelectedTicketId(ticketId)
+    setIsItemPopupOpen(true)
+  }
 
   const handleCloseItemPopup = () => {
-    setIsItemPopupOpen(false);
-  };
+    setIsItemPopupOpen(false)
+  }
 
   const handleSelectItems = (ticketId, items) => {
     const updatedTickets = manageTickets.map((ticket) => {
       if (ticket.id === ticketId) {
-        return { ...ticket, items: items.join(', ') };
+        return { ...ticket, items: items.join(', ') }
       }
-      return ticket;
-    });
+      return ticket
+    })
 
-    setManageTickets(updatedTickets);
-    setSelectedItems(items);
-  };
+    setManageTickets(updatedTickets)
+    setSelectedItems(items)
+  }
 
   return (
     <div className="manage-tickets">
@@ -329,7 +329,7 @@ function ManageTickets() {
         />
       )}
     </div>
-  );
+  )
 }
 
-export default ManageTickets;
+export default ManageTickets

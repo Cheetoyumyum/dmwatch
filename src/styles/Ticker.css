@@ -64,6 +64,10 @@
   margin-bottom: 5px;
 }
 
+.ticker-left .tiker-name{
+  color: red;
+}
+
 .ticker-offence,
 .ticker-amount {
   font-size: 16px;
