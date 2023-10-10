@@ -13,7 +13,6 @@ import ManageTickets from './components/AdminTickets/ManageTickets'
 import ResolvedTickets from './components/AdminTickets/ResolvedTickets'
 import DeniedTickets from './components/AdminTickets/DeniedTickets'
 import ManagePlayers from './components/AdminTickets/ManagePlayers'
-import Resolve from './components/resolve'
 
 function App () {
   // eslint-disable-next-line no-unused-vars
