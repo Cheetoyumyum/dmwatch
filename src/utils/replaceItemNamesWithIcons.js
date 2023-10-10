@@ -28,6 +28,7 @@ const itemNameToIcon = {
   'elder maul': 'elder-maul.png',
   'abyssal whip': 'abyssal-whip.png',
   'tentacle whip': 'abyssal-tentacle.png',
+  'Tentacle Whip': 'abyssal-tentacle.png',
   'Elysian spirit shield': 'elysian-spirit-shield.png',
   ags: 'armadyl-godsword.png',
   'amulet of torture': 'amulet-of-torture.png',
