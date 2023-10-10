@@ -38,6 +38,7 @@ const itemNameToIcon = {
   'Armadyl Godsword': 'armadyl-godsword.png',
   'armadyl gs': 'armadyl-godsword.png',
   'Ancient Godsword': 'ancient-godsword.png',
+  'Primordial Boots': 'Primordial-boots.png',
   Voidwaker: 'Voidwaker.png',
   Fang: 'Fang.png',
   'Ghrazi Rapier': 'Ghrazi-Rapier.png',
