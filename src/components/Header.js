@@ -29,7 +29,7 @@ function Header ({ onOpenReportModal }) {
     <header className="App__header">
       <nav className="navbar">
         <div className='left-content'>
-          <button className="discord-button" href='https://discord.gg/dmwatch'>Join our Discord</button>
+          <a className="discord-button" href='https://discord.gg/dmwatch'>Join our Discord</a>
           <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
             Submit a report
           </button>
@@ -43,9 +43,9 @@ function Header ({ onOpenReportModal }) {
           </div>
         </div>
         <div className="right-content">
-            <button className="nav-button" href='https://discord.gg/dmwatch'>
+            <a className="nav-button" href='https://discord.gg/dmwatch'>
               Resolve a report
-            </button>
+            </a>
           {/* PLEASE DELETE THIS EXTRA ADMIN LINK ONCE LOGIC IS INPLACE. */}
           <Link to='/admin'>
             <button className='nav-button'>Admin</button>
