@@ -38,7 +38,6 @@ function App () {
         <Route path="admin/resolved-tickets" element={<ResolvedTickets />} />
         <Route path="admin/denied-tickets" element={<DeniedTickets />} />
         <Route path="admin/manage-players" element={<ManagePlayers />} />
-        <Route path="resolve" element={<Resolve />} />
       </Routes>
       {loadingPlayerFile
         ? (

@@ -43,11 +43,9 @@ function Header ({ onOpenReportModal }) {
           </div>
         </div>
         <div className="right-content">
-          <Link to='/resolve'>
-            <button className="nav-button">
+            <button className="nav-button" href='https://discord.gg/dmwatch'>
               Resolve a report
             </button>
-          </Link>
           {/* PLEASE DELETE THIS EXTRA ADMIN LINK ONCE LOGIC IS INPLACE. */}
           <Link to='/admin'>
             <button className='nav-button'>Admin</button>
