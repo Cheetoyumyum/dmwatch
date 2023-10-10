@@ -17,6 +17,7 @@ const items = [
   'Primordial Boots',
   'Brimstone Ring',
   'Bandos Chestplate',
+  'Bandos Tassets',
   '3rd Age Robe Top',
   '3rd Age Robe Bottom',
   'Elysian Spirit Shield',

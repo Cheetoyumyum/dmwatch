@@ -11,6 +11,7 @@ const itemNameToIcon = {
   bcp: 'bandos-chestplate.png',
   'bandos chestplate': 'bandos-chestplate.png',
   tassys: 'bandos-tassets.png',
+  'Bandos Tassets': 'bandos-tassets.png',
   vw: 'voidwaker.png',
   ely: 'elysian-spirit-shield.png',
   claws: 'dragon-claws.png',
