@@ -8,19 +8,18 @@ const items = [
   'Dharoks Set',
   'Guthans Set',
   'Veracs Set',
-  'Dharoks Greataxe',
+  'Inquisitors Set',
   'Amulet of Torture',
   'Amulet of Fury',
   'Amulet of Strength',
   'Amulet of Glory',
   'Dragon Boots',
   'Primordial Boots',
-  'Abyssal Whip',
-  'Tentacle Whip',
   'Brimstone Ring',
   'Bandos Chestplate',
-  'Inquisitors Mace',
-  'Inquisitors Set',
+  '3rd Age Robe Top',
+  '3rd Age Robe Bottom',
+  'Elysian Spirit Shield',
   'Torva Full Helm',
   'Torva Platebody',
   'Torva Platelegs',
@@ -33,9 +32,10 @@ const items = [
   'Dragon Dagger',
   'Ancient Godsword',
   'Armadyl Godsword',
-  '3rd Age Robe Top',
-  '3rd Age Robe Bottom',
-  'Elysian Spirit Shield'
+  'Abyssal Whip',
+  'Tentacle Whip',
+  'Inquisitors Mace',
+  'Dharoks Greataxe'
 ]
 
 function ItemSelectionPopup ({ isOpen, onClose, onSelectItems }) {
