@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../../styles/AdminTicket.css?v=1'
 import { getAllTickets, updateTicketById } from '../../server/ticketService'
 import ItemSelectionPopup from '../ItemSelectionPopup'
+import Metrics from '../Metrics'
 
 function ManageTickets () {
   const [manageTickets, setManageTickets] = useState([])
@@ -147,6 +148,7 @@ function ManageTickets () {
 
   return (
     <div className="manage-tickets">
+      <Metrics />
       <h2>Manage Tickets</h2>
       <div className="SearchContainer">
         <input

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../../styles/AdminTicket.css?v=1'
 import { getAllTickets, updateTicketById } from '../../server/ticketService'
+import Metrics from '../Metrics'
 
 function ResolvedTickets () {
   const [resolvedTickets, setResolvedTickets] = useState([])
@@ -83,6 +84,7 @@ function ResolvedTickets () {
 
   return (
     <div className="resolved-tickets">
+      <Metrics />
       <h2>Resolved Tickets</h2>
       <div className="SearchContainer">
         <input

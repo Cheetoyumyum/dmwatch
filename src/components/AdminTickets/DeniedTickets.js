@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../../styles/AdminTicket.css?v=1'
 import { getAllTickets, updateTicketById } from '../../server/ticketService'
 import ItemSelectionPopup from '../ItemSelectionPopup'
+import Metrics from '../Metrics'
 
 function DeniedTickets () {
   const [deniedTickets, setDeniedTickets] = useState([])
@@ -107,6 +108,7 @@ function DeniedTickets () {
 
   return (
     <div className="denied-tickets">
+      <Metrics />
       <h2>Denied Tickets</h2>
       <div className="SearchContainer">
         <input

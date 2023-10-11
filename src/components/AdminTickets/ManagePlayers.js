@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../../styles/AdminTicket.css?v=1'
 import { getAllTickets, updateTicketById } from '../../server/ticketService'
+import Metrics from '../Metrics'
 
 function ManagePlayers () {
   const [managePlayers, setManagePlayers] = useState([])
@@ -127,6 +128,7 @@ function ManagePlayers () {
 
   return (
     <div className="manage-players">
+      <Metrics />
       <h2>Manage Players</h2>
       <div className="SearchContainer">
         <input
