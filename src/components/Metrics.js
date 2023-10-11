@@ -66,16 +66,16 @@ function Metrics () {
   return (
     <section className={`metrics-container ${isAdminPanel ? 'admin-theme' : ''} ${!showMetrics ? 'hidden' : ''}`}>
       {!isAdminPanel && (
-        <div className="metrics-text">
-          <p>
-            Providing a transparent platform for the RuneScape community to report, track & retrieve stolen wealth.
-          </p>
-        </div>
       )}
 
         {isAdminPanel
           ? (
           <>
+            <div className="metrics-text">
+              <p>
+                Providing a transparent platform for the RuneScape community to report, track & retrieve stolen wealth.
+              </p>
+            </div>
             <div className={`metrics-tab ${showMetrics ? '' : 'hidden'}`} onClick={() => setShowMetrics(!showMetrics)}>
               <div className="tab-content">
                 {showMetrics ? '←' : '≡'}
