@@ -41,6 +41,148 @@
   margin-top: 10px;
 }
 
+/* OSD/UI theme for admin metrics */
+.metrics-container.admin-theme {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  width: 200px;
+  max-height: 600px;
+  margin: 0;
+  padding: 0;
+  z-index: 999;
+  pointer-events: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+.metric.metric.admin {
+  padding: 0px;
+  border: 0px;
+  border-radius: 0px;
+  background: transparent;
+}
+
+.metrics-items.admin {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metric.admin-icon {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metric.admin-number {
+  font-size: 16px;
+  animation: countUp 2s ease-in-out;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metric.admin-label {
+  font-size: 12px;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metrics-items.admin .metric.admin .metric-content.admin {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metrics-items.admin .metric.admin .metric-icon.admin {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metrics-items.admin .metric.admin .metric-text.admin {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metrics-items.admin .metric.admin .metric-count.admin {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.show-metrics-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 50% 50% 0;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.metrics-tab {
+  pointer-events: auto;
+  position: absolute;
+  z-index: 1001;
+  right: -15px;
+  top: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0 25% 25% 0;
+  transition: background-color 0.3s ease;
+}
+
+.tab-content {
+  padding: 5px;
+  font-size: 20px;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.metrics-container {
+  transition: transform 0.3s ease;
+}
+
+.metrics-container.metrics-container.admin-theme.hovered {
+  color: red;
+}
+
+.metrics-container.hidden {
+  transform: translateX(-100%) translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.metrics-tab.hidden {
+  padding-left: 10px;
+  transform: translateX(30%) translateY(0);
+  transition: transform 0.1s ease;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -64,7 +206,6 @@
 }
 
 @media (max-width: 768px) {
-  /* Styles for mobile screens */
   .metrics-container {
     margin: 0 5%;
   }
@@ -72,4 +213,6 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  
 }

@@ -3,6 +3,7 @@ import { FaTicketAlt, FaCheckSquare, FaTimesCircle, FaUsers } from 'react-icons/
 import { useNavigate } from 'react-router-dom'
 import '../styles/AdminPanel.css'
 import SearchBar from './SearchBar'
+import Metrics from './Metrics'
 
 function AdminPanel () {
   const navigate = useNavigate()
@@ -20,6 +21,7 @@ function AdminPanel () {
 
   return (
     <div className="admin-panel">
+      <Metrics />
       <SearchBar />
       <div className="admin-tiles-container">
         <div className="admin-tile" onClick={() => handleTileClick('Manage Tickets')}>
