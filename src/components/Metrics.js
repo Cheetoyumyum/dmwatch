@@ -16,6 +16,7 @@ function Metrics () {
   const [resolvedReports, setResolvedReports] = useState(0)
   const [totalGPRecovered, setTotalGPRecovered] = useState(0)
   const [totalSubmissions, setTotalSubmissions] = useState(0)
+  const [totalScammerCount, setTotalScammerCount] = useState(0)
   const [newTickets, setNewTickets] = useState(0)
   const [openTickets, setOpenTickets] = useState(0)
   const [activeTickets, setActiveTickets] = useState(0)
@@ -25,15 +26,15 @@ function Metrics () {
   useEffect(() => {
     const tab = document.querySelector('.metrics-tab')
     const container = document.querySelector('.metrics-container')
-
-    tab.addEventListener('mouseenter', () => {
-      container.classList.add('hovered')
-    })
-
-    tab.addEventListener('mouseleave', () => {
-      container.classList.remove('hovered')
-    })
-  })
+    if (tab && container) {
+      tab.addEventListener('mouseenter', () => {
+        container.classList.add('hovered')
+      })
+      tab.addEventListener('mouseleave', () => {
+        container.classList.remove('hovered')
+      })
+    }
+  }, [])
 
   useEffect(() => {
     async function fetchMetricsData () {
@@ -45,6 +46,7 @@ function Metrics () {
         const openTicketsCount = tickets.filter((ticket) => ticket.status === 'Open').length
         const activeTicketsCount = newTicketsCount + openTicketsCount
         const deniedTicketsCount = tickets.filter((ticket) => ticket.status === 'Denied').length
+        const scammerCount = tickets.filter((ticket) => ticket.playerStatus === 'Scammer').length
 
         setNewTickets(newTicketsCount)
         setOpenTickets(openTicketsCount)
@@ -53,6 +55,7 @@ function Metrics () {
         setResolvedReports(resolvedReportsCount)
         setTotalGPRecovered(totalRecovered)
         setTotalSubmissions(tickets.length)
+        setTotalScammerCount(scammerCount)
       } catch (error) {
         console.error('Error fetching metrics data:', error)
       }
@@ -65,17 +68,16 @@ function Metrics () {
 
   return (
     <section className={`metrics-container ${isAdminPanel ? 'admin-theme' : ''} ${!showMetrics ? 'hidden' : ''}`}>
-      {!isAdminPanel && (
-      )}
-
         {isAdminPanel
           ? (
           <>
+            {!isAdminPanel && (
             <div className="metrics-text">
               <p>
                 Providing a transparent platform for the RuneScape community to report, track & retrieve stolen wealth.
               </p>
             </div>
+            )}
             <div className={`metrics-tab ${showMetrics ? '' : 'hidden'}`} onClick={() => setShowMetrics(!showMetrics)}>
               <div className="tab-content">
                 {showMetrics ? '←' : '≡'}
@@ -139,6 +141,13 @@ function Metrics () {
                   </div>
                   <div className="metric-text admin">Recovered: </div>
                   <div className="metric-count admin">{formatNumber(totalGPRecovered)}</div>
+                </div>
+              </div>
+
+              <div className="metric admin">
+                <div className="metric-content admin">
+                  <div className="metric-text admin" style={{ color: 'red' }}>Scammers: </div>
+                  <div className="metric-count admin">{totalScammerCount.toLocaleString()}</div>
                 </div>
               </div>
             </div>
