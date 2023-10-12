@@ -104,9 +104,8 @@ function Cases () {
         <div className="evidence-container">
           <video
             title={`Case ${caseData.id} Video`}
-            width="560"
-            height="315"
             controls
+            style={{ maxWidth: '100%', height: 'auto' }}
           >
             <source src="/videos/1fj268.mp4" type="video/mp4" />
             Your browser does not support the video tag.

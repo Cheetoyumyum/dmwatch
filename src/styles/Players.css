@@ -78,6 +78,7 @@
   margin-right: 10px;
   color: #fff;
   text-align: center;
+
 }
 
 .back-link {
@@ -191,11 +192,16 @@
   width: 100%;
 }
 
+.case-border-bottom {
+  
+}
+
 .playerData h2 {
   font-size: 18px;
   font-weight: bold;
   color: #fff;
   text-align: center;
+  border-bottom: 1px solid rgb(165, 18, 18);
 }
 
 .playerNames p {
@@ -204,18 +210,44 @@
   display: flex;
 }
 
+.playerInfo h2{
+  border-bottom: 1px solid rgb(165, 18, 18);
+}
+
 .playerNames h2 {
   font-size: 18px;
   font-weight: bold;
   color: #fff;
   text-align: center;
+  border-bottom: 1px solid rgb(165, 18, 18);
 }
 
 .playerNames h3 {
   font-weight: bold;
   font-size: 14px;
   text-align: center;
+  border-bottom: 1px solid rgb(165, 18, 18);
 
+}
+
+.case-card h3 {
+  border-bottom: 1px solid rgb(165, 18, 18);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  width: 70%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe, .video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
