@@ -140,6 +140,7 @@ function Players () {
                 <h3>
                   <strong>Case:&nbsp;</strong> {caseItem.id}
                 </h3>
+                <small>Evidence Strength</small>
                 <div className={`evidence-meter ${caseItem.evidenceStrength}`}>
                   <div className="evidence-bar">
                     <div className="evidence-bar-fill"></div>

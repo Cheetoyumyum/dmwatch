@@ -58,9 +58,6 @@ function Cases () {
   return (
     <div className="cases-container">
       <h1>Case {caseData.id}</h1>
-      <div className={`evidence-meter ${caseData.evidenceStrength}`}>
-        <div className="evidence-bar-fill"></div>
-      </div>
       <div className="case-content">
         <div className="case-details">
           <p>
@@ -100,6 +97,10 @@ function Cases () {
             <br />
             <strong>Repaid Debt:</strong> {caseData.debtRepaid}
           </p>
+          <small>Evidence Strength</small>
+          <div className={`evidence-meter ${caseData.evidenceStrength}`}>
+            <div className="evidence-bar-fill"></div>
+          </div>
         </div>
         <div className="evidence-container">
           <video
