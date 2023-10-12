@@ -105,7 +105,7 @@ function Cases () {
           <video
             title={`Case ${caseData.id} Video`}
             controls
-            style={{ maxWidth: '100%', height: 'auto' }}
+            style={{ maxWidth: '80%', height: 'auto' }}
           >
             <source src="/videos/1fj268.mp4" type="video/mp4" />
             Your browser does not support the video tag.
