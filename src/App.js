@@ -9,6 +9,7 @@ import Cases from './components/Cases'
 import Players from './components/Players'
 import LoadingScreen from './components/LoadingScreen'
 import StatsPage from './components/StatsPage'
+import Error404 from './components/Error404'
 import ManageTickets from './components/AdminTickets/ManageTickets'
 import ResolvedTickets from './components/AdminTickets/ResolvedTickets'
 import DeniedTickets from './components/AdminTickets/DeniedTickets'
@@ -37,6 +38,7 @@ function App () {
         <Route path="admin/resolved-tickets" element={<ResolvedTickets />} />
         <Route path="admin/denied-tickets" element={<DeniedTickets />} />
         <Route path="admin/manage-players" element={<ManagePlayers />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       {loadingPlayerFile
         ? (
