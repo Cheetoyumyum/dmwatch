@@ -64,6 +64,20 @@ function Players () {
     return <Error404 />
   }
 
+  const totalCases = playerData.cases ? playerData.cases.length : 0
+  const totalTimesVictim = playerData.cases ? playerData.cases.filter(item => item.victimName === player).length : 0
+  const totalTimesScammed = playerData.cases ? playerData.cases.filter(item => item.scammerName === player).length : 0
+  const gpStolen = playerData.cases
+    ? playerData.cases
+      .filter(item => item.scammerName === player)
+      .reduce((total, item) => total + parseFloat(item.amount), 0)
+    : 0
+  const gpRepaid = playerData.cases
+    ? playerData.cases
+      .filter(item => item.scammerName === player)
+      .reduce((total, item) => total + parseFloat(item.debtRepaid), 0)
+    : 0
+
   return (
     <div className="players-container">
       <div className="player-card">
@@ -86,16 +100,15 @@ function Players () {
         <div className='Overview'>
           <div className='playerInfo'>
             <h2 className="playerTitle">Overview</h2>
-            <strong>Player Information</strong>
             <p><strong>Status:</strong> {playerData.status}</p>
             <p><strong>Last Updated at:</strong> {formatDate(playerData.lastUpdatedAt)}</p>
             <p><strong>Last Changed at:</strong> {formatDate(playerData.lastChangedAt)}</p>
           </div>
 
           <div className="playerNames">
-            <h2 className="playerTitle">Name Changes</h2>
+            <h2 className="playerTitle">Name Change History</h2>
             <p>
-              <strong>Most Recent Change:</strong> {playerData.previousNames[playerData.previousNames.length - 1]} <ChangeIconSVG /> {playerData.scammerName}
+             {playerData.previousNames[playerData.previousNames.length - 1]} <ChangeIconSVG /> {playerData.scammerName}
             </p>
             {playerData.previousNames
               .map((name, index) => index > 0 ? [name, playerData.previousNames[index - 1]] : null)
@@ -106,6 +119,15 @@ function Players () {
                   {name1} <ChangeIconSVG /> {name2}
                 </p>
               ))}
+          </div>
+
+          <div className="playerData">
+              <h2 className="playerTitle">Metrics</h2>
+              <p><strong>Total Cases:</strong> {totalCases}</p>
+              <p><strong>Total Times Victim:</strong> {totalTimesVictim}</p>
+              <p><strong>Total Times Scammed:</strong> {totalTimesScammed}</p>
+              <p><strong>GP Stolen:</strong> {gpStolen}m</p>
+              <p><strong>GP Repaid:</strong> {gpRepaid}m</p>
           </div>
         </div>
       )}
@@ -144,12 +166,11 @@ function Players () {
 
       {activeTab === 'Cases' && (
         <div>
-          <h2 className="caseTitle">Cases</h2>
           <div className="case-cards">
             {playerData.cases.map((caseItem) => (
               <div key={caseItem.id} className="case-card" onClick={() => handleCaseClick(caseItem.id)}>
                 <h3>
-                  <strong>Case:</strong> {caseItem.id}
+                  <strong>Case:&nbsp;</strong> {caseItem.id}
                 </h3>
                 <div className={`evidence-meter ${caseItem.evidenceStrength}`}>
                   <div className="evidence-bar">

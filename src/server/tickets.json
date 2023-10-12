@@ -169,14 +169,14 @@
         "description": "Description for Entry 12",
         "amount": "20000m",
         "items": "Inquisitors set, amulet of fury, primordial boots",
-        "scammerName": "Cheetoyumyum",
+        "scammerName": "GBGShooter",
         "victimName": "Victim8",
         "evidence": "https://www.example.com/evidence-8",
         "evidenceStrength": "moderate",
         "playerStatus": "Scammer",
         "status": "New",
         "scamType": "Trade scam",
-        "previousNames": "Previous15, Previous16, Previous17, Previous18, Previous19, Previous20 ",
+        "previousNames": "Previous15, Previous16, Previous17, Previous18, Previous19, Previous20",
         "debtRepaid": "0m"
       }
 ]  
