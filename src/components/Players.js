@@ -132,38 +132,6 @@ function Players () {
         </div>
       )}
 
-      {activeTab === 'OSRS Highscores' && (
-        <div>
-          <h2 className="caseTitle">OSRS Highscores</h2>
-          {Array.isArray(highscores) && highscores.length > 0
-            ? (
-              <table>
-              <thead>
-                <tr>
-                  <th>Skill</th>
-                  <th>Experience</th>
-                  <th>Level</th>
-                  <th>Rank</th>
-                </tr>
-              </thead>
-              <tbody>
-                {highscores.map((/* skill */) => (
-                  <tr key='skill' /* key={ skill.skill } */>
-                    <td>{/* skill.skill */}</td>
-                    <td>{/* skill.experience */}</td>
-                    <td>{/* skill.level */}</td>
-                    <td>{/* skill.rank */}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-              )
-            : (
-            <p>No highscores data available.</p>
-              )}
-        </div>
-      )}
-
       {activeTab === 'Cases' && (
         <div>
           <div className="case-cards">

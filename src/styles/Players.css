@@ -217,3 +217,27 @@
   text-align: center;
 
 }
+
+@media (max-width: 768px) {
+  .player-card {
+    max-width: 80%;
+  }
+
+  .caseTitle, .case-card {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .Overview {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: auto;
+  }
+  
+  .playerInfo, .playerNames, .playerData {
+    width: 100%;
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+}
