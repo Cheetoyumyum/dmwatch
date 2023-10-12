@@ -68,6 +68,8 @@ function Ticker () {
                     </span>
                   ))}
               </div>
+              <strong>Repaid Debt:</strong>{' '}
+              <span className="ticker-gp">{entry.debtRepaid}</span>
             </div>
           ))}
         </div>

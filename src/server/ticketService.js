@@ -12,10 +12,15 @@ function filterTicketsByPlayerName (playerName) {
 
 async function fetchLatestCases () {
   try {
-    const latestOpenCases = filterTicketsByStatus('Open').slice(0, 3)
+    const latestOpenCases = filterTicketsByStatus('Open')
+      .sort((a, b) => b.id - a.id)
+      .slice(0, 3)
 
     if (latestOpenCases.length < 3) {
-      const newCases = filterTicketsByStatus('New').slice(0, 3 - latestOpenCases.length)
+      const newCases = filterTicketsByStatus('New')
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 3 - latestOpenCases.length)
+
       return [...latestOpenCases, ...newCases]
     }
 
@@ -28,7 +33,10 @@ async function fetchLatestCases () {
 
 async function fetchLatestResolvedCases () {
   try {
-    const latestResolvedCases = filterTicketsByStatus('Resolved').slice(0, 3)
+    const latestResolvedCases = filterTicketsByStatus('Resolved')
+      .sort((a, b) => b.id - a.id)
+      .slice(0, 3)
+
     return latestResolvedCases
   } catch (error) {
     console.error('Error fetching latest resolved cases:', error)

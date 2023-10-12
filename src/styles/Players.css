@@ -3,36 +3,20 @@
   padding: 20px;
   background-color: #493f35;
   border-radius: 10px;
-  text-align: left;
+  text-align: center; 
   border: 1px solid black;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
   max-width: 80%;
 }
 
-.player-card h1 {
-  text-align: center;
-  color: #fff;
-}
-
 .caseTitle {
   color: #fff;
+  text-align: center;
   display: flex;
+  justify-content: center;
   animation: fadeInUp 1s ease-in-out;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  justify-content: center;
-}
-
-.case-cards {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  margin: 0px auto;
-  overflow-x: hidden;
-  max-width: 80%;
-  overflow: visible;
-  border-radius: 10px;
-  padding-bottom: 20px;
 }
 
 .case-card {
@@ -44,7 +28,7 @@
   padding: 20px;
   background-color: #493f35;
   border-radius: 10px;
-  text-align: left;
+  text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
 }
@@ -53,16 +37,13 @@
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-}
-
-.case-card small {
-  color: gray;
-  font-size: 10px;
+  text-align: center;
 }
 
 .case-card p {
   font-size: 16px;
   color: #fff;
+  text-align: center;
 }
 
 .case-card .evidence-meter {
@@ -87,7 +68,7 @@
 
 .case-card h3 {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .case-title {
@@ -96,11 +77,116 @@
   font-weight: bold;
   margin-right: 10px;
   color: #fff;
+  text-align: center;
 }
 
 .back-link {
   display: flex;
+  justify-content: center;
   margin: 0 auto;
   margin-bottom: 20px;
   animation: fadeInUp 1s ease-in-out;
+}
+
+.Overview {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.case-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin: 0px auto;
+  overflow-x: hidden;
+  max-width: 80%;
+  overflow: visible;
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+
+/* Center the navigation bar and set a maximum width of 80% */
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: #333;
+  border: 1px solid black;
+}
+
+.nav-tab {
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0;
+  background-color: #333;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  transition: border-bottom 0.3s;
+}
+
+.nav-tab:hover {
+  border-bottom: 2px solid rgba(165, 18, 18, 0.5);
+}
+
+.nav-tab.active {
+  border-bottom: 2px solid rgb(165, 18, 18);
+  color: #ffffff;
+}
+
+.nav-tab {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #fff;
+  width: 150px;
+  min-width: 0;
+  box-sizing: content-box;
+}
+
+
+.playerInfo {
+  margin: 20px 10px;
+  padding: 20px;
+  background-color: #493f35;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-in-out;
+  max-width: 49%;
+}
+
+.playerInfo h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.playerNames {
+  margin: 20px 10px;
+  padding: 20px;
+  background-color: #493f35;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-in-out;
+  max-width: 49%;
+}
+
+.playerNames h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.playerNames h3 {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+
 }

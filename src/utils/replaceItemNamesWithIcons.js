@@ -55,6 +55,8 @@ const itemNameToIcon = {
   '3rd Age Robe Top': '3a-robe-top.png',
   '3rd Age Robe Bottom': '3a-robe-bottom.png',
   'Guthans set': 'Guthans-set.png',
+  'guthans armour set': 'Guthans-set.png',
+  'Guthans Armour Set': 'Guthans-set.png',
   'Veracs Set': 'Veracs-set.png',
   'Torva Full Helm': 'torva-helm.png',
   'Torva Platebody': 'torva-body.png',

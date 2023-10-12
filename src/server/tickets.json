@@ -108,13 +108,13 @@
         "id": "8",
         "description": "Description for Entry 8",
         "amount": "123m",
-        "items": "guthans armor set",
+        "items": "guthans armour set",
         "scammerName": "Scammer8",
         "victimName": "Victim8",
         "evidence": "https://www.example.com/evidence-8",
         "evidenceStrength": "moderate",
         "playerStatus": "Scammer",
-        "status": "New",
+        "status": "Resolved",
         "scamType": "Trade scam",
         "previousNames": "Previous15, Previous16",
         "debtRepaid": "0m"
@@ -162,6 +162,21 @@
         "status": "New",
         "scamType": "Trade scam",
         "previousNames": "Previous15, Previous16",
+        "debtRepaid": "0m"
+      },
+      {
+        "id": "12",
+        "description": "Description for Entry 12",
+        "amount": "20000m",
+        "items": "Inquisitors set, amulet of fury, primordial boots",
+        "scammerName": "Cheetoyumyum",
+        "victimName": "Victim8",
+        "evidence": "https://www.example.com/evidence-8",
+        "evidenceStrength": "moderate",
+        "playerStatus": "Scammer",
+        "status": "New",
+        "scamType": "Trade scam",
+        "previousNames": "Previous15, Previous16, Previous17, Previous18, Previous19, Previous20 ",
         "debtRepaid": "0m"
       }
 ]  
