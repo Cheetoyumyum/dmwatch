@@ -13,6 +13,9 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
   border: 1px solid black;
+  overflow: hidden;
+  max-height: 1050px;
+  margin-bottom: 50px;
 }
 
 .ticker-svg {
@@ -37,16 +40,19 @@
   display: block;
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.5s ease-out;
   border-left: 3px solid #2e2e2e;
   background-color: #2e2e2e;
   border: 1px solid black;
+  max-height: 40px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, background-color 0.3s ease-in-out;
 }
 
 .ticker-entry:hover {
   color: #ccc;
   background-color: #474747;
 }
+
 .ticker-entry:first-child {
   margin-top: 0;
 }
@@ -60,7 +66,7 @@
   margin-bottom: 5px;
 }
 
-.ticker-left .tiker-name{
+.ticker-left .ticker-name {
   color: red;
 }
 
@@ -68,10 +74,26 @@
 .ticker-amount {
   font-size: 16px;
   margin: 0;
+  transition: color 0.5s ease-out;
 }
 
 .ticker-offence {
   margin-bottom: 5px;
+}
+
+.view-case-button {
+  background-color: #19191a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  float: right;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #222222;
+  }
 }
 
 @media (max-width: 768px) {
@@ -103,6 +125,24 @@
   color: #00ff00;
 }
 
-.ticker-left .ticket-gp {
+.ticker-left .ticker-gp {
   color: red;
+}
+
+.ticker-entry.expanded {
+  max-height: 1000px;
+  background-color: #474747;
+}
+
+.ticker-entry.expanded:hover {
+  background-color: #474747;
+}
+
+.ticker-entry.expanded,
+.ticker-entry.collapsed {
+  transition: max-height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.ticker-entry.expanded:hover {
+  color: #ccc;
 }

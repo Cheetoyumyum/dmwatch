@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import './styles/dark-theme.css'
@@ -14,29 +14,12 @@ import ManageTickets from './components/AdminTickets/ManageTickets'
 import ResolvedTickets from './components/AdminTickets/ResolvedTickets'
 import DeniedTickets from './components/AdminTickets/DeniedTickets'
 import ManagePlayers from './components/AdminTickets/ManagePlayers'
-import ThemeToggle from './ThemeToggle'
 
 function App () {
   // eslint-disable-next-line no-unused-vars
   const [loadingPlayerFile, setLoadingPlayerFile] = useState(false)
   const [reportModalType, setReportModalType] = useState('')
   const [signInModalType, setSignInModalType] = useState('')
-  const [theme, setTheme] = useState('light')
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      setTheme(savedTheme)
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const handleThemeChange = (selectedTheme) => {
-    setTheme(selectedTheme)
-  }
 
   return (
     <Router>
@@ -45,7 +28,6 @@ function App () {
         onOpenSignInModal={() => setSignInModalType('SignIn')}
         modalType={''}
       />
-      <ThemeToggle disabled currentTheme={theme} onThemeChange={handleThemeChange} isDisabled={true} />
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="admin" element={<AdminPanel />} />

@@ -9,7 +9,6 @@ import { ReactComponent as InvestigateSVG } from '../assets/investigate.svg'
 function Ticker () {
   const [latestCasesData, setLatestCasesData] = useState([])
   const [latestResolvedCasesData, setLatestResolvedCasesData] = useState([])
-  const [selectedEntry, setSelectedEntry] = useState(null)
   const [expandedEntries, setExpandedEntries] = useState({})
   const navigate = useNavigate()
 
@@ -29,16 +28,15 @@ function Ticker () {
     fetchData()
   }, [])
 
+  const handleViewCase = (id) => {
+    navigate(`/cases/${id}`)
+  }
+
   const handleEntryClick = (id) => {
-    if (expandedEntries[id]) {
-      setSelectedEntry(id)
-      navigate(`/cases/${id}`)
-    } else {
-      setExpandedEntries((prevExpandedEntries) => ({
-        ...prevExpandedEntries,
-        [id]: !prevExpandedEntries[id]
-      }))
-    }
+    setExpandedEntries((prevExpandedEntries) => ({
+      ...prevExpandedEntries,
+      [id]: !prevExpandedEntries[id]
+    }))
   }
 
   return (
@@ -48,9 +46,7 @@ function Ticker () {
         <div className="ticker-data">
           {latestCasesData.map((entry) => (
             <div
-              className={`ticker-entry ${selectedEntry === entry.id ? 'selected' : ''} ${
-                expandedEntries[entry.id] ? 'expanded' : ''
-              }`}
+              className={`ticker-entry ${expandedEntries[entry.id] ? 'expanded' : ''}`}
               key={entry.id}
               onClick={() => handleEntryClick(entry.id)}
               role="button"
@@ -83,6 +79,7 @@ function Ticker () {
                   </div>
                   <strong>Repaid Debt:</strong>{' '}
                   <span className="ticker-gp">{entry.debtRepaid}</span>
+                  <button className="view-case-button" onClick={() => handleViewCase(entry.id)}>View Case</button>
                 </>
                   )
                 : null}
@@ -95,9 +92,7 @@ function Ticker () {
         <div className="ticker-data">
           {latestResolvedCasesData.map((entry) => (
             <div
-              className={`ticker-entry ${selectedEntry === entry.id ? 'selected' : ''} ${
-                expandedEntries[entry.id] ? 'expanded' : ''
-              }`}
+              className={`ticker-entry ${expandedEntries[entry.id] ? 'expanded' : ''}`}
               key={entry.id}
               onClick={() => handleEntryClick(entry.id)}
               role="button"
@@ -109,7 +104,7 @@ function Ticker () {
                 <strong>Offence:</strong> {entry.scamType}
               </div>
               <div className="ticker-amount">
-                <strong>Amount:</strong>{' '}
+                <strong>Amount: </strong>
                 <span className="ticker-gp">{entry.amount}</span>
               </div>
               {expandedEntries[entry.id]
@@ -124,10 +119,12 @@ function Ticker () {
                           {item}
                           {index < array.length - 1 && ' '}
                         </span>
-                      ))}
+                      ))
+                    }
                   </div>
                   <strong>Repaid Debt:</strong>{' '}
                   <span className="ticker-gp">{entry.debtRepaid}</span>
+                  <button className="view-case-button" onClick={() => handleViewCase(entry.id)}>View Case</button>
                 </>
                   )
                 : null}
