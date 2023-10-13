@@ -7,12 +7,12 @@
 .ticker-left,
 .ticker-right {
   width: 45%;
-  background-color: #493f35;
+  background-color: var(--primary-bg-color);
   border-radius: 10px;
   text-align: left;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px var(--primary-shadow);
   animation: fadeInUp 1s ease-in-out;
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
 }
 
 .ticker-svg {
@@ -38,15 +38,26 @@
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.5s ease-out;
-  border-left: 3px solid #705c53;
-  background-color: #524538;
-  border: 1px solid black;
+  border-left: 3px solid var(--ticker-bg-color);
+  background-color: var(--ticker-bg-color);
+  border: 1px solid var(--border-color);
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 45px;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.ticker-entry.collapsed {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .ticker-entry:hover {
-  color: #ccc;
-  background-color: #524538;
+  color: var(--text-color);
+  background-color: var(--ticker-hover-bg-color);
 }
+
 .ticker-entry:first-child {
   margin-top: 0;
 }
@@ -55,17 +66,10 @@
   margin-bottom: 0;
 }
 
-.ticker-entry:hover {
-  background-color: #524538;
-}
-
 .ticker-name {
   font-weight: bold;
   margin-bottom: 5px;
-}
-
-.ticker-left .tiker-name{
-  color: red;
+  color: var(--name-color);
 }
 
 .ticker-offence,
@@ -76,6 +80,28 @@
 
 .ticker-offence {
   margin-bottom: 5px;
+}
+
+.ticker-items {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.ticker-entry.expanded .ticker-items {
+  max-height: 100px;
+  opacity: 1;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.ticker-entry.expanded {
+  max-height: 150px;
+  opacity: 1;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.ticket-left .ticket-gp {
+  color: var(--name-color);
 }
 
 @media (max-width: 768px) {
@@ -95,14 +121,14 @@
 
 .ticker-left h2,
 .ticker-right h2 {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -1px -1px 0 var(--border-color), 1px -1px 0 var(--border-color), -1px 1px 0 var(--border-color), 1px 1px 0 var(--border-color);
   text-align: center;
 }
 
 .ticker-left h2 {
-  color: red;
+  color: var(--name-color);
 }
 
 .ticker-right h2 {
-  color: #00ff00;
+  color: var(--ticker-right-h2-color);
 }

@@ -11,7 +11,7 @@
   width: 100%;
   padding: 15px;
   border: 2px solid #000;
-  background-color: #453c33;
+  background-color: #474747;
   color: #fff;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   border-radius: 10px;
@@ -37,7 +37,7 @@ ul.search-results {
   overflow-y: auto;
   border: 2px solid #000;
   border-radius: 10px;
-  background-color: #352e28;
+  background-color: #333333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   top: 100%;
@@ -46,7 +46,7 @@ ul.search-results {
 }
 
 ul.search-results li:nth-child(even) {
-  background-color: #453c33;
+  background-color: #3b3b3b;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
 }
@@ -59,7 +59,7 @@ ul.search-results li {
 }
 
 ul.search-results li:hover {
-  background-color: #221e1a;
+  background-color: #0e0e0e;
 }
 
 ul.search-results:empty {

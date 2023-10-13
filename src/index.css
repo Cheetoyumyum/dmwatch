@@ -19,7 +19,7 @@ h1, h2, h3, a, strong, small {
 a{
   color: #fff;
 }
-.ticker-gp, .metric-number.gp {
+.metric-number.gp {
   color: #00FF00;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }

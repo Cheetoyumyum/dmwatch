@@ -1,0 +1,42 @@
+:root {
+  --primary-bg-color: #292929;
+  --primary-shadow: rgba(0, 0, 0, 0.2);
+  --border-color: #000;
+  --ticker-bg-color: #2e2e2e;
+  --ticker-hover-bg-color: #474747;
+  --text-color: #ccc;
+  --name-color: red;
+  --ticker-right-h2-color: #00ff00;
+  --search-input-bg: #474747;
+  --search-input-text: #fff;
+  --search-input-border: #000;
+  --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  --placeholder-color: #ffffffcb;
+  --search-results-bg: #333333;
+  --search-results-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --search-results-border: #000;
+  --search-results-even: #3b3b3b;
+  --search-results-hover: #0e0e0e;
+  --accent-color: #000000;
+  --background-secondary: #333333;
+
+  --light-primary-bg-color: #ffffff;
+  --light-primary-shadow: rgba(0, 0, 0, 0.1);
+  --light-border-color: #ccc;
+  --light-ticker-bg-color: #f5f5f5;
+  --light-ticker-hover-bg-color: #e0e0e0;
+  --light-text-color: #333;
+  --light-name-color: rgb(255, 0, 0);
+  --light-ticker-right-h2-color: #00ff00;
+  --light-search-input-bg: #e0e0e0;
+  --light-search-input-text: #333;
+  --light-search-input-border: #999;
+  --light-placeholder-color: #00000099;
+  --light-search-results-bg: #f0f0f0;
+  --light-search-results-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --light-search-results-border: #ccc;
+  --light-search-results-even: #e0e0e0;
+  --light-search-results-hover: #ccc;
+  --light-accent-color: #000000;
+  --light-background-secondary: #e5e5e5;
+}

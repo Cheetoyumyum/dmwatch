@@ -14,12 +14,12 @@ async function fetchLatestCases () {
   try {
     const latestOpenCases = filterTicketsByStatus('Open')
       .sort((a, b) => b.id - a.id)
-      .slice(0, 3)
+      .slice(0, 6)
 
-    if (latestOpenCases.length < 3) {
+    if (latestOpenCases.length < 6) {
       const newCases = filterTicketsByStatus('New')
         .sort((a, b) => b.id - a.id)
-        .slice(0, 3 - latestOpenCases.length)
+        .slice(0, 6 - latestOpenCases.length)
 
       return [...latestOpenCases, ...newCases]
     }
@@ -35,7 +35,7 @@ async function fetchLatestResolvedCases () {
   try {
     const latestResolvedCases = filterTicketsByStatus('Resolved')
       .sort((a, b) => b.id - a.id)
-      .slice(0, 3)
+      .slice(0, 6)
 
     return latestResolvedCases
   } catch (error) {

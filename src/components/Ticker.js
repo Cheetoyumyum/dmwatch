@@ -10,6 +10,7 @@ function Ticker () {
   const [latestCasesData, setLatestCasesData] = useState([])
   const [latestResolvedCasesData, setLatestResolvedCasesData] = useState([])
   const [selectedEntry, setSelectedEntry] = useState(null)
+  const [expandedEntries, setExpandedEntries] = useState({})
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -29,8 +30,15 @@ function Ticker () {
   }, [])
 
   const handleEntryClick = (id) => {
-    setSelectedEntry(id)
-    navigate(`/cases/${id}`)
+    if (expandedEntries[id]) {
+      setSelectedEntry(id)
+      navigate(`/cases/${id}`)
+    } else {
+      setExpandedEntries((prevExpandedEntries) => ({
+        ...prevExpandedEntries,
+        [id]: !prevExpandedEntries[id]
+      }))
+    }
   }
 
   return (
@@ -40,7 +48,9 @@ function Ticker () {
         <div className="ticker-data">
           {latestCasesData.map((entry) => (
             <div
-              className={`ticker-entry ${selectedEntry === entry.id ? 'selected' : ''}`}
+              className={`ticker-entry ${selectedEntry === entry.id ? 'selected' : ''} ${
+                expandedEntries[entry.id] ? 'expanded' : ''
+              }`}
               key={entry.id}
               onClick={() => handleEntryClick(entry.id)}
               role="button"
@@ -49,27 +59,33 @@ function Ticker () {
               <div className="ticker-name" style={{ color: 'red' }}>
                 {entry.scammerName}
               </div>
+              <InvestigateSVG className="ticker-svg" width="22" height="29" />
               <div className="ticker-offence">
                 <strong>Offence:</strong> {entry.scamType}
               </div>
-              <InvestigateSVG className="ticker-svg" width="22" height="29" />
               <div className="ticker-amount">
                 <strong>Amount: </strong>
                 <span className="ticker-gp">{entry.amount}</span>
               </div>
-              <div className="ticker-items">
-                <strong>Items:</strong>{' '}
-                {replaceItemNamesWithIcons(entry.items)
-                  .filter((item) => item)
-                  .map((item, index, array) => (
-                    <span key={index}>
-                      {item}
-                      {index < array.length - 1 && ' '}
-                    </span>
-                  ))}
-              </div>
-              <strong>Repaid Debt:</strong>{' '}
-              <span className="ticker-gp">{entry.debtRepaid}</span>
+              {expandedEntries[entry.id]
+                ? (
+                <>
+                  <div className="ticker-items">
+                    <strong>Items:</strong>{' '}
+                    {replaceItemNamesWithIcons(entry.items)
+                      .filter((item) => item)
+                      .map((item, index, array) => (
+                        <span key={index}>
+                          {item}
+                          {index < array.length - 1 && ' '}
+                        </span>
+                      ))}
+                  </div>
+                  <strong>Repaid Debt:</strong>{' '}
+                  <span className="ticker-gp">{entry.debtRepaid}</span>
+                </>
+                  )
+                : null}
             </div>
           ))}
         </div>
@@ -79,34 +95,42 @@ function Ticker () {
         <div className="ticker-data">
           {latestResolvedCasesData.map((entry) => (
             <div
-              className={`ticker-entry ${selectedEntry === entry.id ? 'selected' : ''}`}
+              className={`ticker-entry ${selectedEntry === entry.id ? 'selected' : ''} ${
+                expandedEntries[entry.id] ? 'expanded' : ''
+              }`}
               key={entry.id}
               onClick={() => handleEntryClick(entry.id)}
               role="button"
               tabIndex={0}
             >
               <div className="ticker-name">{entry.scammerName}</div>
+              <ResolvedSVG className="ticker-svg" width="24" height="24" />
               <div className="ticker-offence">
                 <strong>Offence:</strong> {entry.scamType}
               </div>
-              <ResolvedSVG className="ticker-svg" width="24" height="24" />
               <div className="ticker-amount">
                 <strong>Amount:</strong>{' '}
                 <span className="ticker-gp">{entry.amount}</span>
               </div>
-              <div className="ticker-items">
-                <strong>Items:</strong>{' '}
-                {replaceItemNamesWithIcons(entry.items)
-                  .filter((item) => item)
-                  .map((item, index, array) => (
-                    <span key={index}>
-                      {item}
-                      {index < array.length - 1 && ' '}
-                    </span>
-                  ))}
-              </div>
-              <strong>Repaid Debt:</strong>{' '}
-              <span className="ticker-gp">{entry.debtRepaid}</span>
+              {expandedEntries[entry.id]
+                ? (
+                <>
+                  <div className="ticker-items">
+                    <strong>Items:</strong>{' '}
+                    {replaceItemNamesWithIcons(entry.items)
+                      .filter((item) => item)
+                      .map((item, index, array) => (
+                        <span key={index}>
+                          {item}
+                          {index < array.length - 1 && ' '}
+                        </span>
+                      ))}
+                  </div>
+                  <strong>Repaid Debt:</strong>{' '}
+                  <span className="ticker-gp">{entry.debtRepaid}</span>
+                </>
+                  )
+                : null}
             </div>
           ))}
         </div>

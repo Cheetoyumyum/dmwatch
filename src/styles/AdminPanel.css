@@ -21,7 +21,6 @@
   border: 1px solid #111;
   margin: 10px;
   max-width: 300px;
-  background-color: #493f35;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
 }
