@@ -7,12 +7,12 @@
 .ticker-left,
 .ticker-right {
   width: 45%;
-  background-color: var(--primary-bg-color);
+  background-color: #1f1f1f;
   border-radius: 10px;
   text-align: left;
-  box-shadow: 0 0 5px var(--primary-shadow);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
-  border: 1px solid var(--border-color);
+  border: 1px solid black;
 }
 
 .ticker-svg {
@@ -38,26 +38,15 @@
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.5s ease-out;
-  border-left: 3px solid var(--ticker-bg-color);
-  background-color: var(--ticker-bg-color);
-  border: 1px solid var(--border-color);
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  max-height: 45px;
-  overflow: hidden;
-  opacity: 1;
-}
-
-.ticker-entry.collapsed {
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  border-left: 3px solid #2e2e2e;
+  background-color: #2e2e2e;
+  border: 1px solid black;
 }
 
 .ticker-entry:hover {
-  color: var(--text-color);
-  background-color: var(--ticker-hover-bg-color);
+  color: #ccc;
+  background-color: #474747;
 }
-
 .ticker-entry:first-child {
   margin-top: 0;
 }
@@ -69,7 +58,10 @@
 .ticker-name {
   font-weight: bold;
   margin-bottom: 5px;
-  color: var(--name-color);
+}
+
+.ticker-left .tiker-name{
+  color: red;
 }
 
 .ticker-offence,
@@ -80,28 +72,6 @@
 
 .ticker-offence {
   margin-bottom: 5px;
-}
-
-.ticker-items {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-.ticker-entry.expanded .ticker-items {
-  max-height: 100px;
-  opacity: 1;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-.ticker-entry.expanded {
-  max-height: 150px;
-  opacity: 1;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-.ticket-left .ticket-gp {
-  color: var(--name-color);
 }
 
 @media (max-width: 768px) {
@@ -121,14 +91,18 @@
 
 .ticker-left h2,
 .ticker-right h2 {
-  text-shadow: -1px -1px 0 var(--border-color), 1px -1px 0 var(--border-color), -1px 1px 0 var(--border-color), 1px 1px 0 var(--border-color);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   text-align: center;
 }
 
 .ticker-left h2 {
-  color: var(--name-color);
+  color: red;
 }
 
 .ticker-right h2 {
-  color: var(--ticker-right-h2-color);
+  color: #00ff00;
+}
+
+.ticker-left .ticket-gp {
+  color: red;
 }

@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: var(--primary-bg-color);
+  background-color: #161616;
   color: white;
   box-shadow: 2px 6px 12px 0px #000000;
 }
@@ -52,7 +52,7 @@
 }
 
 .nav-button {
-  background-color: var(--ticker-bg-color);
+  background-color: #1f1f1f;
   border: none;
   color: #fff;
   padding: 10px 20px;
@@ -92,7 +92,7 @@ a:visited {
 }
 
 .discord-button {
-  background-color: var(--ticker-bg-color);
+  background-color: #1f1f1f;
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -145,8 +145,7 @@ a:visited {
 .sign-in {
   color: #fff;
   display: inline-block;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background-color: #444;
+  background-color: #1f1f1f;
   color: #fff;
   margin: auto;
   padding: 10px 20px;

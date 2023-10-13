@@ -1,5 +1,5 @@
 .App-header {
-  background-color: var(--primary-bg-color);
+  background-color: #161616;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(to bottom, var(--background-secondary), var(--primary-bg-color));
+  background: linear-gradient(to bottom, #161616, #292929);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -54,12 +54,8 @@ body {
   width: 16px;
 }
 
-.App-link {
-  color: var(--accent-color);
-}
-
 .App {
-  background-color: var(--background-secondary);
+  background-color: #1f1f1f;
   min-height: 100vh;
 }
 
