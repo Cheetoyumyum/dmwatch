@@ -110,6 +110,10 @@ function Cases () {
             </div>
         </div>
         <div className="evidence-container">
+          <h1>Case {caseData.id}</h1>
+          <div className='case-description'>
+                {caseData.description}
+          </div>
           <video
             title={`Case ${caseData.id} Video`}
             controls
@@ -118,10 +122,6 @@ function Cases () {
             <source src="/videos/1fj268.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <h1>Case {caseData.id}</h1>
-          <div className='case-description'>
-                {caseData.description}
-          </div>
         </div>
       </div>
       <div className="button-container">
