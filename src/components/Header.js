@@ -30,9 +30,6 @@ function Header ({ onOpenReportModal }) {
       <nav className="navbar">
         <div className='left-content'>
           <a className="discord-button" href='https://discord.gg/dmwatch'>Join our Discord</a>
-          <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
-            Submit a report
-          </button>
         </div>
         <div className="center-content">
           <div className="brand">
@@ -43,6 +40,9 @@ function Header ({ onOpenReportModal }) {
           </div>
         </div>
         <div className="right-content">
+            <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
+              Submit a report
+            </button>
             <a className="nav-button" href='https://discord.gg/dmwatch'>
               Resolve a report
             </a>

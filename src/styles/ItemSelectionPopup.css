@@ -72,6 +72,45 @@
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
+.manual-input {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.manual-input input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #000;
+  background-color: #474747;
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.manual-input input[type="text"]::placeholder {
+  color: #ffffffcb;
+}
+
+.manual-input button {
+  background-color: #333333;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s;
+  font-family: Arial, sans-serif;
+}
+
+.manual-input button:hover {
+  background-color: #0e0e0e;
+}
+
 
 .popup-title::before {
   content: "\2801\2801\2801\2801";

@@ -55,7 +55,11 @@ function Ticker () {
               <div className="ticker-name" style={{ color: 'red' }}>
                 {entry.scammerName}
               </div>
-              <InvestigateSVG className="ticker-svg" width="22" height="29" />
+              {expandedEntries[entry.id]
+                ? (
+                <InvestigateSVG className="ticker-svg" width="22" height="29" />
+                  )
+                : null}
               <div className="ticker-offence">
                 <strong>Offence:</strong> {entry.scamType}
               </div>
@@ -98,8 +102,13 @@ function Ticker () {
               role="button"
               tabIndex={0}
             >
-              <div className="ticker-name">{entry.scammerName}</div>
-              <ResolvedSVG className="ticker-svg" width="24" height="24" />
+              <div className="ticker-name">{entry.scammerName}
+              </div>
+              {expandedEntries[entry.id]
+                ? (
+                <ResolvedSVG className="ticker-svg" width="24" height="24" />
+                  )
+                : null}
               <div className="ticker-offence">
                 <strong>Offence:</strong> {entry.scamType}
               </div>

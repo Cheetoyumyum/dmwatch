@@ -10,13 +10,9 @@ const items = [
   'Veracs Set',
   'Inquisitors Set',
   'Amulet of Torture',
-  'Amulet of Fury',
-  'Amulet of Strength',
-  'Amulet of Glory',
   'Brimstone Ring',
   'Primordial Boots',
   'Dragon Boots',
-  'Ultor Ring',
   'Bandos Chestplate',
   'Bandos Tassets',
   'Elysian Spirit Shield',
@@ -28,7 +24,6 @@ const items = [
   'Torva Platelegs',
   'Ghrazi Rapier',
   'Elder Maul',
-  'Abyssal Bludgeon',
   'Fang',
   'Voidwaker',
   'Dragon Claws',
@@ -44,6 +39,8 @@ const items = [
 function ItemSelectionPopup ({ isOpen, onClose, onSelectItems }) {
   const [selectedItems, setSelectedItems] = useState([])
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 })
+  const [manualInput, setManualInput] = useState('')
+  const [isManualEntry, setIsManualEntry] = useState(false)
 
   const addItemSelection = (itemName) => {
     setSelectedItems([...selectedItems, itemName])
@@ -72,11 +69,33 @@ function ItemSelectionPopup ({ isOpen, onClose, onSelectItems }) {
     setPopupPosition({ x: data.x, y: data.y })
   }
 
+  const handleManualInputChange = (e) => {
+    setManualInput(e.target.value)
+  }
+
+  const handleAddManualInput = () => {
+    if (manualInput.trim() !== '') {
+      if (!selectedItems.includes(manualInput)) {
+        setSelectedItems([...selectedItems, manualInput])
+      }
+      setManualInput('')
+      setIsManualEntry(false)
+    }
+  }
+
+  const handleEnableManualEntry = () => {
+    setIsManualEntry(true)
+  }
+
+  const checkIsManualEntry = (itemName) => {
+    return !items.includes(itemName)
+  }
+
   const renderSelectedItemsWithIcons = () => {
     return selectedItems.map((itemName, index) => (
       <div key={index} className="selected-item" onClick={() => handleRemoveSelectedItem(itemName)}>
         <div className="item-icon">
-          {replaceItemNamesWithIcons(itemName)}
+          {checkIsManualEntry(itemName) ? null : replaceItemNamesWithIcons(itemName)}
         </div>
         <div className="item-text">{itemName}</div>
       </div>
@@ -107,6 +126,23 @@ function ItemSelectionPopup ({ isOpen, onClose, onSelectItems }) {
               </div>
             ))}
           </div>
+          {!isManualEntry
+            ? (
+            <div className="manual-input">
+              <button onClick={handleEnableManualEntry}>Add Manual Entry</button>
+            </div>
+              )
+            : (
+            <div className="manual-input">
+              <input
+                type="text"
+                value={manualInput}
+                onChange={handleManualInputChange}
+                placeholder="Enter item name"
+              />
+              <button onClick={handleAddManualInput}>Add</button>
+            </div>
+              )}
           <div className="preview-selected-items">
             <h3>Selected Items:</h3>
             {renderSelectedItemsWithIcons()}

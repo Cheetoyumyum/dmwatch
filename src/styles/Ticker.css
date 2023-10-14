@@ -81,6 +81,15 @@
   margin-bottom: 5px;
 }
 
+.ticker-svg {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ticker-entry.expanded .ticker-svg {
+  opacity: 1;
+}
+
 .view-case-button {
   background-color: #19191a;
   color: white;
