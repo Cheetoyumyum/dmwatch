@@ -153,6 +153,10 @@
     margin-bottom: 10px;
   }
 
+  .case-content{
+    display: inline-block;
+  }
+
   .case-details {
     border-right: none;
     width: 100%;
