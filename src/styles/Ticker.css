@@ -126,9 +126,14 @@
 }
 
 .ticker-entry.expanded {
-  background-color: #474747;
+  background-color: #2e2e2e;
   height: 155px;
   transform: translateY(0);
+}
+
+.ticker-entry.expanded:hover {
+  color: #ccc;
+  background-color: #474747;
 }
 
 .ticker-entry.expanded .ticker-svg {
