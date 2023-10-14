@@ -45,31 +45,25 @@ function Ticker () {
         <h2>Latest Cases</h2>
         <div className="ticker-data">
           {latestCasesData.map((entry) => (
-            <div
-              className={`ticker-entry ${expandedEntries[entry.id] ? 'expanded' : ''}`}
-              key={entry.id}
-              onClick={() => handleEntryClick(entry.id)}
-              role="button"
-              tabIndex={0}
-            >
-              <div className="ticker-name" style={{ color: 'red' }}>
-                {entry.scammerName}
-              </div>
-              {expandedEntries[entry.id]
-                ? (
+            <div key={entry.id}>
+              <div
+                className={`ticker-entry ${expandedEntries[entry.id] ? 'expanded' : ''}`}
+                onClick={() => handleEntryClick(entry.id)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="ticker-name" style={{ color: 'red' }}>
+                  {entry.scammerName}
+                </div>
                 <InvestigateSVG className="ticker-svg" width="22" height="29" />
-                  )
-                : null}
-              <div className="ticker-offence">
-                <strong>Offence:</strong> {entry.scamType}
-              </div>
-              <div className="ticker-amount">
-                <strong>Amount: </strong>
-                <span className="ticker-gp">{entry.amount}</span>
-              </div>
-              {expandedEntries[entry.id]
-                ? (
-                <>
+                <div className="ticker-offence">
+                  <strong>Offence:</strong> {entry.scamType}
+                </div>
+                <div className="ticker-amount">
+                  <strong>Amount: </strong>
+                  <span className="ticker-gp">{entry.amount}</span>
+                </div>
+                {expandedEntries[entry.id] && (
                   <div className="ticker-items">
                     <strong>Items:</strong>{' '}
                     {replaceItemNamesWithIcons(entry.items)
@@ -81,12 +75,17 @@ function Ticker () {
                         </span>
                       ))}
                   </div>
-                  <strong>Repaid Debt:</strong>{' '}
-                  <span className="ticker-gp">{entry.debtRepaid}</span>
-                  <button className="view-case-button" onClick={() => handleViewCase(entry.id)}>View Case</button>
-                </>
-                  )
-                : null}
+                )}
+                {expandedEntries[entry.id] && (
+                  <div>
+                    <strong>Repaid Debt:</strong>{' '}
+                    <span className="ticker-gp">{entry.debtRepaid}</span>
+                    <button className="view-case-button" onClick={() => handleViewCase(entry.id)}>
+                      View Case
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -95,30 +94,23 @@ function Ticker () {
         <h2>Latest Resolved Cases</h2>
         <div className="ticker-data">
           {latestResolvedCasesData.map((entry) => (
-            <div
-              className={`ticker-entry ${expandedEntries[entry.id] ? 'expanded' : ''}`}
-              key={entry.id}
-              onClick={() => handleEntryClick(entry.id)}
-              role="button"
-              tabIndex={0}
-            >
-              <div className="ticker-name">{entry.scammerName}
-              </div>
-              {expandedEntries[entry.id]
-                ? (
+            <div key={entry.id}>
+              <div
+                className={`ticker-entry ${expandedEntries[entry.id] ? 'expanded' : ''}`}
+                onClick={() => handleEntryClick(entry.id)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="ticker-name">{entry.scammerName}</div>
                 <ResolvedSVG className="ticker-svg" width="24" height="24" />
-                  )
-                : null}
-              <div className="ticker-offence">
-                <strong>Offence:</strong> {entry.scamType}
-              </div>
-              <div className="ticker-amount">
-                <strong>Amount: </strong>
-                <span className="ticker-gp">{entry.amount}</span>
-              </div>
-              {expandedEntries[entry.id]
-                ? (
-                <>
+                <div className="ticker-offence">
+                  <strong>Offence:</strong> {entry.scamType}
+                </div>
+                <div className="ticker-amount">
+                  <strong>Amount: </strong>
+                  <span className="ticker-gp">{entry.amount}</span>
+                </div>
+                {expandedEntries[entry.id] && (
                   <div className="ticker-items">
                     <strong>Items:</strong>{' '}
                     {replaceItemNamesWithIcons(entry.items)
@@ -128,15 +120,19 @@ function Ticker () {
                           {item}
                           {index < array.length - 1 && ' '}
                         </span>
-                      ))
-                    }
+                      ))}
                   </div>
-                  <strong>Repaid Debt:</strong>{' '}
-                  <span className="ticker-gp">{entry.debtRepaid}</span>
-                  <button className="view-case-button" onClick={() => handleViewCase(entry.id)}>View Case</button>
-                </>
-                  )
-                : null}
+                )}
+                {expandedEntries[entry.id] && (
+                  <div>
+                    <strong>Repaid Debt:</strong>{' '}
+                    <span className="ticker-gp">{entry.debtRepaid}</span>
+                    <button className="view-case-button" onClick={() => handleViewCase(entry.id)}>
+                      View Case
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
