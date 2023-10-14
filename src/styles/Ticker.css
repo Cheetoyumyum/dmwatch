@@ -127,6 +127,10 @@
   color: red;
 }
 
+.ticker-right .ticker-gp {
+  color: #00ff00;
+}
+
 .ticker-entry.expanded {
   background-color: #2e2e2e;
   height: 155px;
