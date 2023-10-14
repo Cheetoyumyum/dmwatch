@@ -25,7 +25,7 @@ function Header ({ onOpenReportModal }) {
     console.log('User logged out. isAuthenticated:', isAuthenticated)
   }
 
-  function handleResolveReport() {
+  function handleResolveReport () {
     window.location.href = 'https://discord.gg/dmwatch'
   }
 
