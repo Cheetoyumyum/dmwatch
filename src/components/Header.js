@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../styles/Header.css'
 import logoImage from '../assets/logo.png'
 import PropTypes from 'prop-types'
@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 function Header ({ onOpenReportModal }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const checkAuthAndAdminStatus = () => {
@@ -24,10 +23,6 @@ function Header ({ onOpenReportModal }) {
   const handleLogOut = () => {
     setIsAuthenticated(false)
     console.log('User logged out. isAuthenticated:', isAuthenticated)
-  }
-
-  const handleNavigation = () => {
-    navigate('https://discord.gg/dmwatch')
   }
 
   return (
@@ -48,9 +43,9 @@ function Header ({ onOpenReportModal }) {
             <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
               Submit a report
             </button>
-            <button className="nav-button" onClick={handleNavigation}>
-              Resolve a report
-            </button>
+            <a className="nav-button" href="https://discord.gg/dmwatch" target="_blank" rel="noopener noreferrer">
+              <button>Resolve a report</button>
+            </a>
           {/* PLEASE DELETE THIS EXTRA ADMIN LINK ONCE LOGIC IS INPLACE. */}
           <Link to='/admin'>
             <button className='nav-button'>Admin</button>
