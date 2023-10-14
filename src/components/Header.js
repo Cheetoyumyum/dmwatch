@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../styles/Header.css'
 import logoImage from '../assets/logo.png'
 import PropTypes from 'prop-types'
@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 function Header ({ onOpenReportModal }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const checkAuthAndAdminStatus = () => {
@@ -27,7 +26,7 @@ function Header ({ onOpenReportModal }) {
   }
 
   function handleResolveReport() {
-    window.location.href = "https://discord.gg/dmwatch";
+    window.location.href = 'https://discord.gg/dmwatch'
   }
 
   return (
