@@ -247,7 +247,7 @@ function ManageTickets () {
                   value={ticket.items}
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
-                <button onClick={() => handleOpenItemPopup(ticket.id)}>Select Items</button>
+                <button className='admin-btn' disabled onClick={() => handleOpenItemPopup(ticket.id)}>Select Items</button>
               </div>
               <div className="field">
                 <label>Scammer Name</label>

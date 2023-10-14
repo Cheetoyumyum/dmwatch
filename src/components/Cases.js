@@ -58,49 +58,60 @@ function Cases () {
   return (
     <div className="cases-container">
       <h1>Case {caseData.id}</h1>
+      <div className='case-description'>
+            {caseData.description}
+      </div>
       <div className="case-content">
         <div className="case-details">
-          <p>
-            <br />
-            <strong>Description:</strong> {caseData.description}
-            <br />
-            <strong>Amount:</strong> {caseData.amount}
-            <br />
-            <strong>Items:</strong>{' '}
-            {replaceItemNamesWithIcons(caseData.items)
-              .filter((item) => item)
-              .map((item, index, array) => (
-                <span key={index}>
-                  {item}
-                  {index < array.length - 1 && ' '}
-                </span>
-              ))}
-            <br />
-            <strong>Scammer Name:</strong> {caseData.scammerName}
-            <br />
-            <strong>Victim Name:</strong> {caseData.victimName}
-            <br />
-            <strong>Evidence:</strong>{' '}
-            <a
-              href={caseData.evidence}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {caseData.evidence}
-            </a>
-            <br />
-            <strong>Status:</strong> {caseData.status}
-            <br />
-            <strong>Scam Type:</strong> {caseData.scamType}
-            <br />
-            <strong>Previous Names:</strong> {caseData.previousNames}
-            <br />
-            <strong>Repaid Debt:</strong> {caseData.debtRepaid}
-          </p>
-          <small>Evidence Strength</small>
-          <div className={`evidence-meter ${caseData.evidenceStrength}`}>
-            <div className="evidence-bar-fill"></div>
-          </div>
+            <strong>Amount (GP)</strong>
+            <div className="text-content">
+               {caseData.amount}
+            </div>
+            <strong>Items</strong>
+            <div className="text-content">
+              {replaceItemNamesWithIcons(caseData.items)
+                .filter((item) => item)
+                .map((item, index, array) => (
+                  <span key={index}>
+                    {item}
+                    {index < array.length - 1 && ' '}
+                  </span>
+                ))}
+            </div>
+            <strong>Scammer Name</strong>
+            <div className="text-content">
+               {caseData.scammerName}
+            </div>
+            <strong>Victim Name</strong>
+            <div className="text-content">
+               {caseData.victimName}
+            </div>
+            <strong>Evidence</strong>
+            <div className="text-content">
+              <a
+                href={caseData.evidence}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {caseData.evidence}
+              </a>
+            </div>
+            <strong>Status</strong>
+            <div className="text-content">
+              {caseData.status}
+            </div>
+            <strong>Scam Type</strong>
+            <div className="text-content">
+               {caseData.scamType}
+            </div>
+            <strong>Previous Names</strong>
+            <div className="text-content">
+              {caseData.previousNames}
+            </div>
+            <strong>Repaid Debt</strong>
+            <div className="text-content">
+               {caseData.debtRepaid}
+            </div>
         </div>
         <div className="evidence-container">
           <video
@@ -114,10 +125,10 @@ function Cases () {
         </div>
       </div>
       <div className="button-container">
-        <button onClick={handleGoToPlayer} className="back-link">
+        <button onClick={handleGoToPlayer} className="nav-button">
           Go to Player
         </button>
-        <button onClick={handleBack} className="back-link">
+        <button onClick={handleBack} className="nav-button">
           Back
         </button>
       </div>

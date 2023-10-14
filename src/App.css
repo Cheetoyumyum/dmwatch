@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./assets/fonts/custom.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App-header {
-  background-color: #161616;
+  background-color: #161a23;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,12 +23,14 @@ html, body {
 }
 
 body {
-  background: linear-gradient(to bottom, #161616, #292929);
+  font-family: 'CustomFont', sans-serif;
+  background: #101319;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 
+/* 
 ::-webkit-scrollbar {
   width: 16px;
 }
@@ -53,6 +62,21 @@ body {
   background-size: contain;
   width: 16px;
 }
+ */
+
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #1f242e;
+  border-radius: 10px;
+  border: 1px solid #272f3f;
+}
 
 .App {
   background-color: #1f1f1f;
@@ -64,17 +88,6 @@ body {
   margin-top: 5vh;
   width: 100%;
   max-width: 430px;
-}
-
-.evidence-meter {
-  display: flex;
-  justify-content: space-between;
-  width: 80px;
-  height: 10px;
-  background-color: #ddd;
-  border-radius: 5px;
-  position: relative;
-  flex-shrink: 0;
 }
 
 .item-icon {

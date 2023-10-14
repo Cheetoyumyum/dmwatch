@@ -174,7 +174,7 @@ function DeniedTickets () {
                   value={ticket.items}
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
-                <button disabled onClick={handleOpenItemPopup}>Select Items (Broken rightnow)</button>
+                <button className='admin-btn' disabled onClick={handleOpenItemPopup}>Select Items (Broken rightnow)</button>
               </div>
               <div className="field">
                 <label>Scammer Name</label>

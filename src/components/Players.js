@@ -100,9 +100,9 @@ function Players () {
         <div className='Overview'>
           <div className='playerInfo'>
             <h2 className="playerTitle">Overview</h2>
-            <p><strong>Status:</strong> {playerData.status}</p>
-            <p><strong>Last Updated at:</strong> {formatDate(playerData.lastUpdatedAt)}</p>
-            <p><strong>Last Changed at:</strong> {formatDate(playerData.lastChangedAt)}</p>
+            <p><strong>Status</strong><br/> {playerData.status}</p>
+            <p><strong>Last Updated at</strong><br/> {formatDate(playerData.lastUpdatedAt)}</p>
+            <p><strong>Last Changed at</strong><br/>{formatDate(playerData.lastChangedAt)}</p>
           </div>
 
           <div className="playerNames">
@@ -123,11 +123,11 @@ function Players () {
 
           <div className="playerData">
               <h2 className="playerTitle">Metrics</h2>
-              <p><strong>Total Cases:</strong> {totalCases}</p>
-              <p><strong>Total Times Victim:</strong> {totalTimesVictim}</p>
-              <p><strong>Total Times Scammed:</strong> {totalTimesScammed}</p>
-              <p><strong>GP Stolen:</strong> {gpStolen}m</p>
-              <p><strong>GP Repaid:</strong> {gpRepaid}m</p>
+              <p><strong>Total Cases</strong><br/> {totalCases}</p>
+              <p><strong>Total Times Victim</strong><br/> {totalTimesVictim}</p>
+              <p><strong>Total Times Scammed</strong><br/> {totalTimesScammed}</p>
+              <p><strong>GP Stolen</strong><br/> {gpStolen}m</p>
+              <p><strong>GP Repaid</strong><br/> {gpRepaid}m</p>
           </div>
         </div>
       )}
@@ -138,26 +138,20 @@ function Players () {
             {playerData.cases.map((caseItem) => (
               <div key={caseItem.id} className="case-card" onClick={() => handleCaseClick(caseItem.id)}>
                 <h3>
-                  <strong>Case:&nbsp;</strong> {caseItem.id}
+                  <strong>Case&nbsp;</strong> {caseItem.id}
                 </h3>
-                <small>Evidence Strength</small>
-                <div className={`evidence-meter ${caseItem.evidenceStrength}`}>
-                  <div className="evidence-bar">
-                    <div className="evidence-bar-fill"></div>
-                  </div>
-                </div>
-                <p><strong>Description:</strong> {caseItem.description}</p>
-                <p><strong>Amount:</strong> {caseItem.amount}</p>
-                <p><strong>Victim Name:</strong> {caseItem.victimName}</p>
-                <small>Case id: </small>
-                <small style={{ color: 'gray' }}>{caseItem.id}</small>
+                <p><strong>Description</strong><br/> {caseItem.description}</p>
+                <p><strong>Amount</strong><br/> {caseItem.amount}</p>
+                <p><strong>Victim Name</strong><br/> {caseItem.victimName}</p>
+                <small style={{ color: '#788197' }}>Case id: </small>
+                <small style={{ color: '#788197' }}>{caseItem.id}</small>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      <button onClick={handleBack} className="back-link">
+      <button onClick={handleBack} className="nav-button">
         Back
       </button>
     </div>

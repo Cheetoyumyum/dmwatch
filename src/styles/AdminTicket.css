@@ -22,7 +22,7 @@ code {
 }
 
 .card-body textarea {
-  background-color: #2e2e2e;
+  background-color: #08090d;
 }
 
 .resolved-tickets h2 {
@@ -146,7 +146,7 @@ code {
 }
 
 .admin-btn {
-  background-color: #4b4b4b;
+  background-color: #161a23;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -171,7 +171,7 @@ code {
 
 .ticket-card {
   flex: 0 1 calc(33.33% - 20px);
-  background-color: #2e2e2e;
+  background-color: #161a23;
   border: 2px solid black;
   border-radius: 8px;
   padding: 20px;
@@ -197,8 +197,8 @@ code {
   padding: 6px;
   border-radius: 5px;
   border: 1px solid black;
-  background-color: #2e2e2e;
-  color: #fff;
+  background-color: #08090d;
+  color: #455370;
   font-size: 16px;
 }
 
@@ -218,10 +218,10 @@ code {
   width: 100%;
   padding: 8px;
   border: 1px solid black;
-  background-color: #2e2e2e;
+  background-color: #08090d;
   border-radius: 5px;
   font-size: 16px;
-  color: #fff;
+  color: #455370;
 }
 
 .ticket-card[data-status="Victim"]::before {
@@ -263,6 +263,9 @@ code {
   border-radius: 4px;
   font-size: 14px;
   margin-right: 5px;
+}
+.admin-btn {
+  background-color: #1d232f;
 }
 
 .ticket-card[data-status="Streamer"]::before {

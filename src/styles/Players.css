@@ -1,10 +1,10 @@
 .player-card {
   margin: 20px 10%;
   padding: 20px;
-  background-color: #292929;
+  background-color: #161a23;
   border-radius: 10px;
   text-align: center; 
-  border: 1px solid black;
+  border: 1px solid #313b4e;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
   max-width: 80%;
@@ -22,19 +22,22 @@
 
 .case-card {
   flex: 0 0 auto;
-  border: 1px solid black;
+  border: 1px solid #313b4e;
   width: 300px;
   cursor: pointer;
   margin: 10px 15px 10px 5px;
   padding: 20px;
-  background-color: #292929;
+  background-color: #161a23;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
   box-shadow: 2px 6px 12px 0px #000000;
 }
-
+.players-container strong {
+  color: #fff;
+  font-weight: 700;
+}
 .case-card h2 {
   font-size: 18px;
   font-weight: bold;
@@ -44,7 +47,7 @@
 
 .case-card p {
   font-size: 16px;
-  color: #fff;
+  color: #788197;
   text-align: center;
 }
 
@@ -84,7 +87,7 @@
 
 }
 
-.back-link {
+.players-container .nav-button {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -117,7 +120,7 @@
   max-width: 80%;
   border-radius: 10px;
   margin: 0 auto;
-  background-color: #292929;
+  background-color: #161a23;
   border: 1px solid black;
 }
 
@@ -126,20 +129,20 @@
   cursor: pointer;
   padding: 10px 20px;
   margin: 0;
-  background-color: #292929;
+  background-color: #161a23;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  color: #fff;
+  color: #788197;
   transition: border-bottom 0.3s;
 }
 
 .nav-tab:hover {
-  border-bottom: 2px solid rgba(165, 18, 18, 0.5);
+  border-bottom: 2px solid #313b4e;
 }
 
 .nav-tab.active {
-  border-bottom: 2px solid rgb(165, 18, 18);
+  border-bottom: 2px solid #313b4e;
   color: #ffffff;
 }
 
@@ -155,12 +158,14 @@
 .playerInfo {
   margin: 20px 10px;
   padding: 20px;
-  background-color: #292929;
+  background-color: #161a23;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #313b4e;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
   max-width: 20%;
+  color: #788197;
+  text-align: center;
   width: 100%;
   box-shadow: 2px 6px 12px 0px #000000;
 }
@@ -175,11 +180,12 @@
 .playerNames {
   margin: 20px 10px;
   padding: 20px;
-  background-color: #292929;
+  background-color: #161a23;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #313b4e;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
+  color: #788197;
   max-width: 30%;
   width: 100%;
   box-shadow: 2px 6px 12px 0px #000000;
@@ -188,13 +194,15 @@
 .playerData {
   margin: 20px 10px;
   padding: 20px;
-  background-color: #292929;
+  background-color: #161a23;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #313b4e;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-in-out;
+  color: #788197;
   max-width: 45%;
   width: 100%;
+  text-align: center;
   box-shadow: 2px 6px 12px 0px #000000;
 }
 
@@ -203,7 +211,7 @@
   font-weight: bold;
   color: #fff;
   text-align: center;
-  border-bottom: 1px solid rgb(165, 18, 18);
+  border-bottom: 1px solid #313b4e;
 }
 
 .playerNames p {
@@ -213,7 +221,7 @@
 }
 
 .playerInfo h2{
-  border-bottom: 1px solid rgb(165, 18, 18);
+  border-bottom: 1px solid #313b4e;
 }
 
 .playerNames h2 {
@@ -221,19 +229,19 @@
   font-weight: bold;
   color: #fff;
   text-align: center;
-  border-bottom: 1px solid rgb(165, 18, 18);
+  border-bottom: 1px solid #313b4e;
 }
 
 .playerNames h3 {
   font-weight: bold;
   font-size: 14px;
   text-align: center;
-  border-bottom: 1px solid rgb(165, 18, 18);
+  border-bottom: 1px solid #313b4e;
 
 }
 
 .case-card h3 {
-  border-bottom: 1px solid rgb(165, 18, 18);
+  border-bottom: 1px solid #313b4e;
 }
 
 .video-container {

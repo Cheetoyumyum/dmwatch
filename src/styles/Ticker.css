@@ -7,11 +7,11 @@
 .ticker-left,
 .ticker-right {
   width: 45%;
-  background-color: #1f1f1f;
+  background-color: #161a23;
   border-radius: 10px;
   text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  border: 1px solid black;
+  border: 1px solid #313b4e;
   margin-bottom: 50px;
   animation: fadeInUp 1s ease-in-out;
   box-shadow: 2px 6px 12px 0px #000000;
@@ -44,9 +44,8 @@
   display: block;
   padding: 10px;
   cursor: pointer;
-  border-left: 3px solid #2e2e2e;
-  background-color: #2e2e2e;
-  border: 1px solid black;
+  border-left: 3px solid #313b4e;
+  border: 1px solid #313b4e;
   overflow: hidden;
   height: 40px;
   transition: height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s ease-in-out;
@@ -55,8 +54,7 @@
 }
 
 .ticker-entry:hover {
-  color: #ccc;
-  background-color: #474747;
+  background-color: #1d232f;
 }
 
 .ticker-entry:first-child {
@@ -68,9 +66,8 @@
 }
 
 .ticker-name {
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 5px;
-  color: red;
 }
 
 .ticker-offence,
@@ -82,8 +79,8 @@
 }
 
 .view-case-button {
-  background-color: #19191a;
-  color: white;
+  background-color: #0d0f14;
+  color: #788197;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -107,18 +104,20 @@
   }
 }
 
+.ticker-entry {
+  color: #788197;
+}
+
+.ticker-name {
+  color: #fff;
+}
+.ticker-entry strong {
+  color: #fff;
+  font-weight: 700;
+}
 .ticker-left h2,
 .ticker-right h2 {
   text-align: center;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.ticker-left h2 {
-  color: red;
-}
-
-.ticker-right h2 {
-  color: #00ff00;
 }
 
 .ticker-left .ticker-gp {
@@ -130,14 +129,12 @@
 }
 
 .ticker-entry.expanded {
-  background-color: #2e2e2e;
   height: 155px;
   transform: translateY(0);
 }
 
 .ticker-entry.expanded:hover {
-  color: #ccc;
-  background-color: #474747;
+  background-color: #1e2330;
 }
 
 .ticker-entry.expanded .ticker-svg {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Header.css'
-import logoImage from '../assets/logo.png'
 import PropTypes from 'prop-types'
+import { ReactComponent as DMWatchSVG } from '../assets/DMWatch.svg'
 
 function Header ({ onOpenReportModal }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -33,17 +33,16 @@ function Header ({ onOpenReportModal }) {
     <header className="App__header">
       <nav className="navbar">
         <div className='left-content'>
-          <a className="discord-button" href='https://discord.gg/dmwatch'>Join our Discord</a>
+        <div className="brand">
+          <Link to="/">
+            <DMWatchSVG />
+          </Link>
+        </div>
         </div>
         <div className="center-content">
-          <div className="brand">
-            <Link to='/'>
-              <img src={logoImage} alt="DMWatch Logo" className="logo-image" />
-              <h1 className='logo-text'>DMWatch</h1>
-            </Link>
-          </div>
         </div>
         <div className="right-content">
+            <button className="nav-button" onClick={handleResolveReport}>Join our Discord</button>
             <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
               Submit a report
             </button>
@@ -70,7 +69,7 @@ function Header ({ onOpenReportModal }) {
             </div>
               )
             : (
-            <button className="sign-in" >
+            <button className="nav-button" >
               Sign In
             </button>
               )}

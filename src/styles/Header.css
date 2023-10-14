@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #161616;
+  background-color: #161a23;
   color: white;
   box-shadow: 2px 6px 12px 0px #000000;
 }
@@ -17,24 +17,21 @@
   align-items: center;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
 .logo-image {
   width: 25px;
   height: 25px;
   margin-right: 10px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: calc((100% - 528px) / 2);
-}
-
-.brand h1 {
+.logo-text {
   margin: 0;
   font-size: 36px;
-  display: flex;
-  align-items: center;
 }
 
 .navbar {
@@ -55,7 +52,7 @@
 }
 
 .nav-button {
-  background-color: #1f1f1f;
+  background-color: #0d0f14;
   border: none;
   color: #fff;
   padding: 10px 20px;
@@ -74,7 +71,7 @@
 }
 
 .nav-button:hover {
-  background-color: var(--ticker-hover-bg-color);
+  background-color: rgba(31, 37, 51, 0.659);
   color: #fff;
   text-shadow: none;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
@@ -92,34 +89,6 @@ a:visited {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.discord-button {
-  background-color: #1f1f1f;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  font-family: Whitney, "Open Sans", Helvetica, sans-serif;
-  font-weight: 400;
-  border-radius: 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  height: 45px;
-  width: 180px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  margin-left: 20px;
-}
-
-.discord-button:hover {
-  background-color: #4752c4;
-  border: 2px transparent;
-}
-
-.discord-button a {
-  margin: 0 auto;
-  text-align: center;
 }
 
 .brand:hover .logo-text {
@@ -143,30 +112,6 @@ a:visited {
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
-}
-
-.sign-in {
-  color: #fff;
-  display: inline-block;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background-color: #1f1f1f;
-  color: #fff;
-  margin: auto;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-  text-decoration: none;
-}
-
-.sign-in:hover {
-  background-color: #555;
-  color: #fff;
-  text-shadow: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {

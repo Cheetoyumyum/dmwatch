@@ -147,7 +147,7 @@ function ResolvedTickets () {
                   onChange={(e) => handleChange(ticket.id, 'items', e.target.value)}
                 />
               </div>
-              <button disabled>Select Items (Broken right now)</button>
+              <button className='admin-btn' disabled>Select Items (Broken right now)</button>
               <div className="field">
                 <label>Scammer Name</label>
                 <input
