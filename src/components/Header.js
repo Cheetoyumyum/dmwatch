@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/Header.css'
 import logoImage from '../assets/logo.png'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router-dom'
 
 function Header ({ onOpenReportModal }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
