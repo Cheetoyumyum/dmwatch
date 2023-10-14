@@ -38,11 +38,11 @@ function Header ({ onOpenReportModal }) {
             <DMWatchSVG />
           </Link>
         </div>
+        <button className="nav-button" onClick={handleResolveReport}>Join our Discord</button>
         </div>
         <div className="center-content">
         </div>
         <div className="right-content">
-            <button className="nav-button" onClick={handleResolveReport}>Join our Discord</button>
             <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
               Submit a report
             </button>
