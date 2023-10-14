@@ -25,6 +25,10 @@ function Header ({ onOpenReportModal }) {
     console.log('User logged out. isAuthenticated:', isAuthenticated)
   }
 
+  const handleNavigation = () => {
+    navigate('https://discord.gg/dmwatch')
+  }
+
   return (
     <header className="App__header">
       <nav className="navbar">
@@ -43,9 +47,9 @@ function Header ({ onOpenReportModal }) {
             <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
               Submit a report
             </button>
-            <a className="nav-button" href='https://discord.gg/dmwatch'>
+            <button className="nav-button" onClick={handleNavigation}>
               Resolve a report
-            </a>
+            </button>
           {/* PLEASE DELETE THIS EXTRA ADMIN LINK ONCE LOGIC IS INPLACE. */}
           <Link to='/admin'>
             <button className='nav-button'>Admin</button>
