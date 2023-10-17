@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { fetchLatestCases, fetchLatestResolvedCases } from '../server/ticketService'
 import '../styles/Ticker.css'
 import { replaceItemNamesWithIcons } from '../utils/replaceItemNamesWithIcons'
-import { ReactComponent as ResolvedSVG } from '../assets/settingsCheckmark.svg'
-import { ReactComponent as InvestigateSVG } from '../assets/investigate.svg'
+import { BiListOl, BiListCheck } from 'react-icons/bi'
 
 function Ticker () {
   const [latestCasesData, setLatestCasesData] = useState([])
@@ -55,7 +54,7 @@ function Ticker () {
                 <div className="ticker-name" style={{ color: 'red' }}>
                   {entry.scammerName}
                 </div>
-                <InvestigateSVG className="ticker-svg" width="22" height="29" />
+                <BiListOl className="ticker-svg" />
                 <div className="ticker-offence">
                   <strong>Offence:</strong> {entry.scamType}
                 </div>
@@ -102,7 +101,7 @@ function Ticker () {
                 tabIndex={0}
               >
                 <div className="ticker-name">{entry.scammerName}</div>
-                <ResolvedSVG className="ticker-svg" width="24" height="24" />
+                <BiListCheck className="ticker-svg" />
                 <div className="ticker-offence">
                   <strong>Offence:</strong> {entry.scamType}
                 </div>

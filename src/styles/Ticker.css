@@ -25,6 +25,10 @@
   transform: translateY(-50%);
   transition: right 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
   opacity: 1;
+  height: 30px;
+  width: 30px;
+  stroke: #161a23;
+  stroke-width: 1px;
 }
 
 .ticker-left h2,

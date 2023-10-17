@@ -7,6 +7,7 @@ import { ReactComponent as TotalSVG } from '../assets/total.svg'
 import { ReactComponent as FiledSVG } from '../assets/filed.svg'
 import { ReactComponent as DeniedSVG } from '../assets/settingsX.svg'
 import { ReactComponent as OpenSVG } from '../assets/investigate.svg'
+import { BiCheckShield, BiCabinet, BiFile } from 'react-icons/bi'
 
 function formatNumber (number) {
   return number.toLocaleString() + ' M'
@@ -158,7 +159,7 @@ function Metrics () {
             <div className="metrics-items">
                 <div className="metric active-reports">
                   <div className="metric-icon">
-                    <FiledSVG height="48px" width="48px" />
+                    <BiCabinet className='metric-svg' />
                   </div>
                   <div className="metric-number">{activeTickets.toLocaleString()}</div>
                   <div className="metric-label">Active Reports</div>
@@ -166,7 +167,7 @@ function Metrics () {
 
                 <div className="metric resolved-reports">
                   <div className="metric-icon">
-                    <CheckmarkSVG height="48px" width="48px" />
+                    <BiCheckShield className='metric-svg' />
                   </div>
                   <div className="metric-number">{resolvedReports.toLocaleString()}</div>
                   <div className="metric-label">Resolved Reports</div>
@@ -182,7 +183,7 @@ function Metrics () {
 
                 <div className="metric total-submissions">
                 <div className="metric-icon">
-                  <TotalSVG height="48px" width="48px" />
+                  <BiFile className='metric-svg' />
                 </div>
                   <div className="metric-number">{totalSubmissions.toLocaleString()}</div>
                   <div className="metric-label">Total Submissions</div>

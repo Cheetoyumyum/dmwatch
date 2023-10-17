@@ -50,6 +50,15 @@
   color: #788197;
 }
 
+.metric-icon .metric-svg {
+  height: 48px;
+  width: 48px;
+  fill: #788197;
+  stroke: #161a23;
+  stroke-width: 1px;
+  
+}
+
 /* OSD/UI theme for admin metrics */
 .metrics-container.admin-theme {
   position: fixed;
