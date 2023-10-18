@@ -81,7 +81,7 @@ function Players () {
   return (
     <div className="players-container">
       <div className="player-card">
-        <h1><strong>RSN:</strong> {playerData.scammerName}</h1>
+        <h1>{playerData.scammerName}</h1>
       </div>
 
       <div className="nav-bar">
