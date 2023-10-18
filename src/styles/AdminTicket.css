@@ -204,6 +204,7 @@ code {
 
 .card-body .field {
   margin-bottom: 10px;
+  padding-right: 15px;
 }
 
 .card-body label {
