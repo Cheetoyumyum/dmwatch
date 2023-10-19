@@ -7,6 +7,7 @@ import { ReactComponent as DMWatchSVG } from '../assets/DMWatch.svg'
 function Header ({ onOpenReportModal }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
+  const [isDisabled] = useState(true) // Temporary till we decide if we are going to use the site for report functionality.
 
   useEffect(() => {
     const checkAuthAndAdminStatus = () => {
@@ -43,16 +44,21 @@ function Header ({ onOpenReportModal }) {
         <div className="center-content">
         </div>
         <div className="right-content">
-            <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
-              Submit a report
-            </button>
-            <button className="nav-button" onClick={handleResolveReport}>
-              Resolve a report
-            </button>
+          {!isDisabled && (
+            <div className='submit-resolve'>
+              <button className="nav-button" onClick={() => onOpenReportModal('Submit')}>
+                Submit a report
+              </button>
+              <button className="nav-button" onClick={handleResolveReport}>
+                Resolve a report
+              </button>
+            </div>
+          )}
           {/* PLEASE DELETE THIS EXTRA ADMIN LINK ONCE LOGIC IS INPLACE. */}
           <Link to='/admin'>
             <button className='nav-button'>Admin</button>
           </Link>
+
           {isAuthenticated
             ? (
             <div className="user-dropdown">
