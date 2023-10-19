@@ -28,7 +28,6 @@ const itemNameToIcon = {
   'dragon dagger': 'dragon-dagger.png',
   glory: 'amulet-of-glory.png',
   fury: 'amulet-of-fury.png',
-  tort: 'amulet-of-torture.png',
   prims: 'primordial-boots.png',
   tbow: 'twisted-bow.png',
   'str ammy': 'amulet-of-strength.png',
@@ -62,7 +61,12 @@ const itemNameToIcon = {
   'Torva Platebody': 'torva-body.png',
   'Torva Platelegs': 'torva-legs.png',
   'Abyssal Bludgeon': 'Abyssal-bludgeon.png',
-  'Inquisitors Mace': 'inq-mace.png'
+  'Inquisitors Mace': 'inq-mace.png',
+  '3rd Age Mage Set': '3amageset.png',
+  'Bandos Armor Set': 'bandoset.png',
+  'Inqusitor Armor Set': 'inquizitorset.png',
+  'Torva Armor Set': 'torvaset.png',
+  'Brim Tort Prim': 'primtortbrim.png'
 }
 
 function replaceItemNamesWithIcons (items) {

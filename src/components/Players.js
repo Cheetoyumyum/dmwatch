@@ -54,7 +54,7 @@ function Players () {
     return new Date(dateString).toLocaleString(undefined, options)
   }
 
-  const tabOptions = ['Overview', 'Cases']
+  const tabOptions = ['Overview', 'Cases', 'Vouches']
 
   if (loading) {
     return <LoadingScreen />
@@ -63,6 +63,22 @@ function Players () {
   if (notFound) {
     return <Error404 />
   }
+
+  // For live demo, use code to fetch data from PlayerVouches
+  const vouches = [
+    {
+      giver: 'Player1',
+      amount: '10000m',
+      comment: 'Trusted, didnt scam',
+      vouchTime: '2023-10-01T14:30:00Z'
+    },
+    {
+      giver: 'Player2',
+      amount: '50000m',
+      comment: 'Held 50B pot',
+      vouchTime: '2023-10-02T12:15:00Z'
+    }
+  ]
 
   const totalCases = playerData.cases ? playerData.cases.length : 0
   const totalTimesVictim = playerData.cases ? playerData.cases.filter(item => item.victimName === player).length : 0
@@ -145,6 +161,36 @@ function Players () {
                 <p><strong>Victim Name</strong><br/> {caseItem.victimName}</p>
                 <small style={{ color: '#788197' }}>Case id: </small>
                 <small style={{ color: '#788197' }}>{caseItem.id}</small>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'Vouches' && (
+        <div>
+          <div className="case-cards">
+            {vouches.map((vouch, index) => (
+              <div key={index} className="case-card">
+                <h3>
+                  <strong>Vouch&nbsp;</strong> {index + 1}
+                </h3>
+                <p>
+                  <strong>Giver</strong>
+                  <br /> {vouch.giver}
+                </p>
+                <p>
+                  <strong>Amount</strong>
+                  <br /> {vouch.amount}
+                </p>
+                <p>
+                  <strong>Vouch Time</strong>
+                  <br /> {formatDate(vouch.vouchTime)}
+                </p>
+                <p>
+                  <br /> {vouch.comment}
+                </p>
+
               </div>
             ))}
           </div>

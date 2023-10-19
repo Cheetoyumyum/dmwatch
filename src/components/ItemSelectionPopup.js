@@ -9,6 +9,7 @@ const items = [
   'Guthans Set',
   'Veracs Set',
   'Inquisitors Set',
+  'Brim Tort Prim',
   'Amulet of Torture',
   'Brimstone Ring',
   'Primordial Boots',
@@ -33,7 +34,11 @@ const items = [
   'Abyssal Whip',
   'Tentacle Whip',
   'Inquisitors Mace',
-  'Dharoks Greataxe'
+  'Dharoks Greataxe',
+  '3rd Age Mage Set',
+  'Bandos Armor Set',
+  'Inqusitor Armor Set',
+  'Torva Armor Set'
 ]
 
 function ItemSelectionPopup ({ isOpen, onClose, onSelectItems }) {
